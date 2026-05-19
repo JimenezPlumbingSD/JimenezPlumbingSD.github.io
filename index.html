@@ -2,470 +2,534 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jimenez Plumbing Solutions | San Diego County Plumber</title>
-<meta name="description" content="Licensed master plumber serving San Diego County for 35 years. New construction, tankless water heaters, whole-house repipes, LP gas. CA C-36 #568271. Call (760) 789-3980.">
-<meta name="keywords" content="plumber San Diego County, master plumber Ramona CA, tankless water heater, whole house repipe, new construction plumbing, LP gas San Diego, C-36 plumber">
-<link rel="shortcut icon" href="favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/css/screen.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jimenez Plumbing Solutions — San Diego County Master Plumber | 35 Years</title>
+<meta name="description" content="Chuck Jimenez — licensed master plumber, CA C-36 #568271. 35 years in San Diego County. New construction, tankless, repipe, slab leak, LP gas. Call (760) 789-3980 or text our AI assistant.">
+<meta name="keywords" content="plumber San Diego County, master plumber Ramona, tankless water heater, whole house repipe, slab leak, LP gas, new construction plumbing, C-36 plumber">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jimenez Plumbing Solutions — San Diego County Master Plumber">
+<meta property="og:description" content="35 years on San Diego job sites. New construction, repipes, tankless, LP gas. Call Chuck directly — (760) 789-3980.">
+<meta property="og:url" content="https://jimenezplumbingsd.github.io/">
+
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+  /* ═══ DESIGN TOKENS ════════════════════════════════════════════════════════ */
   :root {
-    --blue: #005A9C;
-    --blue-dark: #003B6F;
-    --red: #EF3E42;
-    --cream: #F7F3E9;
-    --ink: #0F1A2C;
-    --gold: #C8A252;
-    --gray: #4A5568;
+    --ink-900: #0A1628;
+    --ink-800: #14253D;
+    --ink-700: #1F3550;
+    --blue-700: #0E4A8C;
+    --blue-600: #1565C0;
+    --blue-500: #2196F3;
+    --blue-50:  #E3F2FD;
+    --gold-500: #C8A252;
+    --gold-400: #D4B570;
+    --red-500:  #E53935;
+    --red-600:  #D32F2F;
+    --green-500: #43A047;
+    --tg-blue:  #0088CC;
+    --cream:    #FAF7F0;
+    --paper:    #FFFFFF;
+    --ink-soft: #2C3E50;
+    --gray-700: #455A64;
+    --gray-500: #78909C;
+    --gray-300: #CFD8DC;
+    --gray-100: #ECEFF1;
+    --gray-50:  #F5F7FA;
+    --shadow-sm:  0 1px 3px rgba(10, 22, 40, 0.08), 0 1px 2px rgba(10, 22, 40, 0.04);
+    --shadow-md:  0 4px 12px rgba(10, 22, 40, 0.10), 0 2px 4px rgba(10, 22, 40, 0.06);
+    --shadow-lg:  0 12px 32px rgba(10, 22, 40, 0.15), 0 4px 8px rgba(10, 22, 40, 0.08);
+    --shadow-xl:  0 24px 64px rgba(10, 22, 40, 0.20), 0 8px 16px rgba(10, 22, 40, 0.10);
+    --gradient-hero: linear-gradient(135deg, #0A1628 0%, #14253D 45%, #1565C0 100%);
+    --gradient-cta:  linear-gradient(135deg, #E53935 0%, #D32F2F 100%);
+    --gradient-bot:  linear-gradient(135deg, #0088CC 0%, #006699 100%);
+    --r-sm: 6px;
+    --r-md: 12px;
+    --r-lg: 20px;
+    --r-xl: 32px;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
-  /* Override template brand colors */
-  .main-header { background: var(--blue-dark); border-bottom: 3px solid var(--gold); }
-  .second-nav { background: var(--blue-dark); }
-  .second-nav__logo { background: var(--blue); border: 2px solid var(--gold); color: white; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; letter-spacing: -0.02em; }
-  .menu a { color: rgba(255,255,255,0.8); }
-  .menu a:hover, .menu a.is-selected { color: var(--gold); }
-  .main-footer { background: var(--ink); }
-  .main-footer a { color: var(--gold); }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; padding: 0;
+    font-family: var(--font-body);
+    color: var(--ink-soft);
+    background: var(--paper);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--blue-600); text-decoration: none; }
+  a:hover { color: var(--blue-700); }
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink-900); margin: 0 0 0.5em; line-height: 1.15; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 900; }
+  h2 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; }
+  h3 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 700; }
+  h4 { font-size: 1.15rem; font-weight: 700; color: var(--ink-800); }
+  p  { margin: 0 0 1em; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-  /* Hero */
-  .home-section { background: var(--blue); position: relative; }
-  .home-section__bg {
-    background-image: url('static/images/bg.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.08;
-  }
-  .home-section__overlay { background: transparent; }
-  .home-section__header-label {
-    color: var(--gold);
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-  }
-  .home-section__header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: white;
-  }
-  .home-section__header h2 {
-    font-size: 1.1rem;
-    color: #CFE2F5;
-    font-weight: 400;
-    margin-top: 1rem;
-  }
-  .hero-cta {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-  }
-  .btn-call {
-    display: inline-block;
-    background: var(--red);
-    color: white;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 14px 32px;
-    text-decoration: none;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-    transition: background 0.2s;
-  }
-  .btn-call:hover { background: #c73235; color: white; }
-  .hero-license {
-    margin-top: 2rem;
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-family: 'Source Sans 3', sans-serif;
-  }
-  .hero-gold-bar {
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--gold);
-    margin: 1.25rem 0;
+  /* ═══ STICKY NAV ═══════════════════════════════════════════════════════════ */
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .nav__inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1180px; margin: 0 auto; }
+  .nav__brand { display: flex; align-items: center; gap: 12px; color: white; text-decoration: none; font-family: var(--font-display); font-weight: 900; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .nav__brand-mark { width: 38px; height: 38px; background: var(--blue-600); border: 2px solid var(--gold-500); border-radius: 8px; display: grid; place-items: center; font-size: 0.95rem; font-weight: 900; }
+  .nav__links { display: flex; gap: 28px; align-items: center; }
+  .nav__links a { color: rgba(255, 255, 255, 0.85); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  .nav__links a:hover { color: var(--gold-400); }
+  .nav__cta { background: var(--red-500); color: white; padding: 9px 20px; border-radius: var(--r-sm); font-weight: 600; font-size: 0.95rem; transition: transform 0.15s, background 0.2s; }
+  .nav__cta:hover { background: var(--red-600); transform: translateY(-1px); color: white; }
+  .nav__toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px 8px; }
+  @media (max-width: 880px) {
+    .nav__links { display: none; }
+    .nav__links.is-open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 16px 24px; gap: 16px; background: var(--ink-900); border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .nav__toggle { display: block; }
   }
 
-  /* Section overrides */
-  .common-section__header h2, .about-section__card-header h2 { color: var(--ink); font-family: 'Playfair Display', serif; }
-  .common-section__header h4, .about-section__card-header h4 { color: var(--gray); }
+  /* ═══ HERO ════════════════════════════════════════════════════════════════ */
+  .hero { position: relative; background: var(--gradient-hero); color: white; padding: 80px 0 100px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 10%, rgba(33, 150, 243, 0.4) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(200, 162, 82, 0.15) 0%, transparent 50%); pointer-events: none; }
+  .hero__container { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .hero__kicker { display: inline-block; padding: 6px 16px; background: rgba(200, 162, 82, 0.18); border: 1px solid rgba(200, 162, 82, 0.3); border-radius: 999px; color: var(--gold-400); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; }
+  .hero__title { color: white; max-width: 800px; margin-bottom: 24px; }
+  .hero__subtitle { font-size: clamp(1.1rem, 2vw, 1.35rem); color: rgba(255, 255, 255, 0.85); max-width: 680px; margin-bottom: 36px; line-height: 1.55; font-weight: 400; }
+  .hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: var(--r-md); font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; border: none; cursor: pointer; font-family: var(--font-body); }
+  .btn--primary { background: var(--gradient-cta); color: white; box-shadow: var(--shadow-md); }
+  .btn--primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); color: white; }
+  .btn--telegram { background: var(--gradient-bot); color: white; box-shadow: var(--shadow-md); }
+  .btn--telegram:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); color: white; }
+  .btn--ghost { background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(8px); }
+  .btn--ghost:hover { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.5); color: white; transform: translateY(-2px); }
+  .btn__icon { font-size: 1.2em; line-height: 1; }
+  .hero__credentials { margin-top: 60px; display: flex; gap: 32px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+  .hero__cred { display: flex; flex-direction: column; }
+  .hero__cred-value { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--gold-400); line-height: 1; }
+  .hero__cred-label { font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); margin-top: 6px; letter-spacing: 0.04em; }
 
-  /* Services custom icons */
-  .icon_wrench::before { content: "\2692"; }
-  .icon_fire::before { content: "\1F525"; }
-  .icon_pipe::before { content: "\1F6B0"; }
-  .icon_shower::before { content: "\1F6BF"; }
-  .icon_house::before { content: "\1F3D7"; }
-  .icon_detect::before { content: "\1F50D"; }
+  /* ═══ TRUST BAR ═══════════════════════════════════════════════════════════ */
+  .trust { background: var(--cream); border-bottom: 1px solid var(--gray-100); padding: 24px 0; }
+  .trust__inner { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: center; color: var(--gray-700); font-size: 0.95rem; }
+  .trust__item { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+  .trust__item-icon { color: var(--green-500); font-weight: 700; }
 
-  /* Service cards */
-  .services__item h4 { color: var(--blue); }
-  .services__item::before { color: var(--gold); }
+  /* ═══ SECTION SCAFFOLD ═══════════════════════════════════════════════════ */
+  .section { padding: 90px 0; }
+  .section--alt { background: var(--gray-50); }
+  .section__header { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+  .section__kicker { display: inline-block; color: var(--blue-600); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
+  .section__title { margin-bottom: 16px; }
+  .section__lede { font-size: 1.15rem; color: var(--gray-700); line-height: 1.65; }
 
-  /* About */
-  .about-avatar {
-    width: 100px; height: 100px;
-    background: var(--blue);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-weight: 900; font-size: 2.8rem;
-    color: white;
-    border: 3px solid var(--gold);
-    margin-bottom: 1.25rem;
-  }
-  .stat-block { display: inline-block; margin-right: 2.5rem; }
-  .stat-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.8rem; color: var(--blue); line-height: 1; }
-  .stat-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
-  .about-quote { border-left: 3px solid var(--gold); padding-left: 1rem; font-style: italic; margin: 1.25rem 0; color: var(--ink); line-height: 1.6; }
-  .about-sig { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+  /* ═══ SERVICES GRID ══════════════════════════════════════════════════════ */
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .service-card { background: white; border-radius: var(--r-lg); padding: 32px; border: 1px solid var(--gray-100); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; cursor: default; }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--blue-500); }
+  .service-card__icon { width: 56px; height: 56px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue-600); display: grid; place-items: center; font-size: 1.6rem; margin-bottom: 20px; }
+  .service-card__title { margin-bottom: 10px; font-size: 1.25rem; }
+  .service-card__desc { color: var(--gray-700); font-size: 0.97rem; line-height: 1.6; margin: 0; }
 
-  /* Process steps */
-  .process__step-icon.is-active { border-color: var(--blue); background: var(--blue); }
-  .process__step-icon { border-color: #ccc; }
-  .process__step-info h3 span { color: var(--blue); }
+  /* ═══ AI ASSISTANT CTA SECTION ══════════════════════════════════════════ */
+  .ai-section { background: var(--ink-900); color: white; padding: 100px 0; overflow: hidden; position: relative; }
+  .ai-section::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 80% 30%, rgba(0, 136, 204, 0.25) 0%, transparent 50%), radial-gradient(circle at 10% 70%, rgba(33, 150, 243, 0.2) 0%, transparent 40%); }
+  .ai-section__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 880px) { .ai-section__inner { grid-template-columns: 1fr; gap: 40px; } }
+  .ai-section h2 { color: white; }
+  .ai-section .section__kicker { color: var(--blue-500); }
+  .ai-section__copy p { color: rgba(255, 255, 255, 0.8); font-size: 1.08rem; line-height: 1.7; }
+  .ai-section__ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+  .chat-preview { background: white; border-radius: var(--r-lg); padding: 24px; box-shadow: var(--shadow-xl); color: var(--ink-soft); }
+  .chat-preview__head { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--gray-100); margin-bottom: 16px; }
+  .chat-preview__avatar { width: 40px; height: 40px; background: var(--gradient-bot); border-radius: 50%; display: grid; place-items: center; color: white; font-weight: 700; }
+  .chat-preview__name { font-weight: 700; color: var(--ink-900); }
+  .chat-preview__status { font-size: 0.82rem; color: var(--green-500); display: flex; align-items: center; gap: 6px; }
+  .chat-preview__status::before { content: ""; width: 8px; height: 8px; background: var(--green-500); border-radius: 50%; }
+  .chat-bubble { padding: 12px 16px; border-radius: 16px; max-width: 80%; margin-bottom: 10px; font-size: 0.96rem; line-height: 1.5; }
+  .chat-bubble--user { background: var(--blue-600); color: white; margin-left: auto; border-bottom-right-radius: 4px; }
+  .chat-bubble--bot { background: var(--gray-100); color: var(--ink-900); border-bottom-left-radius: 4px; }
 
-  /* Testimonials */
-  .testimonials__item blockquote p { color: var(--gray); }
-  .testimonials__item cite .name { color: var(--blue); font-weight: 700; }
+  /* ═══ ABOUT / OWNER ═══════════════════════════════════════════════════════ */
+  .about__inner { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
+  @media (max-width: 760px) { .about__inner { grid-template-columns: 1fr; } }
+  .about__portrait { background: linear-gradient(135deg, var(--blue-600), var(--blue-700)); border-radius: var(--r-lg); aspect-ratio: 3/4; display: grid; place-items: center; color: white; font-family: var(--font-display); font-size: 7rem; font-weight: 900; box-shadow: var(--shadow-lg); border: 4px solid var(--gold-500); }
+  .about__quote { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; color: var(--ink-900); padding-left: 24px; border-left: 4px solid var(--gold-500); margin: 32px 0; line-height: 1.45; }
+  .about__sig { font-family: var(--font-display); font-style: italic; color: var(--gray-700); font-size: 1.1rem; }
 
-  /* Contact */
-  .contact-info__logo { background: var(--blue); }
+  /* ═══ PROCESS TIMELINE ══════════════════════════════════════════════════ */
+  .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: step; }
+  @media (max-width: 880px) { .process { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .process { grid-template-columns: 1fr; } }
+  .process__step { background: white; padding: 32px 24px; border-radius: var(--r-lg); border: 1px solid var(--gray-100); position: relative; }
+  .process__step::before { counter-increment: step; content: counter(step); position: absolute; top: -20px; left: 24px; width: 40px; height: 40px; background: var(--blue-600); color: white; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; }
+  .process__step h4 { margin-top: 16px; }
+  .process__step p { color: var(--gray-700); font-size: 0.97rem; margin: 0; }
 
-  /* CTA strip */
-  .cta-strip {
-    background: var(--ink);
-    text-align: center;
-    padding: 4rem 2rem;
-  }
-  .cta-strip h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-    color: white; margin-bottom: 0.75rem;
-  }
-  .cta-strip p { color: #A0BCD4; font-size: 1rem; margin-bottom: 1.5rem; }
-  .cta-phone-big {
-    display: inline-block;
-    font-family: 'Playfair Display', serif;
-    font-weight: 900; font-size: 2.4rem;
-    color: white; text-decoration: none;
-    letter-spacing: -0.01em;
-  }
-  .cta-phone-big:hover { color: var(--gold); }
-  .cta-sub { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #718096; margin-top: 0.75rem; font-family: 'Source Sans 3', sans-serif; }
+  /* ═══ REVIEWS ═════════════════════════════════════════════════════════════ */
+  .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .review { background: white; padding: 28px; border-radius: var(--r-lg); border: 1px solid var(--gray-100); position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+  .review:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .review__quote { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.65; margin-bottom: 20px; }
+  .review__quote::before { content: "❝"; display: block; font-family: var(--font-display); font-size: 3rem; color: var(--gold-500); line-height: 0.5; margin-bottom: 12px; }
+  .review__cite { font-size: 0.92rem; }
+  .review__name { font-weight: 700; color: var(--ink-900); }
+  .review__role { color: var(--gray-500); font-size: 0.88rem; }
 
-  /* Kicker label */
-  .section-kicker {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--red);
-    margin-bottom: 0.4rem; font-family: 'Source Sans 3', sans-serif;
-  }
-  .section-kicker::before { content: "◆  "; color: var(--gold); }
+  /* ═══ FINAL CTA ═══════════════════════════════════════════════════════════ */
+  .final-cta { background: var(--gradient-hero); color: white; padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+  .final-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(200, 162, 82, 0.15) 0%, transparent 60%); }
+  .final-cta__inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .final-cta h2 { color: white; margin-bottom: 16px; }
+  .final-cta p { color: rgba(255, 255, 255, 0.85); font-size: 1.15rem; margin-bottom: 36px; }
+  .final-cta__phone { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: var(--gold-400); display: block; margin-bottom: 24px; text-decoration: none; }
+  .final-cta__phone:hover { color: white; }
+  .final-cta__buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
 
-  /* Why Choose Us box */
-  .advantages h2 { color: var(--ink); font-family: 'Playfair Display', serif; }
-  .advantages blockquote { border-left: 3px solid var(--gold); }
+  /* ═══ CONTACT / FOOTER ══════════════════════════════════════════════════ */
+  .footer { background: var(--ink-900); color: rgba(255, 255, 255, 0.7); padding: 60px 0 32px; }
+  .footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  @media (max-width: 760px) { .footer__inner { grid-template-columns: 1fr; gap: 32px; } }
+  .footer__brand h3 { color: white; margin-bottom: 12px; }
+  .footer__brand p { font-size: 0.95rem; line-height: 1.7; }
+  .footer__col h4 { color: white; margin-bottom: 16px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .footer__col a { color: rgba(255, 255, 255, 0.7); display: block; margin-bottom: 10px; font-size: 0.95rem; transition: color 0.2s; }
+  .footer__col a:hover { color: var(--gold-400); }
+  .footer__bottom { padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.85rem; }
+  .footer__bottom-license { color: rgba(255, 255, 255, 0.5); }
 
-  /* Nav phone link */
-  .nav-phone-link {
-    display: inline-block;
-    color: white;
-    font-weight: 700;
-    font-size: 0.9rem;
-    font-family: 'Source Sans 3', sans-serif;
-    border: 1.5px solid rgba(255,255,255,0.35);
-    padding: 7px 16px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-phone-link:hover { background: rgba(255,255,255,0.1); color: white; }
+  /* ═══ POWERED BY BOTWAVE BANNER ═════════════════════════════════════════ */
+  .powered-by { background: linear-gradient(90deg, rgba(33, 150, 243, 0.06) 0%, rgba(0, 136, 204, 0.06) 100%); border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); padding: 18px 0; text-align: center; font-size: 0.92rem; color: var(--gray-700); }
+  .powered-by strong { color: var(--ink-800); font-weight: 700; }
+  .powered-by a { color: var(--blue-600); font-weight: 600; }
+  .powered-by a:hover { text-decoration: underline; }
+
+  /* ═══ FLOATING CHAT BUBBLE ═══════════════════════════════════════════════ */
+  .float-chat { position: fixed; bottom: 24px; right: 24px; z-index: 200; background: var(--gradient-bot); color: white; padding: 14px 22px; border-radius: 999px; box-shadow: var(--shadow-xl); font-weight: 600; font-size: 0.98rem; display: inline-flex; gap: 10px; align-items: center; text-decoration: none; transition: transform 0.2s; animation: pulse-ring 2.5s ease-out infinite; }
+  .float-chat:hover { transform: scale(1.05); color: white; }
+  @keyframes pulse-ring { 0%, 100% { box-shadow: var(--shadow-xl), 0 0 0 0 rgba(0, 136, 204, 0.5); } 50% { box-shadow: var(--shadow-xl), 0 0 0 16px rgba(0, 136, 204, 0); } }
+  @media (max-width: 480px) { .float-chat { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 0.9rem; } }
 </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="main-header">
-  <div class="first-nav">
-    <div class="container">
-      <nav class="first-nav__links">
-        <ul>
-          <li><a href="tel:7607893980" style="color: rgba(255,255,255,0.7); text-decoration:none; font-size:0.85rem;">(760) 789-3980</a></li>
-          <li><a href="https://g.page/r/CbHwlJFDBbq1EBM/review" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.7); text-decoration:none; font-size:0.85rem;">Leave a Review</a></li>
-        </ul>
-      </nav>
-      <a class="first-nav__navcontrol icon icon_menu js-navcontrol" href="#">Menu</a>
+<!-- ─── STICKY NAV ──────────────────────────────────────────────────────── -->
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="#home" class="nav__brand">
+      <span class="nav__brand-mark">JPS</span>
+      <span>Jimenez Plumbing</span>
+    </a>
+    <button class="nav__toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('is-open')">☰</button>
+    <div class="nav__links" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#assistant">AI Assistant</a>
+      <a href="#about">About Chuck</a>
+      <a href="#process">How It Works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:7607893980" class="nav__cta">Call (760) 789-3980</a>
     </div>
   </div>
-  <div class="second-nav js-nav">
-    <div class="container">
-      <a class="second-nav__logo">JPS</a>
-      <nav class="menu">
-        <ul>
-          <li><a class="js-link js-anchor is-selected" href="#home">Home</a></li>
-          <li><a class="js-link js-anchor" href="#services">Services</a></li>
-          <li><a class="js-link js-anchor" href="#about">About</a></li>
-          <li><a class="js-link js-anchor" href="#process">How It Works</a></li>
-          <li><a class="js-link js-anchor" href="#reviews">Reviews</a></li>
-          <li><a class="js-link js-anchor" href="#contacts">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+</nav>
 
-<!-- Hero -->
-<section class="home-section" id="home">
-  <div class="home-section__bg"></div>
-  <div class="home-section__overlay">
-    <div class="container">
-      <header class="home-section__header">
-        <p class="home-section__header-label">San Diego County &nbsp;·&nbsp; CA C-36 License #568271</p>
-        <h1>From concept<br>to completion.</h1>
-        <span class="hero-gold-bar"></span>
-        <h2>35 years building and repiping homes across San Diego County. New construction, tankless water heaters, whole-house repipes, LP gas. We handle all your plumbing needs.</h2>
-        <div class="hero-cta">
-          <a class="btn-call" href="tel:7607893980">Call (760) 789-3980</a>
-        </div>
-        <p class="hero-license">Jimenez Plumbing Solutions, Inc. &nbsp;·&nbsp; Licensed · Bonded · Insured</p>
-      </header>
+<!-- ─── HERO ────────────────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero__container">
+    <span class="hero__kicker">San Diego County · Since 1991</span>
+    <h1 class="hero__title">35 years of straight-talk plumbing.<br>One name on the truck.</h1>
+    <p class="hero__subtitle">Chuck Jimenez — licensed master plumber, CA C-36. You call, Chuck picks up. You hire JPS, Chuck does the work. No dispatchers, no day-labor subs, no surprises at final inspection.</p>
+    <div class="hero__ctas">
+      <a href="tel:7607893980" class="btn btn--primary">
+        <span class="btn__icon">📞</span> Call (760) 789-3980
+      </a>
+      <a href="https://t.me/jimenezplumbingbot" class="btn btn--telegram" target="_blank" rel="noopener">
+        <span class="btn__icon">💬</span> Text Our AI Assistant
+      </a>
+      <a href="#assistant" class="btn btn--ghost">
+        <span class="btn__icon">⚡</span> Chat on Web
+      </a>
+    </div>
+    <div class="hero__credentials">
+      <div class="hero__cred"><span class="hero__cred-value">35</span><span class="hero__cred-label">Years in the trade</span></div>
+      <div class="hero__cred"><span class="hero__cred-value">C-36</span><span class="hero__cred-label">Master plumber license</span></div>
+      <div class="hero__cred"><span class="hero__cred-value">1991</span><span class="hero__cred-label">Serving SD County</span></div>
+      <div class="hero__cred"><span class="hero__cred-value">#568271</span><span class="hero__cred-label">CSLB license</span></div>
     </div>
   </div>
 </section>
 
-<!-- Services -->
-<section class="common-section" id="services">
+<!-- ─── TRUST BAR ───────────────────────────────────────────────────────── -->
+<div class="trust">
   <div class="container">
-    <header class="common-section__header">
-      <div class="section-kicker">What we do</div>
-      <h2>Built for the whole job,<br>not just the easy call.</h2>
-      <h4>We specialize in the work most plumbers don't want — new construction, full repipes, tankless conversions, and gas systems.</h4>
+    <div class="trust__inner">
+      <div class="trust__item"><span class="trust__item-icon">✓</span> Licensed CA C-36 #568271</div>
+      <div class="trust__item"><span class="trust__item-icon">✓</span> Bonded &amp; Insured</div>
+      <div class="trust__item"><span class="trust__item-icon">✓</span> All Permits Pulled</div>
+      <div class="trust__item"><span class="trust__item-icon">✓</span> 1-Year Labor Warranty</div>
+      <div class="trust__item"><span class="trust__item-icon">✓</span> Same-Day Service Available</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICES ────────────────────────────────────────────────────────── -->
+<section class="section" id="services">
+  <div class="container">
+    <header class="section__header">
+      <span class="section__kicker">What We Do</span>
+      <h2 class="section__title">Plumbing work, done right the first time.</h2>
+      <p class="section__lede">From single-fixture repairs to full new-construction rough-ins. Residential and commercial, North County to the border.</p>
     </header>
-    <div class="grid-container">
-      <ul class="services services_advisory">
-        <li class="services__item icon icon_plan">
-          <h4>New Construction &amp; Custom Homes</h4>
-          <p>Full rough-in from ground up. We've been on job sites across San Diego County since 1991 — residential and commercial. We coordinate with your GC and get the plumbing right the first time.</p>
-        </li>
-        <li class="services__item icon icon_recover">
-          <h4>Whole-House Repiping</h4>
-          <p>Complete DWV and domestic water repipes. Copper, PEX, or a combination — scoped to what the house actually needs. We give you the honest answer on materials, not the upsell.</p>
-        </li>
-        <li class="services__item icon icon_improve">
-          <h4>Tankless Water Heaters</h4>
-          <p>Installation, retrofit, and service. Navien, Rinnai, and Noritz. We've run the gas lines, pulled the permits, and done the startup — not just the swap-out.</p>
-        </li>
-      </ul>
-      <ul class="services services_pm">
-        <li class="services__item icon icon_research">
-          <h4>LP Gas &amp; Leak Detection</h4>
-          <p>Gas line installation and leak detection for rural and fire-zone properties throughout the county. Ramona, Julian, Borrego, Valley Center — we know the territory.</p>
-        </li>
-        <li class="services__item icon icon_strategy">
-          <h4>Bathroom &amp; Kitchen Remodels</h4>
-          <p>Full rough-in for remodel projects. We coordinate with your GC on sequencing, get the plumbing right the first time, and keep the schedule moving.</p>
-        </li>
-        <li class="services__item icon icon_support">
-          <h4>Slab Leak Detection &amp; Repair</h4>
-          <p>Acoustic and thermal detection. Reroute or epoxy lining — we give you the honest answer on which one makes sense for your house, not the one that pays us more.</p>
-        </li>
-      </ul>
-      <div class="advantages">
-        <h2>Why Choose JPS?</h2>
-        <blockquote>
-          <p>When you call, you get Chuck — not a dispatcher, not a tech you've never met. One plumber, accountable for the whole job, from permit to final inspection. Licensed master plumber, 35 years in the trade, CA C-36 #568271.</p>
-          <cite>Jimenez Plumbing Solutions &nbsp;·&nbsp; Ramona, CA &nbsp;·&nbsp; Serving all of San Diego County</cite>
-        </blockquote>
+    <div class="services">
+      <div class="service-card">
+        <div class="service-card__icon">🏠</div>
+        <h3 class="service-card__title">New Construction &amp; Custom Homes</h3>
+        <p class="service-card__desc">Full rough-in scope, supply + DWV + gas + venting. Coordinated with your GC and inspector from permit pull to final.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__icon">🔥</div>
+        <h3 class="service-card__title">Tankless Water Heaters</h3>
+        <p class="service-card__desc">Navien, Rinnai, Noritz installs and conversions. Gas line upgrade, condensate routing, Title 24 compliant.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__icon">🔄</div>
+        <h3 class="service-card__title">Whole-House Repipes</h3>
+        <p class="service-card__desc">PEX or copper. Same-day-water turnaround possible. 1970s galvanized? We've done dozens in Ramona alone.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__icon">⛽</div>
+        <h3 class="service-card__title">LP Gas Systems</h3>
+        <p class="service-card__desc">Rural propane work in Julian, Valley Center, Borrego. Fire-zone code knowledge most plumbers don't have.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__icon">🔍</div>
+        <h3 class="service-card__title">Slab Leak Detection &amp; Repair</h3>
+        <p class="service-card__desc">Acoustic and thermal location. Honest answer on reroute vs epoxy lining — not the one that pays us more.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__icon">🛁</div>
+        <h3 class="service-card__title">Bath &amp; Kitchen Remodels</h3>
+        <p class="service-card__desc">Rough-in coordination with your GC. Permits, inspections, fixture selection, the whole sequence.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About -->
-<section class="about-section" id="about">
+<!-- ─── AI ASSISTANT SECTION ────────────────────────────────────────────── -->
+<section class="ai-section" id="assistant">
+  <div class="ai-section__inner">
+    <div class="ai-section__copy">
+      <span class="section__kicker">Quick Questions, Any Time</span>
+      <h2>Text our AI plumbing assistant.</h2>
+      <p>Get instant answers on permits, code requirements, pricing ranges, or schedule a callback — no phone tag, no waiting on hold.</p>
+      <p>The bot handles the simple stuff so Chuck stays on the truck. For real jobs, your request goes straight to him.</p>
+      <div class="ai-section__ctas">
+        <a href="https://t.me/jimenezplumbingbot" target="_blank" rel="noopener" class="btn btn--telegram">
+          <span class="btn__icon">💬</span> Open on Telegram
+        </a>
+        <a href="#chat" class="btn btn--ghost">
+          <span class="btn__icon">🌐</span> Chat Right Here
+        </a>
+      </div>
+    </div>
+    <div class="chat-preview">
+      <div class="chat-preview__head">
+        <div class="chat-preview__avatar">JPS</div>
+        <div>
+          <div class="chat-preview__name">Jimenez Plumbing AI</div>
+          <div class="chat-preview__status">Online · Replies in seconds</div>
+        </div>
+      </div>
+      <div class="chat-bubble chat-bubble--user">Do I need a permit to replace my water heater in San Diego County?</div>
+      <div class="chat-bubble chat-bubble--bot">Yes — water heater replacement requires a permit in SD County. Permit fee is typically $150-300 and includes the inspection. Want me to send Chuck a callback request to walk you through scope and timing?</div>
+      <div class="chat-bubble chat-bubble--user">Ballpark on a tankless install?</div>
+      <div class="chat-bubble chat-bubble--bot">Most tankless installs land $4,000-$7,500 depending on whether we need to upsize the gas line and route condensate. For a real quote Chuck will need to see the install site — want me to schedule that?</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── POWERED BY BOTWAVE (subtle cross-promo) ─────────────────────────── -->
+<div class="powered-by">
   <div class="container">
-    <div class="about-section__card">
-      <header class="about-section__card-header">
+    🤖 <strong>This AI assistant was built by BOTWAVE.</strong> Run a small business? We can build one for yours too — <a href="mailto:hello@botwave.dev?subject=BOTWAVE%20AI%20for%20my%20small%20business">get in touch</a>.
+  </div>
+</div>
+
+<!-- ─── ABOUT ───────────────────────────────────────────────────────────── -->
+<section class="section section--alt" id="about">
+  <div class="container">
+    <div class="about__inner">
+      <div class="about__portrait">JPS</div>
+      <div>
+        <span class="section__kicker">The Owner</span>
         <h2>One plumber. Accountable.</h2>
-        <h4>Chuck Jimenez — Owner &amp; Master Plumber, CA C-36 #568271</h4>
-      </header>
-      <div class="about-section__card-info">
-        <div style="display:flex; gap:3rem; flex-wrap:wrap; margin-bottom:1.5rem;">
-          <div class="stat-block"><div class="stat-num">35</div><div class="stat-label">Years in the trade</div></div>
-          <div class="stat-block"><div class="stat-num">C-36</div><div class="stat-label">Master plumber license</div></div>
-          <div class="stat-block"><div class="stat-num">1991</div><div class="stat-label">Serving San Diego County</div></div>
-        </div>
-        <blockquote class="about-quote">
-          "I've been on job sites in San Diego County for 35 years. Most of what goes wrong could've been caught early. That's what I'm here for."
+        <p style="color: var(--gray-700); font-size: 1.05rem; line-height: 1.7;">
+          Chuck Jimenez has been on job sites in San Diego County for 35 years — from the border to Oceanside, from the coast to Borrego Springs. New construction, full repipes, tankless installs, LP gas. Family-owned, based in Ramona.
+        </p>
+        <blockquote class="about__quote">
+          "Most of what goes wrong on a plumbing job could've been caught early. That's what I'm here for."
         </blockquote>
-        <div class="about-sig">— Chuck Jimenez, Owner &amp; Master Plumber</div>
-        <p style="margin-top:1.5rem; color: var(--gray); line-height:1.7;">Jimenez Plumbing Solutions is a family-owned operation based in Ramona, CA. We've been on job sites from the border to Oceanside, from the coast to Borrego Springs — new construction, full repipes, tankless installations, LP gas. When you hire JPS, you get Chuck. Licensed, bonded, and insured.</p>
+        <div class="about__sig">— Chuck Jimenez, Owner &amp; Master Plumber · CA C-36 #568271</div>
+        <p style="margin-top: 24px; color: var(--gray-700); line-height: 1.7;">
+          When you hire JPS, you get Chuck. Licensed, bonded, and insured. Same person who gives the estimate, runs the work, and walks the inspection.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Process -->
-<section class="common-section" id="process">
+<!-- ─── PROCESS ─────────────────────────────────────────────────────────── -->
+<section class="section" id="process">
   <div class="container">
-    <header class="common-section__header">
-      <div class="section-kicker">How it works</div>
-      <h2>Simple process, no runaround.</h2>
-      <h4>From first call to final inspection — here's how a job goes with JPS.</h4>
+    <header class="section__header">
+      <span class="section__kicker">How It Works</span>
+      <h2 class="section__title">Simple process. No runaround.</h2>
+      <p class="section__lede">From first call to final inspection — here's how a job goes with JPS.</p>
     </header>
-    <div class="grid-container">
-      <ul class="process">
-        <li class="process__step process__step_research">
-          <div class="process__step-icon icon icon_research is-active"></div>
-        </li>
-        <li class="process__step-info process__step-info_research is-active">
-          <h3><span>Step 1</span> &mdash; You call, Chuck picks up</h3>
-          <p>No dispatcher, no service desk. You reach the plumber directly. Describe the job, get an honest read on scope and timing within the same conversation.</p>
-        </li>
-        <li class="process__step process__step_develop">
-          <div class="process__step-icon icon icon_develop"></div>
-        </li>
-        <li class="process__step-info process__step-info_develop">
-          <h3><span>Step 2</span> &mdash; Estimate and permit</h3>
-          <p>Written estimate before work starts. Permits pulled for any job that requires them — no shortcuts that come back on the homeowner at inspection or resale.</p>
-        </li>
-        <li class="process__step process__step_deploy">
-          <div class="process__step-icon icon icon_deploy"></div>
-        </li>
-        <li class="process__step-info process__step-info_deploy">
-          <h3><span>Step 3</span> &mdash; Work gets done right</h3>
-          <p>Chuck does the work himself. Not a crew you've never met, not a day-labor sub. The same person who gave you the estimate is the person on the job site.</p>
-        </li>
-        <li class="process__step process__step_deliver">
-          <div class="process__step-icon icon icon_deliver"></div>
-        </li>
-        <li class="process__step-info process__step-info_deliver">
-          <h3><span>Step 4</span> &mdash; Inspection passed, job closed</h3>
-          <p>We don't close until it passes. Final walkthrough, inspection sign-off, documentation in your hands. Clean job, no loose ends.</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Reviews -->
-<section class="common-section" id="reviews">
-  <div class="container">
-    <header class="common-section__header">
-      <div class="section-kicker">What clients say</div>
-      <h2>San Diego County trusts JPS.</h2>
-      <p>35 years of referrals and repeat customers across the county.</p>
-    </header>
-    <div class="grid-container">
-      <ul class="testimonials">
-        <li class="testimonials__item">
-          <blockquote>
-            <p class="icon icon_ql">Chuck did a complete repipe on our 1970s house in Ramona. Showed up when he said he would, finished on schedule, pulled the permit, passed inspection first time. Straightforward guy. I've already referred him to two neighbors.</p>
-            <cite><span class="name">— Ramona Homeowner</span><span class="role"> Whole-house repipe</span></cite>
-          </blockquote>
-        </li>
-        <li class="testimonials__item">
-          <blockquote>
-            <p class="icon icon_ql">We had a slab leak and called three plumbers. Chuck was the only one who told us the truth about what we actually needed instead of pushing the most expensive option. He saved us several thousand dollars.</p>
-            <cite><span class="name">— Santee Homeowner</span><span class="role"> Slab leak detection &amp; repair</span></cite>
-          </blockquote>
-        </li>
-        <li class="testimonials__item">
-          <blockquote>
-            <p class="icon icon_ql">Hired JPS for a Navien tankless install on our new addition. Chuck coordinated with our GC, ran the gas line, pulled the permit, did the startup. No issues at final inspection. Professional from start to finish.</p>
-            <cite><span class="name">— Poway Homeowner</span><span class="role"> Tankless water heater install</span></cite>
-          </blockquote>
-        </li>
-        <li class="testimonials__item">
-          <blockquote>
-            <p class="icon icon_ql">We're out in Valley Center — rural property, propane system, fire zone. Most plumbers won't touch LP work out here. Chuck's been doing it for years. He knows the county codes for fire zones and gets it done right.</p>
-            <cite><span class="name">— Valley Center Property Owner</span><span class="role"> LP gas system</span></cite>
-          </blockquote>
-        </li>
-        <li class="testimonials__item">
-          <blockquote>
-            <p class="icon icon_ql">Chuck has been our go-to plumber on three new construction projects in East County. He shows up, he communicates, he doesn't leave you hanging between phases. In this market that alone puts him in the top 5%.</p>
-            <cite><span class="name">— General Contractor, El Cajon</span><span class="role"> New construction — multiple projects</span></cite>
-          </blockquote>
-        </li>
-        <li class="testimonials__item">
-          <blockquote>
-            <p class="icon icon_ql">Called JPS for a kitchen remodel rough-in. He walked me through what needed to be permitted, what didn't, and what my GC was getting wrong on the scope. That kind of straight talk is rare. He's on speed dial now.</p>
-            <cite><span class="name">— San Marcos Homeowner</span><span class="role"> Kitchen remodel rough-in</span></cite>
-          </blockquote>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CTA Strip -->
-<div class="cta-strip">
-  <h2>Ready to get it done right?</h2>
-  <p>Call the office — same-day scheduling available.</p>
-  <a class="cta-phone-big" href="tel:7607893980">(760) 789-3980</a>
-  <div class="cta-sub">Jimenez Plumbing Solutions &nbsp;·&nbsp; 326 Pine St, Ramona CA 92065</div>
-</div>
-
-<!-- Contact -->
-<div class="contacts-section" id="contacts">
-  <div class="container">
-    <section class="contact-card">
-      <header class="contact-card__header">
-        <h2>Contact Information</h2>
-        <h4>Licensed master plumber serving all of San Diego County — from the border to Oceanside, coast to Borrego.</h4>
-      </header>
-      <div class="contact-info">
-        <div class="contact-info__logo">JPS</div>
-        <div class="contact-info__group">
-          <div class="contact-info__additional">
-            <p>New construction &amp; custom homes?</p>
-            <p>Whole-house repipe or tankless install?</p>
-            <p>LP gas, slab leak, or remodel rough-in?</p>
-          </div>
-          <div class="contact-info__vcard vcard">
-            <h4 class="fn org">Jimenez Plumbing Solutions, Inc.</h4>
-            <p class="role title">Chuck Jimenez — Owner &amp; Master Plumber</p>
-            <p class="icon icon_location">
-              <span class="adr"><span class="locality">Ramona</span>, <span class="region">CA</span> &nbsp;·&nbsp; <span class="country-name">Serving all of San Diego County</span></span>
-            </p>
-            <p class="icon icon_mail">
-              <a class="email" href="mailto:jpsjimenez33@gmail.com">jpsjimenez33@gmail.com</a>
-            </p>
-            <p class="icon icon_phone">
-              <a class="email" href="tel:7607893980">(760) 789-3980</a>
-            </p>
-          </div>
-          <ul class="contact-info__social" style="margin-top:1rem;">
-            <li><a href="https://g.page/r/CbHwlJFDBbq1EBM/review" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none; font-weight:700; font-size:0.9rem;">⭐ Leave us a Google Review</a></li>
-          </ul>
-        </div>
+    <div class="process">
+      <div class="process__step">
+        <h4>You call, Chuck picks up</h4>
+        <p>No dispatcher. Describe the job, get an honest read on scope and timing in the same conversation.</p>
       </div>
-    </section>
+      <div class="process__step">
+        <h4>Estimate and permit</h4>
+        <p>Written estimate before work starts. Permits pulled for any job that requires them — no shortcuts.</p>
+      </div>
+      <div class="process__step">
+        <h4>Work gets done right</h4>
+        <p>Chuck does the work himself. Same person who gave you the estimate is on the job site.</p>
+      </div>
+      <div class="process__step">
+        <h4>Inspection passed</h4>
+        <p>We don't close until it passes. Final walkthrough, sign-off, documentation in your hands.</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- Footer -->
-<footer class="main-footer">
+<!-- ─── REVIEWS ─────────────────────────────────────────────────────────── -->
+<section class="section section--alt" id="reviews">
   <div class="container">
-    <p class="main-footer__copyright">&copy; <span>Jimenez Plumbing Solutions, Inc.</span> &nbsp;·&nbsp; 326 Pine Street, Ramona CA 92065 &nbsp;·&nbsp; CA C-36 License #568271 &nbsp;·&nbsp; Licensed · Bonded · Insured</p>
-    <a class="main-footer__gotop icon icon_gotop js-anchor" href="#home">To top!</a>
-    <p class="main-footer__links"><a href="tel:7607893980">(760) 789-3980</a> &nbsp;·&nbsp; <a href="mailto:jpsjimenez33@gmail.com">jpsjimenez33@gmail.com</a></p>
+    <header class="section__header">
+      <span class="section__kicker">What Clients Say</span>
+      <h2 class="section__title">San Diego County trusts JPS.</h2>
+      <p class="section__lede">35 years of referrals and repeat customers across the county.</p>
+    </header>
+    <div class="reviews">
+      <div class="review">
+        <p class="review__quote">Chuck did a complete repipe on our 1970s house in Ramona. Showed up when he said he would, finished on schedule, pulled the permit, passed inspection first time. Straightforward guy. I've already referred him to two neighbors.</p>
+        <div class="review__cite"><span class="review__name">Ramona Homeowner</span> · <span class="review__role">Whole-house repipe</span></div>
+      </div>
+      <div class="review">
+        <p class="review__quote">We had a slab leak and called three plumbers. Chuck was the only one who told us the truth about what we actually needed instead of pushing the most expensive option. He saved us several thousand dollars.</p>
+        <div class="review__cite"><span class="review__name">Santee Homeowner</span> · <span class="review__role">Slab leak detection &amp; repair</span></div>
+      </div>
+      <div class="review">
+        <p class="review__quote">Hired JPS for a Navien tankless install on our new addition. Chuck coordinated with our GC, ran the gas line, pulled the permit, did the startup. No issues at final inspection. Professional from start to finish.</p>
+        <div class="review__cite"><span class="review__name">Poway Homeowner</span> · <span class="review__role">Tankless water heater install</span></div>
+      </div>
+      <div class="review">
+        <p class="review__quote">We're out in Valley Center — rural property, propane system, fire zone. Most plumbers won't touch LP work out here. Chuck's been doing it for years. He knows the county codes for fire zones and gets it done right.</p>
+        <div class="review__cite"><span class="review__name">Valley Center Property Owner</span> · <span class="review__role">LP gas system</span></div>
+      </div>
+      <div class="review">
+        <p class="review__quote">Chuck has been our go-to plumber on three new construction projects in East County. He shows up, he communicates, he doesn't leave you hanging between phases. In this market that alone puts him in the top 5%.</p>
+        <div class="review__cite"><span class="review__name">General Contractor, El Cajon</span> · <span class="review__role">New construction · multiple projects</span></div>
+      </div>
+      <div class="review">
+        <p class="review__quote">Called JPS for a kitchen remodel rough-in. He walked me through what needed to be permitted and what didn't, and what my GC was getting wrong on the scope. That kind of straight talk is rare. He's on speed dial now.</p>
+        <div class="review__cite"><span class="review__name">San Marcos Homeowner</span> · <span class="review__role">Kitchen remodel rough-in</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ───────────────────────────────────────────────────────── -->
+<section class="final-cta" id="contact">
+  <div class="final-cta__inner">
+    <h2>Ready to get it done right?</h2>
+    <p>Same-day scheduling available. Call the office, text the bot, or chat on the web — your choice.</p>
+    <a href="tel:7607893980" class="final-cta__phone">(760) 789-3980</a>
+    <div class="final-cta__buttons">
+      <a href="https://t.me/jimenezplumbingbot" class="btn btn--telegram" target="_blank" rel="noopener">
+        <span class="btn__icon">💬</span> Text @jimenezplumbingbot
+      </a>
+      <a href="mailto:jpsjimenez33@gmail.com" class="btn btn--ghost">
+        <span class="btn__icon">✉️</span> Email Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ──────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <h3>Jimenez Plumbing Solutions, Inc.</h3>
+        <p>Family-owned, master-licensed, 35 years on San Diego County job sites. New construction, repipes, tankless, LP gas. One plumber. Accountable.</p>
+        <p style="margin-top: 16px;">
+          📍 326 Pine Street, Ramona CA 92065<br>
+          📞 <a href="tel:7607893980">(760) 789-3980</a><br>
+          ✉️ <a href="mailto:jpsjimenez33@gmail.com">jpsjimenez33@gmail.com</a>
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="#services">New Construction</a>
+        <a href="#services">Tankless</a>
+        <a href="#services">Repipes</a>
+        <a href="#services">LP Gas</a>
+        <a href="#services">Slab Leaks</a>
+        <a href="#services">Remodels</a>
+      </div>
+      <div class="footer__col">
+        <h4>Reach Us</h4>
+        <a href="tel:7607893980">Call (760) 789-3980</a>
+        <a href="https://t.me/jimenezplumbingbot" target="_blank" rel="noopener">Text the AI Bot</a>
+        <a href="mailto:jpsjimenez33@gmail.com">Email JPS</a>
+        <a href="https://g.page/r/CbHwlJFDBbq1EBM/review" target="_blank" rel="noopener">Leave a Google Review</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__bottom-license">
+        © Jimenez Plumbing Solutions, Inc. · CA C-36 License #568271 · Licensed · Bonded · Insured
+      </div>
+      <div class="footer__bottom-license">
+        🤖 Powered by <a href="mailto:hello@botwave.dev" style="color: var(--gold-400);">BOTWAVE</a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<script src="static/js/head.min.js"></script>
-<script src="static/js/body.min.js"></script>
+<!-- ─── FLOATING CHAT BUBBLE ────────────────────────────────────────────── -->
+<a href="https://t.me/jimenezplumbingbot" target="_blank" rel="noopener" class="float-chat" aria-label="Text Jimenez Plumbing AI Assistant">
+  <span style="font-size: 1.2em;">💬</span> Text our AI
+</a>
+
+<script>
+  // Sticky nav shadow on scroll
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav__links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navlinks').classList.remove('is-open');
+    });
+  });
+</script>
 </body>
 </html>
