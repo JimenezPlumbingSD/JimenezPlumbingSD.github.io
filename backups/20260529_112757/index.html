@@ -38,15 +38,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -124,15 +115,11 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <picture>
-                        <source srcset="/images/hero_placeholder.webp" type="image/webp">
-                        <source srcset="/images/hero_placeholder.jpg" type="image/jpeg">
-                        <img src="/images/hero_placeholder.jpg" 
-                             alt="Professional plumber performing service" 
-                             loading="lazy"
-                             width="800"
-                             height="600">
-                    </picture>
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Professional plumber performing service" 
+                         loading="lazy"
+                         width="800"
+                         height="600">
                 </div>
             </div>
         </section>
@@ -246,15 +233,11 @@
                             </div>
                         </div>
                         <div class="about-image">
-                            <picture>
-                                <source srcset="/images/team/team_placeholder.webp" type="image/webp">
-                                <source srcset="/images/team/team_placeholder.jpg" type="image/jpeg">
-                                <img src="/images/team/team_placeholder.jpg" 
-                                     alt="JPS Plumbing team at work" 
-                                     loading="lazy"
-                                     width="600"
-                                     height="400">
-                            </picture>
+                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="JPS Plumbing team at work" 
+                                 loading="lazy"
+                                 width="600"
+                                 height="400">
                         </div>
                     </div>
                 </section>
@@ -328,7 +311,7 @@
                         <h2 id="inquiry-form-heading" class="form-heading">Schedule Your Service</h2>
                         <p class="form-subheading">Fill out the form below and we'll contact you promptly</p>
                         
-                        <form id="inquiry-form" class="inquiry-form" action="#" method="POST" novalidate>
+                        <form id="inquiry-form" class="inquiry-form" novalidate>
                             <div class="form-group">
                                 <label for="name" class="form-label">Full Name</label>
                                 <input type="text" id="name" name="name" class="form-input" required aria-required="true">

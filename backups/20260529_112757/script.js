@@ -155,47 +155,8 @@ function initFormValidation() {
         
         // If form is valid, submit it (in production, this would send to a server)
         if (isValid) {
-            // Show loading state
-            const submitButton = form.querySelector('.form-button');
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Use Botwave SMTP integration
-            const formData = new FormData(form);
-            
-            // Add additional metadata
-            formData.append('_botwave', 'true');
-            formData.append('_source', 'jps_plumbing_website');
-            formData.append('_business', 'JPS Plumbing Services');
-            
-            // Track form submission in Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submission', {
-                    'event_category': 'Lead Generation',
-                    'event_label': formData.get('service') || 'General Inquiry',
-                    'value': 1
-                });
-            }
-            
-            // Use Botwave SMTP service via NISA substrate
-            smtp_send_email({
-                to: 'jpsjimenez33@gmail.com',
-                subject: 'New Service Inquiry from JPS Plumbing Website',
-                body: `New Service Inquiry from JPS Plumbing Website:\n\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nEmail: ${formData.get('email')}\nService Needed: ${formData.get('service')}\nMessage: ${formData.get('message') || 'No message provided'}\n\nSource: Website Form Submission`,
-                html: false
-            }).then(result => {
-                if (result.success) {
-                    // Redirect to thank you page
-                    window.location.href = '/thank-you.html';
-                } else {
-                    throw new Error(result.message || 'Form submission failed');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your form. You can also call us directly at (760) 789-3980 or message us on Telegram.');
-                submitButton.textContent = 'Submit Request';
-                submitButton.disabled = false;
-            });
+            alert('Thank you for your inquiry! We will contact you shortly.');
+            form.reset();
         }
     });
     
