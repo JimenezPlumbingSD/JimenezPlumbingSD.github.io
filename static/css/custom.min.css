@@ -1,0 +1,5 @@
+body {
+    border: 50px solid transparent;
+    border-image: url('../images/sacred_1_flower_of_life.png') 50 round;
+    background-clip: padding-box;
+}
