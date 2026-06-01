@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Thank you for contacting JPS Plumbing Services. We will get back to you shortly.">
+    <title>Thank You | JPS Plumbing Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        
+        // Track conversion
+        gtag('event', 'conversion', {
+            'send_to': 'G-XXXXXXXXXX/form_submission',
+            'value': 1.0,
+            'currency': 'USD'
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="/">
+                    <svg viewBox="0 0 200 60" class="logo-svg" aria-hidden="true">
+                        <text x="10" y="35" font-family="Montserrat, sans-serif" font-size="24" font-weight="700" fill="#ffffff">JPS</text>
+                        <text x="10" y="52" font-family="Open Sans, sans-serif" font-size="14" font-weight="400" fill="#EF3E42">PLUMBING SERVICES</text>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="thank-you-container">
+        <div class="thank-you-card">
+            <h1>Thank You for Your Inquiry!</h1>
+            <p>We've received your request and will contact you shortly to schedule your service.</p>
+            <p>For immediate assistance, please call us at <a href="tel:6195551234" id="contact-phone">(619) 555-1234</a>.</p>
+            <div class="thank-you-cta">
+                <a href="/" class="cta-button primary-button">Return to Homepage</a>
+                <a href="/#services" class="cta-button secondary-button">View Our Services</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p class="copyright">&copy; <span id="current-year">2025</span> JPS Plumbing Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Update year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Track phone number clicks
+        document.getElementById('contact-phone').addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'Phone Call',
+                    'event_label': this.textContent.trim()
+                });
+            }
+        });
+    </script>
+</body>
+</html>
