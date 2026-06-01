@@ -129,6 +129,7 @@ ul { list-style: none; }
   background: var(--dodger-blue);
   padding: 0;
   overflow-x: auto;
+  position: relative;
 }
 .main-nav .container {
   display: flex; gap: 0;
@@ -503,6 +504,56 @@ ul { list-style: none; }
   .categories-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .btn { font-size: 0.8rem; padding: 0.6rem 1rem; }
+  .btn-block { width: 100%; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .offer-price { font-size: 2.2rem; }
+  .rating-badge { padding: 1rem 1.5rem; }
+  .rating-num { font-size: 2.2rem; }
+  .section-tag { font-size: 0.8rem; letter-spacing: 2px; padding: 0.25rem 0.75rem; }
+  .top-bar { font-size: 0.75rem; padding: 0.35rem 0; }
+  .top-tag { text-align: center; width: 100%; }
+}
+
+/* === MOBILE HARDENING === */
+/* Prevent iOS zoom on input focus (font-size must be >= 16px) */
+@media (max-width: 768px) {
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 16px;
+  }
+}
+/* Safe area for notched phones (iPhone X+) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .chat-with-us {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+  .site-footer {
+    padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom));
+  }
+}
+/* Minimum touch target 44x44 (WCAG) */
+.main-nav a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+.btn { min-height: 44px; }
+.cat-card { min-height: 90px; }
+.footer-links a { min-height: 32px; display: inline-flex; align-items: center; }
+/* Horizontal scroll indicators for service categories on mobile */
+@media (max-width: 768px) {
+  .main-nav .container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .main-nav .container::-webkit-scrollbar { display: none; }
+  .main-nav::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to left, var(--dodger-blue), transparent);
+    pointer-events: none;
+  }
 }
 
 /* === FLOATING CHAT WITH US BUTTON === */
