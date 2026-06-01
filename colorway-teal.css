@@ -1,0 +1,66 @@
+/* ================================================
+   JPS — Teal/Black Colorway
+   ================================================ */
+
+:root {
+  --navy: #0D1B2A;
+  --navy-dark: #0A1628;
+  --dodger-blue: #00897B;
+  --dodger-blue-light: #26A69A;
+  --red: #EF6C00;
+  --red-dark: #E65100;
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+  --gray-100: #1B2838;
+  --gray-200: #263545;
+  --gray-300: #37474F;
+  --gray-600: #B0BEC5;
+  --gray-700: #90A4AE;
+  --gradient-primary: linear-gradient(135deg, #0D1B2A 0%, #00897B 100%);
+  --gradient-accent: linear-gradient(237deg, #EF6C00 0%, #00897B 100%);
+  --gradient-hero: linear-gradient(135deg, #0A1628 0%, #0D1B2A 40%, #1A3A4A 100%);
+}
+
+/* Dark mode body */
+body {
+  background: #0D1B2A;
+  color: #E0E0E0;
+}
+
+/* Cards adapt to dark */
+.cat-card, .experience-card {
+  background: #1B2838 !important;
+  color: #E0E0E0;
+}
+
+.cat-card h3 { color: #26A69A !important; }
+.cat-card p, .cat-card span { color: #B0BEC5 !important; }
+
+.offer-card {
+  background: linear-gradient(180deg, #00897B, #0D1B2A) !important;
+  border-color: rgba(239, 108, 0, 0.3) !important;
+}
+
+.site-footer {
+  background: #0A1628 !important;
+  color: #90A4AE;
+}
+
+.preventive {
+  background: #1B2838 !important;
+}
+
+.preventive h2 { color: #26A69A !important; }
+.maint-card { background: #263545 !important; border-color: rgba(0, 137, 123, 0.3) !important; }
+.maint-card h3 { color: #26A69A !important; }
+.maint-card li { color: #B0BEC5 !important; }
+
+.contact-section {
+  background: linear-gradient(135deg, #0D1B2A, #1A3A4A) !important;
+}
+
+.footer-botwave {
+  border-left-color: #00897B !important;
+}
+
+.section-sub { color: #90A4AE !important; }

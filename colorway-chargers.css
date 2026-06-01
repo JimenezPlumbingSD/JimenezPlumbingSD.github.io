@@ -1,0 +1,52 @@
+/* ================================================
+   JPS — Chargers Powder Blue Colorway
+   ================================================ */
+
+:root {
+  --navy: #003D68;
+  --navy-dark: #002944;
+  --dodger-blue: #0073CF;
+  --dodger-blue-light: #498FD7;
+  --red: #002244;
+  --red-dark: #001833;
+  --white: #FFFFFF;
+  --off-white: #F8FAFE;
+  --gray-100: #EEF2F7;
+  --gray-200: #D8E2ED;
+  --gray-300: #B0BFDA;
+  --gray-600: #4A5568;
+  --gray-700: #2D3748;
+  --gradient-primary: linear-gradient(135deg, #003D68 0%, #0073CF 100%);
+  --gradient-accent: linear-gradient(237deg, #C8102E 0%, #002244 100%);
+  --gradient-hero: linear-gradient(135deg, #002944 0%, #003D68 40%, #005A9C 100%);
+}
+
+/* Chargers gold accent on CTAs */
+.btn-accent {
+  background: linear-gradient(135deg, #C8102E 0%, #002244 100%) !important;
+  border-color: #FFC72C !important;
+}
+
+.btn-accent:hover {
+  box-shadow: 0 4px 20px rgba(200, 16, 46, 0.4) !important;
+}
+
+/* Offer cards — powder blue tint */
+.offer-card {
+  background: linear-gradient(180deg, #0073CF, #003D68) !important;
+  border-color: rgba(255, 199, 44, 0.3) !important;
+}
+
+/* Lightning bolt treatment */
+.hero {
+  background: linear-gradient(135deg, #002944 0%, #003D68 30%, #0073CF 70%, #005A9C 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><path d="M20 5 L25 18 L15 18 L22 35 L18 22 L28 22 Z" fill="rgba(255,199,44,0.06)"/></svg>') !important;
+}
+
+.site-footer {
+  background: #002244 !important;
+}
+
+.footer-botwave {
+  border-left-color: #FFC72C !important;
+}
