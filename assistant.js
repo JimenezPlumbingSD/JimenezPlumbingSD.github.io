@@ -3,7 +3,7 @@
 // Fallback: local canned responses if backend is down
 
 const API_BASE = window.location.hostname === 'jps33sd.com' || window.location.hostname === 'www.jps33sd.com' || window.location.hostname === 'jimenezplumbingsd.github.io'
-  ? 'https://jps-api.botwave.io'  // production — Cloud Run
+  ? 'https://jps-assistant-731523572992.us-west1.run.app'  // Cloud Run
   : 'http://localhost:31338';      // local dev
 
 document.addEventListener('DOMContentLoaded', () => {

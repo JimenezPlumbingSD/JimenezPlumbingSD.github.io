@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = Object.fromEntries(fd.entries());
 
       // Submit to API backend
-      fetch('https://jps-api.botwave.io/api/contact', {
+      fetch('https://jps-assistant-731523572992.us-west1.run.app/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
