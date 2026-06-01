@@ -23,3 +23,16 @@
     background: #008080; /* Teal */
     color: #FFFFFF; /* White */
 }
+
+.charcoal-gold .nav {
+    background: #36454F; /* Charcoal */
+}
+
+.charcoal-gold .hero {
+    background: #36454F; /* Charcoal */
+}
+
+.charcoal-gold .btn--primary {
+    background: #FFD700; /* Gold */
+    color: #36454F; /* Charcoal */
+}
