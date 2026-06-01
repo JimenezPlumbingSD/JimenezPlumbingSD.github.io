@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=Open+Sans+Condensed:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="membership.css">
+<link rel="stylesheet" href="" id="colorwaySheet" disabled>
 </head>
 <body>
 
@@ -32,6 +33,19 @@
       <span class="logo-sub">Jimenez Plumbing Solutions</span>
     </a>
     <div class="header-actions">
+      <div class="colorway-switch" id="colorwaySwitch">
+        <button class="colorway-btn" id="colorwayToggle" aria-label="Change color theme" title="Change color theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <div class="colorway-menu" id="colorwayMenu">
+          <button data-colorway="" class="active">Dodgers Blue</button>
+          <button data-colorway="colorway-padres.css">Padres Navy &amp; Orange</button>
+          <button data-colorway="colorway-chargers.css">Chargers Powder</button>
+          <button data-colorway="colorway-lakers.css">Lakers Purple &amp; Gold</button>
+          <button data-colorway="colorway-teal.css">Teal / Black</button>
+          <button data-colorway="colorway-charcoal.css">Charcoal / Gold</button>
+        </div>
+      </div>
       <span class="emergency-badge">
         <span>24/7 Emergency</span>
         <a href="tel:7607893980" class="btn btn-phone btn-sm">Call Now</a>

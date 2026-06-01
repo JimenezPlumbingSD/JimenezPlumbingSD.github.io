@@ -1,0 +1,155 @@
+/* ================================================
+   JPS — Padres Navy & Orange Colorway (1991–2001)
+   The "brown-out" era — navy primary, burnt orange swing.
+   ================================================ */
+
+:root {
+  --navy: #0B162A;
+  --navy-dark: #050B18;
+  --dodger-blue: #FF7F00;          /* burnt Padres orange */
+  --dodger-blue-light: #FF9933;
+  --red: #FF7F00;
+  --red-dark: #CC6600;
+  --white: #FFFFFF;
+  --off-white: #F5F2EC;
+  --gray-100: #E8E4DA;
+  --gray-200: #C9C0AB;
+  --gray-300: #8B8273;
+  --gray-600: #3D4655;
+  --gray-700: #1F2733;
+  --gradient-primary: linear-gradient(135deg, #0B162A 0%, #FF7F00 100%);
+  --gradient-accent: linear-gradient(237deg, #FF7F00 0%, #0B162A 100%);
+  --gradient-hero: linear-gradient(135deg, #050B18 0%, #0B162A 50%, #1A2A45 100%);
+}
+
+/* Hero — navy with orange swing */
+.hero {
+  background:
+    linear-gradient(135deg, #050B18 0%, #0B162A 50%, #1A2A45 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M30 5 L36 25 L56 25 L40 38 L46 58 L30 46 L14 58 L20 38 L4 25 L24 25 Z" fill="rgba(255,127,0,0.04)"/></svg>') !important;
+  background-blend-mode: normal !important;
+}
+
+.hero h1 {
+  color: #FFFFFF !important;
+}
+.hero h1 span, .hero .accent, .hero .highlight {
+  color: #FF7F00 !important;
+}
+.hero p, .hero-since { color: #E8E4DA !important; }
+
+/* Primary CTA — orange */
+.btn-schedule, .btn-primary, .btn-accent {
+  background: linear-gradient(135deg, #FF7F00 0%, #FF9933 100%) !important;
+  color: #0B162A !important;
+  border: 0 !important;
+  font-weight: 800;
+}
+.btn-schedule:hover, .btn-primary:hover, .btn-accent:hover {
+  background: linear-gradient(135deg, #FF9933 0%, #FFB060 100%) !important;
+  color: #0B162A !important;
+  box-shadow: 0 4px 20px rgba(255, 127, 0, 0.4) !important;
+}
+
+/* Phone button — navy with orange border */
+.btn-phone {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FF7F00 !important;
+}
+.btn-phone:hover { background: #FF7F00 !important; color: #0B162A !important; }
+
+/* AI button — navy with orange text */
+.btn-ai {
+  background: #0B162A !important;
+  color: #FF7F00 !important;
+  border: 1px solid #FF7F00 !important;
+}
+.btn-ai:hover { background: #FF7F00 !important; color: #0B162A !important; }
+
+/* Nav — navy bar with orange accents */
+.main-nav {
+  background: #0B162A !important;
+  border-bottom: 3px solid #FF7F00 !important;
+}
+.main-nav a { color: #FFFFFF !important; }
+.main-nav a:hover { color: #FF7F00 !important; }
+
+/* Top bar */
+.top-bar { background: #050B18 !important; }
+.top-bar a { color: #FF7F00 !important; }
+
+/* Header logo */
+.logo-jps { color: #FFFFFF !important; }
+.logo-sub { color: #FF9933 !important; }
+
+/* Service cards */
+.cat-card {
+  background: #FFFFFF !important;
+  border: 1px solid #C9C0AB !important;
+}
+.cat-card h3 { color: #0B162A !important; }
+.cat-card p, .cat-card span { color: #3D4655 !important; }
+.cat-card:hover {
+  border-color: #FF7F00 !important;
+  box-shadow: 0 8px 24px rgba(255, 127, 0, 0.15) !important;
+}
+.cat-card .cat-icon {
+  background: #FF7F00 !important;
+  color: #FFFFFF !important;
+}
+
+/* Offer card — navy with orange accent */
+.offer-card {
+  background: linear-gradient(180deg, #0B162A, #1A2A45) !important;
+  border-color: #FF7F00 !important;
+}
+.offer-card .offer-tag { background: #FF7F00 !important; color: #0B162A !important; }
+.offer-card .offer-name { color: #FFFFFF !important; }
+.offer-card .offer-detail { color: #E8E4DA !important; }
+.offer-card .offer-detail strong { color: #FF9933 !important; }
+.offer-card .offer-price { color: #FF7F00 !important; }
+.offer-card .offer-fine { color: #C9C0AB !important; }
+
+/* Membership section */
+.membership { background: #0B162A !important; color: #FFFFFF !important; }
+.membership h2 { color: #FFFFFF !important; }
+.membership .section-sub { color: #E8E4DA !important; }
+.plan { background: #1A2A45 !important; border-color: #FF7F00 !important; }
+.plan h3 { color: #FF9933 !important; }
+.plan-price { color: #FFFFFF !important; }
+.plan-period { color: #FF7F00 !important; }
+.plan-tag { color: #C9C0AB !important; }
+.plan-features li { color: #E8E4DA !important; }
+.plan-features li.disabled { color: #8B8273 !important; }
+.plan-features .check { color: #FF7F00 !important; }
+.plan-popular { background: #FF7F00 !important; color: #0B162A !important; }
+.compare-table th, .compare-table td { color: #E8E4DA !important; border-color: #1F2733 !important; }
+.compare-table th.highlight, .compare-table td.highlight { background: rgba(255, 127, 0, 0.12) !important; color: #FFFFFF !important; }
+.compare-table .price-row { color: #FF7F00 !important; }
+.faq-item { background: #1A2A45 !important; border-color: #1F2733 !important; color: #E8E4DA !important; }
+.faq-item summary { color: #FFFFFF !important; }
+.pricing-note { color: #C9C0AB !important; }
+
+/* Preventive maintenance */
+.preventive { background: #F5F2EC !important; }
+.preventive h2 { color: #0B162A !important; }
+.preventive .section-sub { color: #3D4655 !important; }
+.preventive li { color: #3D4655 !important; }
+.preventive li strong { color: #0B162A !important; }
+.maint-card { background: #FFFFFF !important; border-color: #C9C0AB !important; }
+.maint-card h3 { color: #FF7F00 !important; }
+.maint-cta { background: #0B162A !important; color: #E8E4DA !important; }
+.maint-cta strong { color: #FF9933 !important; }
+
+/* Contact */
+.contact-section { background: linear-gradient(135deg, #0B162A, #1A2A45) !important; color: #FFFFFF !important; }
+.contact-section h2 { color: #FFFFFF !important; }
+
+/* Footer */
+.site-footer { background: #050B18 !important; color: #C9C0AB !important; }
+.site-footer h4 { color: #FF9933 !important; }
+.site-footer a { color: #E8E4DA !important; }
+.site-footer a:hover { color: #FF7F00 !important; }
+.footer-botwave { border-left-color: #FF7F00 !important; }
+.footer-bottom { background: #000 !important; color: #8B8273 !important; border-top-color: #1F2733 !important; }

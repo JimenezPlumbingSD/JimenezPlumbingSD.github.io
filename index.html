@@ -62,7 +62,9 @@
         </button>
         <div class="colorway-menu" id="colorwayMenu">
           <button data-colorway="" class="active">Dodgers Blue</button>
+          <button data-colorway="colorway-padres.css">Padres Navy &amp; Orange</button>
           <button data-colorway="colorway-chargers.css">Chargers Powder</button>
+          <button data-colorway="colorway-lakers.css">Lakers Purple &amp; Gold</button>
           <button data-colorway="colorway-teal.css">Teal / Black</button>
           <button data-colorway="colorway-charcoal.css">Charcoal / Gold</button>
         </div>
@@ -784,52 +786,6 @@
   </div>
 </section>
 
-<!-- BOTWAVE ARMS — what else Botwave builds (revenue-aware cross-sell) -->
-<section class="botwave-arms" id="botwave-arms">
-  <div class="container">
-    <span class="hero-since">Built by Botwave Digital Solutions</span>
-    <h2>What Else Botwave Builds</h2>
-    <p class="section-sub">The same AI automation behind this JPS site powers any small business. Ask the AI about any of these:</p>
-    <div class="arms-grid">
-      <a class="arm-card" href="/assistant.html?arm=personal_trainer">
-        <div class="arm-icon">💪</div>
-        <h3>Personal Trainer</h3>
-        <p>AI trainer that builds programs, tracks progress, and keeps your clients accountable between sessions.</p>
-      </a>
-      <a class="arm-card" href="/assistant.html?arm=chef">
-        <div class="arm-icon">🍳</div>
-        <h3>Personal Chef</h3>
-        <p>Meal planning, dietary coaching, and grocery lists customized to your kitchen, your goals, your week.</p>
-      </a>
-      <a class="arm-card" href="/assistant.html?arm=creator">
-        <div class="arm-icon">🎨</div>
-        <h3>Content Creator</h3>
-        <p>AI content engine for creators — captions, scripts, hooks, repurposing across platforms.</p>
-      </a>
-      <a class="arm-card" href="/assistant.html?arm=social_media">
-        <div class="arm-icon">📱</div>
-        <h3>Social Media Agent</h3>
-        <p>Schedules posts, replies to DMs, tracks engagement. Your social presence, automated.</p>
-      </a>
-      <a class="arm-card" href="/assistant.html?arm=marketing">
-        <div class="arm-icon">📈</div>
-        <h3>Marketing &amp; Advertising</h3>
-        <p>Ads, funnels, email sequences, lead capture, and ROI tracking — the full marketing stack, run by AI.</p>
-      </a>
-      <a class="arm-card" href="/assistant.html?arm=pentest">
-        <div class="arm-icon">🛡️</div>
-        <h3>Personal Pen-Tester</h3>
-        <p>AI security assistant for bug bounty hunters and small teams — chain building, write-up drafting, target recon.</p>
-      </a>
-    </div>
-    <p class="arms-cta">
-      Or bring your own idea. <a href="https://botwave.io" target="_blank" rel="noopener">botwave.io</a> ·
-      <a href="mailto:botwave1904@gmail.com">botwave1904@gmail.com</a> ·
-      <a href="https://instagram.com/botwave1904" target="_blank" rel="noopener">@botwave1904</a>
-    </p>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -873,7 +829,8 @@
       <a href="https://botwave.io" target="_blank" rel="noopener">botwave.io</a>
       <a href="mailto:botwave1904@gmail.com">botwave1904@gmail.com</a>
       <a href="https://instagram.com/botwave1904" target="_blank" rel="noopener">Instagram @botwave1904</a>
-      <p class="footer-bw-built">Website, AI assistant, and membership system built by Botwave Digital Solutions — a Kyle Jimenez company.</p>
+      <p class="footer-bw-also">Same system. Different trade. We build this for trainers, chefs, content creators, marketers, security researchers — and any small business that wants a real working assistant.</p>
+      <p class="footer-bw-built">Built by Botwave Digital Solutions — a Kyle Jimenez company.</p>
     </div>
   </div>
   <div class="container footer-bottom">
@@ -897,22 +854,21 @@
 <script src="./jps_pricing_sync.js"></script>
 
 <style>
-/* ── Botwave Arms section (inline so the page is self-contained) ── */
-.botwave-arms { background: #0f1a2c; color: #e8eef7; padding: 72px 0 64px; }
-.botwave-arms h2 { color: #fff; text-align: center; font-size: 2.2rem; margin: 0 0 8px; font-weight: 800; }
-.botwave-arms .section-sub { color: #9ab; text-align: center; max-width: 720px; margin: 0 auto 36px; font-size: 1.05rem; }
-.botwave-arms .hero-since { display: block; text-align: center; color: #6fa8dc; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
-.arms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
-.arm-card { background: #142136; border: 1px solid #1f3155; border-radius: 12px; padding: 24px; text-decoration: none; color: inherit; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; display: block; }
-.arm-card:hover { transform: translateY(-3px); border-color: #2e6bd0; box-shadow: 0 12px 32px rgba(46,107,208,0.18); }
-.arm-icon { font-size: 2rem; margin-bottom: 8px; }
-.arm-card h3 { color: #fff; font-size: 1.15rem; margin: 0 0 8px; font-weight: 700; }
-.arm-card p { color: #9ab; margin: 0; font-size: 0.92rem; line-height: 1.5; }
-.arms-cta { text-align: center; margin-top: 36px; color: #9ab; font-size: 0.95rem; }
-.arms-cta a { color: #6fa8dc; text-decoration: none; font-weight: 600; }
-.arms-cta a:hover { color: #fff; }
-@media (max-width: 900px) { .arms-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .arms-grid { grid-template-columns: 1fr; } }
+/* Subtle Botwave cross-sell line in the footer column */
+.footer-bw-also {
+  color: #9ab;
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-bw-built {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: #6b7c93;
+}
 </style>
 
 </body>
