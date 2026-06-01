@@ -1,1 +1,12 @@
-/* Colorways for jps33sd.com */
+.chargers-powder .nav {
+    background: #002244; /* Chargers Navy */
+}
+
+.chargers-powder .hero {
+    background: #002244; /* Chargers Navy */
+}
+
+.chargers-powder .btn--primary {
+    background: #FFB81C; /* Chargers Gold */
+    color: #002244; /* Chargers Navy */
+}
