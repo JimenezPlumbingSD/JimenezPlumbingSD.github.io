@@ -2,8 +2,8 @@
 // Backend: /api/chat at jps_assistant_api.py (FastAPI on port 31338)
 // Fallback: local canned responses if backend is down
 
-const API_BASE = window.location.hostname === 'jimenezplumbingsd.github.io'
-  ? 'https://jps-api.botwave.io'  // production — Cloud Run later
+const API_BASE = window.location.hostname === 'jps33sd.com' || window.location.hostname === 'www.jps33sd.com' || window.location.hostname === 'jimenezplumbingsd.github.io'
+  ? 'https://jps-api.botwave.io'  // production — Cloud Run
   : 'http://localhost:31338';      // local dev
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -250,13 +250,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lc.includes('member') || lc.includes('jps-mp') || lc.includes('plan')) {
       return `<strong>JPS-MP Membership Program</strong><br><br>
 Three tiers:<br><br>
-<strong>Essential — $19/mo ($190/yr)</strong><br>
-Annual inspection, 1 free service call, 15% off repairs, 5% off installs, priority booking, 50% off dispatch, transferable<br><br>
-<strong>Premier — $39/mo ($390/yr)</strong><br>
-Everything in Essential plus water heater flush, gas line check, 2 free service calls, 20% off repairs, 10% off installs, free emergency dispatch, blueprint consultation<br><br>
-<strong>Commercial — $79/mo ($790/yr)</strong><br>
-Everything in Premier plus quarterly inspections, 2-hr emergency guarantee, dedicated account manager, compliance audit<br><br>
-<a href="/membership.html">Sign up →</a> or call (760) 789-3980.`;
+<strong>Essential — $179/yr</strong><br>
+Annual inspection, priority scheduling, 15% off service calls, 10% off remodels &amp; repipes, written inspection report, 30-day warranty extension<br><br>
+<strong>Plus — $329/yr (Most Popular)</strong><br>
+Everything in Essential plus 2 free emergency calls/yr, 20% off service calls, 15% off remodels, water heater flush, gas leak check, 90-day warranty<br><br>
+<strong>Premium — $549/yr</strong><br>
+Everything in Plus plus unlimited free emergency calls, 25% off service calls, 20% off remodels, same-day guarantee, 1-year warranty, AI blueprint estimates, dedicated contact number<br><br>
+<a href="/membership.html">See full comparison →</a> or call (760) 789-3980.`;
     }
     if (lc.includes('botwave') || lc.includes('who built') || lc.includes('kyle') || lc.includes('this ai')) {
       return `This AI assistant was built by Chuck's son Kyle through his company <strong>Botwave Digital Solutions</strong>. Botwave provides AI automation for small businesses — custom chat assistants, membership systems, business automation, and content tools.<br><br>If you're curious about what Botwave can do for your business, check out <a href="https://botwave.io" target="_blank">botwave.io</a> or just ask me about it. Kyle also runs BOTWAVEBOMBA, a corruption and money-in-politics tracker that follows the data — not the headlines.`;
@@ -265,7 +265,7 @@ Everything in Premier plus quarterly inspections, 2-hr emergency guarantee, dedi
       return `BOTWAVEBOMBA is Botwave's corruption and money-in-politics tracker. It indexes claims from sources like OpenSecrets, FEC, CA Secretary of State, FollowTheMoney, and USASpending.<br><br>It's not a political opinion tool — it just tracks where the money goes so you can verify for yourself.<br><br>Sources: <a href="https://www.opensecrets.org" target="_blank">OpenSecrets</a> · <a href="https://www.fec.gov/data/" target="_blank">FEC</a> · <a href="https://cal-access.sos.ca.gov/" target="_blank">CA SoS</a> · <a href="https://www.followthemoney.org" target="_blank">FollowTheMoney</a> · <a href="https://www.usaspending.gov" target="_blank">USASpending</a>`;
     }
     if (lc.includes('dodgers') || lc.includes('baseball') || lc.includes('sports') || lc.includes('ohtani') || lc.includes('freeman') || lc.includes('betts')) {
-      return `JPS is a Dodgers family — blue runs deep in Ramona! 🏟️<br><br>Botwave's Bomba news feed tracks current events. I can pull Dodgers news when the backend is online. For now, catch the latest at <a href="https://www.mlb.com/dodgers" target="_blank">MLB.com/Dodgers</a>.<br><br>Go Blue.`;
+      return `JPS is a Dodgers family — blue runs deep in Ramona!<br><br>Botwave's Bomba news feed tracks current events. I can pull Dodgers news when the backend is online. For now, catch the latest at <a href="https://www.mlb.com/dodgers" target="_blank">MLB.com/Dodgers</a>.<br><br>Go Blue.`;
     }
 
     return `Thanks for reaching out. I can help with:<br><br>

@@ -265,6 +265,14 @@
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
 }
 
+/* Botwave footer column — shares styles.css base */
+.footer-botwave { border-left: 3px solid #005A9C; padding-left: 1.25rem; }
+.footer-bw-tag { font-size: 0.8rem; color: #94A3B8; margin: 0.25rem 0 0.75rem; }
+.footer-bw-built { font-size: 0.75rem; color: #64748B; margin-top: 0.75rem; line-height: 1.4; font-style: italic; }
+@media (max-width: 768px) {
+  .footer-botwave { border-left: none; padding-left: 0; border-top: 1px solid #1E293B; padding-top: 1rem; }
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .steps-grid { grid-template-columns: 1fr; max-width: 500px; }

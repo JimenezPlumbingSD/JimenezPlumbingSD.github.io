@@ -1,316 +1,111 @@
-//
-// Professional Plumbing Services JavaScript
-// ========================================
-//
-// FUNCTIONAL OVERVIEW:
-// - Sticky header with scroll effect
-// - Mobile menu toggle
-// - Form validation
-// - Back-to-top button
-// - Smooth scrolling for anchor links
-// - Dynamic year in footer
-//
+// JPS Website — script.js
+// Sticky header, smooth scroll, form handling, mobile nav
 
-// DOM Ready Wrapper
-function domReady(callback) {
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-        setTimeout(callback, 1);
-    } else {
-        document.addEventListener("DOMContentLoaded", callback);
-    }
-}
+document.addEventListener('DOMContentLoaded', () => {
 
-// Initialize Application
-domReady(function() {
-    // Header scroll effect
-    initStickyHeader();
-    
-    // Mobile menu functionality
-    initMobileMenu();
-    
-    // Form validation
-    initFormValidation();
-    
-    // Back to top button
-    initBackToTop();
-    
-    // Smooth scrolling for anchor links
-    initSmoothScrolling();
-    
-    // Dynamic year in footer
-    updateCopyrightYear();
-    
-    // Set up event listeners
-    setupEventListeners();
+  // ── Smooth scrolling for anchor links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── Sticky header shadow on scroll ──
+  const header = document.querySelector('.site-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  }
+
+  // ── Service category nav scroll hint ──
+  const nav = document.querySelector('.main-nav .container');
+  if (nav && nav.scrollWidth > nav.clientWidth) {
+    nav.classList.add('scrollable');
+    let hint = document.createElement('span');
+    hint.className = 'scroll-hint';
+    hint.innerHTML = '&#9654;';
+    nav.parentElement.appendChild(hint);
+    nav.addEventListener('scroll', () => {
+      hint.style.opacity = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 10 ? '0' : '0.7';
+    });
+  }
+
+  // ── Contact form handling ──
+  const form = document.querySelector('.contact-form');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const origText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+
+      // Submit to API backend
+      fetch('https://jps-api.botwave.io/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          source: 'jps_website',
+          business: 'JPS'
+        })
+      })
+      .then(r => {
+        if (!r.ok) throw new Error('Server error');
+        return r.json();
+      })
+      .then(() => {
+        btn.textContent = 'Request Submitted';
+        btn.style.background = '#22C55E';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = origText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      })
+      .catch(() => {
+        // Fallback: mailto
+        const subject = encodeURIComponent(`JPS Service Request: ${data.service || 'General'}`);
+        const body = encodeURIComponent(
+          `Name: ${data.first_name || ''} ${data.last_name || ''}\n` +
+          `Phone: ${data.phone || ''}\nEmail: ${data.email || ''}\n` +
+          `Service: ${data.service || ''}\nMessage: ${data.message || ''}`
+        );
+        window.location.href = `mailto:JPSJimenez33@gmail.com?subject=${subject}&body=${body}`;
+        btn.textContent = origText;
+        btn.disabled = false;
+      });
+    });
+  }
+
+  // ── Review cards — lazy load from Google when API is live ──
+  // For now the static reviews in HTML suffice
+
+  // ── Chat button visibility on scroll (show after hero) ──
+  const chatBtn = document.querySelector('.chat-with-us');
+  if (chatBtn) {
+    window.addEventListener('scroll', () => {
+      chatBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    // Start hidden until scroll
+    chatBtn.classList.add('chat-hidden');
+  }
+
+  // ── Dynamic year ──
+  const yearEl = document.querySelector('.footer-bottom p');
+  if (yearEl) {
+    yearEl.innerHTML = yearEl.innerHTML.replace('1989\u20132025', `1989\u2013${new Date().getFullYear()}`);
+    yearEl.innerHTML = yearEl.innerHTML.replace('1989\u20132026', `1989\u2013${new Date().getFullYear()}`);
+  }
 });
-
-// Sticky Header
-function initStickyHeader() {
-    const header = document.getElementById('main-header');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-}
-
-// Mobile Menu
-function initMobileMenu() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuButton.addEventListener('click', function() {
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.classList.toggle('active');
-        
-        // Animate mobile menu icon
-        const icons = this.querySelectorAll('.mobile-menu-icon');
-        if (mobileMenu.classList.contains('active')) {
-            icons[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            icons[1].style.opacity = '0';
-            icons[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-        } else {
-            icons[0].style.transform = '';
-            icons[1].style.opacity = '';
-            icons[2].style.transform = '';
-        }
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-            mobileMenu.classList.remove('active');
-            
-            // Reset mobile menu icon
-            const icons = mobileMenuButton.querySelectorAll('.mobile-menu-icon');
-            icons[0].style.transform = '';
-            icons[1].style.opacity = '';
-            icons[2].style.transform = '';
-        }
-    });
-}
-
-// Form Validation
-function initFormValidation() {
-    const form = document.getElementById('inquiry-form');
-    
-    if (!form) return;
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        let isValid = true;
-        
-        // Validate Name
-        const name = document.getElementById('name');
-        const nameError = document.getElementById('name-error');
-        if (!name.value.trim()) {
-            nameError.textContent = 'Name is required';
-            isValid = false;
-        } else {
-            nameError.textContent = '';
-        }
-        
-        // Validate Phone
-        const phone = document.getElementById('phone');
-        const phoneError = document.getElementById('phone-error');
-        const phoneRegex = /^[\(]?(\d{3})[\)]?[\s-]?(\d{3})[\s-]?(\d{4})$/;
-        if (!phone.value.trim()) {
-            phoneError.textContent = 'Phone number is required';
-            isValid = false;
-        } else if (!phoneRegex.test(phone.value.trim())) {
-            phoneError.textContent = 'Please enter a valid phone number';
-            isValid = false;
-        } else {
-            phoneError.textContent = '';
-        }
-        
-        // Validate Email
-        const email = document.getElementById('email');
-        const emailError = document.getElementById('email-error');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email.value.trim()) {
-            emailError.textContent = 'Email is required';
-            isValid = false;
-        } else if (!emailRegex.test(email.value.trim())) {
-            emailError.textContent = 'Please enter a valid email address';
-            isValid = false;
-        } else {
-            emailError.textContent = '';
-        }
-        
-        // Validate Service
-        const service = document.getElementById('service');
-        const serviceError = document.getElementById('service-error');
-        if (!service.value) {
-            serviceError.textContent = 'Please select a service';
-            isValid = false;
-        } else {
-            serviceError.textContent = '';
-        }
-        
-        // If form is valid, submit it (in production, this would send to a server)
-        if (isValid) {
-            // Show loading state
-            const submitButton = form.querySelector('.form-button');
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Use Botwave SMTP integration
-            const formData = new FormData(form);
-            
-            // Add additional metadata
-            formData.append('_botwave', 'true');
-            formData.append('_source', 'jps_plumbing_website');
-            formData.append('_business', 'JPS Plumbing Services');
-            
-            // Track form submission in Google Analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submission', {
-                    'event_category': 'Lead Generation',
-                    'event_label': formData.get('service') || 'General Inquiry',
-                    'value': 1
-                });
-            }
-            
-            // Use Botwave SMTP service via NISA substrate
-            smtp_send_email({
-                to: 'jpsjimenez33@gmail.com',
-                subject: 'New Service Inquiry from JPS Plumbing Website',
-                body: `New Service Inquiry from JPS Plumbing Website:\n\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nEmail: ${formData.get('email')}\nService Needed: ${formData.get('service')}\nMessage: ${formData.get('message') || 'No message provided'}\n\nSource: Website Form Submission`,
-                html: false
-            }).then(result => {
-                if (result.success) {
-                    // Redirect to thank you page
-                    window.location.href = '/thank-you.html';
-                } else {
-                    throw new Error(result.message || 'Form submission failed');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your form. You can also call us directly at (760) 789-3980 or message us on Telegram.');
-                submitButton.textContent = 'Submit Request';
-                submitButton.disabled = false;
-            });
-        }
-    });
-    
-    // Real-time validation for better UX
-    const inputs = form.querySelectorAll('.form-input, .form-select');
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            const errorElement = document.getElementById(this.id + '-error');
-            if (!this.value.trim()) {
-                errorElement.textContent = this.previousElementSibling.textContent.replace('*', '') + ' is required';
-            } else if (this.id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim())) {
-                errorElement.textContent = 'Please enter a valid email address';
-            } else if (this.id === 'phone' && !/^[\(]?(\d{3})[\)]?[\s-]?(\d{3})[\s-]?(\d{4})$/.test(this.value.trim())) {
-                errorElement.textContent = 'Please enter a valid phone number';
-            } else {
-                errorElement.textContent = '';
-            }
-        });
-        
-        input.addEventListener('focus', function() {
-            const errorElement = document.getElementById(this.id + '-error');
-            errorElement.textContent = '';
-        });
-    });
-}
-
-// Back to Top Button
-function initBackToTop() {
-    const backToTopButton = document.getElementById('back-to-top');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTopButton.style.display = 'flex';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    });
-    
-    backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Smooth Scrolling for Anchor Links
-function initSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            // Skip for mobile menu links to avoid closing menu
-            if (this.closest('.mobile-menu')) return;
-            
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Close mobile menu if open
-                const mobileMenuButton = document.getElementById('mobile-menu-button');
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu.classList.contains('active')) {
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    
-                    // Reset mobile menu icon
-                    const icons = mobileMenuButton.querySelectorAll('.mobile-menu-icon');
-                    icons[0].style.transform = '';
-                    icons[1].style.opacity = '';
-                    icons[2].style.transform = '';
-                }
-            }
-        });
-    });
-}
-
-// Update Copyright Year
-function updateCopyrightYear() {
-    const yearElement = document.querySelector('.copyright');
-    if (yearElement) {
-        const currentYear = new Date().getFullYear();
-        yearElement.textContent = yearElement.textContent.replace('2025', currentYear);
-    }
-}
-
-// Setup Event Listeners
-function setupEventListeners() {
-    // Add any additional event listeners here
-    
-    // Example: Add hover effects for service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
-    });
-}
-
-// Expose functions to global scope for debugging (remove in production)
-window.plumbingApp = {
-    initStickyHeader,
-    initMobileMenu,
-    initFormValidation,
-    initBackToTop,
-    initSmoothScrolling,
-    updateCopyrightYear
-};

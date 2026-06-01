@@ -445,6 +445,47 @@ textarea:focus { outline: none; }
 }
 .input-footer a { color: var(--accent-purple-light); }
 
+/* === SITE FOOTER (assistant page) === */
+.assistant-footer {
+  background: #0F172A;
+  color: #CBD5E1;
+  padding: 3rem 0 1.5rem;
+  margin-top: 0;
+}
+.assistant-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.assistant-footer .footer-brand .logo-jps {
+  font-size: 2rem;
+  color: #005A9C;
+}
+.assistant-footer .footer-brand .logo-sub {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.assistant-footer .footer-brand p { margin: 0.25rem 0; color: #94A3B8; font-size: 0.8rem; }
+.assistant-footer .footer-links h4 { color: #E2E8F0; margin-bottom: 0.75rem; font-size: 0.85rem; }
+.assistant-footer .footer-links a { display: block; color: #94A3B8; font-size: 0.8rem; padding: 0.2rem 0; text-decoration: none; }
+.assistant-footer .footer-links a:hover { color: #005A9C; }
+.assistant-footer .footer-links span { display: block; color: #94A3B8; font-size: 0.8rem; padding: 0.2rem 0; }
+.assistant-footer .footer-bottom { border-top: 1px solid #1E293B; padding-top: 1rem; text-align: center; }
+.assistant-footer .footer-bottom p { color: #64748B; font-size: 0.75rem; margin: 0.25rem 0; }
+.assistant-footer .footer-legal { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.5rem; }
+.assistant-footer .footer-legal a { color: #64748B; font-size: 0.75rem; }
+.assistant-footer .footer-legal a:hover { color: #94A3B8; }
+.assistant-footer .footer-botwave { border-left: 3px solid #005A9C; padding-left: 1.25rem; }
+.assistant-footer .footer-bw-tag { font-size: 0.75rem; color: #64748B; margin: 0.25rem 0 0.5rem; }
+.assistant-footer .footer-bw-built { font-size: 0.7rem; color: #475569; margin-top: 0.5rem; line-height: 1.4; font-style: italic; }
+@media (max-width: 768px) {
+  .assistant-footer .footer-grid { grid-template-columns: 1fr; }
+  .assistant-footer .footer-botwave { border-left: none; padding-left: 0; border-top: 1px solid #1E293B; padding-top: 1rem; }
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .assistant-container { margin: 40px 8px 40px 8px; border-radius: 12px; }
