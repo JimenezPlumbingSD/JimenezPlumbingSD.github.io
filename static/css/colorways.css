@@ -10,3 +10,16 @@
     background: #FFB81C; /* Chargers Gold */
     color: #002244; /* Chargers Navy */
 }
+
+.teal-black .nav {
+    background: #000000; /* Black */
+}
+
+.teal-black .hero {
+    background: #000000; /* Black */
+}
+
+.teal-black .btn--primary {
+    background: #008080; /* Teal */
+    color: #FFFFFF; /* White */
+}
