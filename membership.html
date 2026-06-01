@@ -85,7 +85,7 @@
       <div class="plan plan-essential">
         <div class="plan-header">
           <h3>Essential</h3>
-          <span class="plan-price">$179<span class="plan-period">/year</span></span>
+          <span class="plan-price"><span data-jps-rate="tier_essential">$179</span><span class="plan-period">/year</span></span>
           <span class="plan-tag">For the homeowner who wants the basics covered</span>
         </div>
         <ul class="plan-features">
@@ -107,7 +107,7 @@
         <div class="plan-popular">Most Popular</div>
         <div class="plan-header">
           <h3>Plus</h3>
-          <span class="plan-price">$329<span class="plan-period">/year</span></span>
+          <span class="plan-price"><span data-jps-rate="tier_plus">$329</span><span class="plan-period">/year</span></span>
           <span class="plan-tag">For the homeowner who wants real protection</span>
         </div>
         <ul class="plan-features">
@@ -128,7 +128,7 @@
       <div class="plan plan-premium">
         <div class="plan-header">
           <h3>Premium</h3>
-          <span class="plan-price">$549<span class="plan-period">/year</span></span>
+          <span class="plan-price"><span data-jps-rate="tier_premium">$549</span><span class="plan-period">/year</span></span>
           <span class="plan-tag">For the homeowner who wants zero worry</span>
         </div>
         <ul class="plan-features">
@@ -176,7 +176,7 @@
           <tr><td>Same-Day Guarantee</td><td>—</td><td class="highlight">—</td><td><span class="check"></span></td></tr>
           <tr><td>AI Blueprint Estimates</td><td>—</td><td class="highlight">—</td><td><span class="check"></span></td></tr>
           <tr><td>Dedicated Contact Number</td><td>—</td><td class="highlight">—</td><td><span class="check"></span></td></tr>
-          <tr class="price-row"><td><strong>Annual Price</strong></td><td><strong>$179</strong></td><td class="highlight"><strong>$329</strong></td><td><strong>$549</strong></td></tr>
+          <tr class="price-row"><td><strong>Annual Price</strong></td><td><strong><span data-jps-rate="tier_essential">$179</span></strong></td><td class="highlight"><strong><span data-jps-rate="tier_plus">$329</span></strong></td><td><strong><span data-jps-rate="tier_premium">$549</span></strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -290,6 +290,9 @@
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
   <span class="chat-label">Chat with Us</span>
 </a>
+
+<!-- Sync visible pricing from /jps_config.json (single source of truth, written by JPS /setup wizard) -->
+<script src="./jps_pricing_sync.js"></script>
 
 </body>
 </html>

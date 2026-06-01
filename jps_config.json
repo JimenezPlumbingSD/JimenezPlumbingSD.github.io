@@ -1,0 +1,142 @@
+{
+  "company": {
+    "name": "Jimenez Plumbing Solutions, Inc.",
+    "owner_name": "Chuck",
+    "owner_phone": "(760) 789-3980",
+    "owner_email": "JPSJimenez33@gmail.com",
+    "address": "326 Pine Street, Ramona, CA 92065",
+    "license_no": "C-36 #568271",
+    "year_established": 1989,
+    "domain": "jps33sd.com",
+    "web_ui_url": "https://jps33sd.com/assistant.html",
+    "customer_bot": "@jimenezplumbingbot",
+    "owner_bot": "@JPS33_bot"
+  },
+  "rates": {
+    "master_plumber": 150,
+    "journeyman": 125,
+    "helper_apprentice": 75,
+    "service_call_first_hour": 225,
+    "emergency_after_hours": 200,
+    "weekend": 175,
+    "markup_multiplier": 1.43
+  },
+  "adjustments": {
+    "after_hours": 1.5,
+    "weekend": 1.75,
+    "same_day_emrg": 2.0,
+    "hard_access": 1.25
+  },
+  "services_offered": [
+    "kitchen_bath_remodel",
+    "custom_home_plumbing",
+    "commercial_restaurant",
+    "gas_leak_detection",
+    "slab_leak",
+    "water_repipe",
+    "sewer_repipe",
+    "service_work"
+  ],
+  "services_NOT_offered": [
+    "drain_cleaning",
+    "hydro_jetting",
+    "sewer_snake_routine"
+  ],
+  "membership": {
+    "tiers": [
+      {
+        "key": "essential",
+        "name": "Essential",
+        "annual": 179,
+        "monthly_equivalent": 14.92,
+        "tag": "For the homeowner who wants the basics covered",
+        "benefits": {
+          "annual_inspection": true,
+          "priority_scheduling": true,
+          "service_call_discount_pct": 15,
+          "remodel_repipe_discount_pct": 10,
+          "free_emergency_calls_per_year": 0,
+          "water_heater_flush": false,
+          "gas_leak_check": false,
+          "warranty_extension_days": 30,
+          "ai_blueprint_estimates": false,
+          "same_day_guarantee": false,
+          "dedicated_contact_number": false
+        }
+      },
+      {
+        "key": "plus",
+        "name": "Plus",
+        "annual": 329,
+        "monthly_equivalent": 27.42,
+        "tag": "For the homeowner who wants real protection",
+        "popular": true,
+        "benefits": {
+          "annual_inspection": true,
+          "priority_scheduling": true,
+          "service_call_discount_pct": 20,
+          "remodel_repipe_discount_pct": 15,
+          "free_emergency_calls_per_year": 2,
+          "water_heater_flush": true,
+          "gas_leak_check": true,
+          "warranty_extension_days": 90,
+          "ai_blueprint_estimates": false,
+          "same_day_guarantee": false,
+          "dedicated_contact_number": false
+        }
+      },
+      {
+        "key": "premium",
+        "name": "Premium",
+        "annual": 549,
+        "monthly_equivalent": 45.75,
+        "tag": "For the homeowner who wants zero worry",
+        "benefits": {
+          "annual_inspection": true,
+          "priority_scheduling": true,
+          "service_call_discount_pct": 25,
+          "remodel_repipe_discount_pct": 20,
+          "free_emergency_calls_per_year": -1,
+          "water_heater_flush": true,
+          "gas_leak_check": true,
+          "warranty_extension_days": 365,
+          "ai_blueprint_estimates": true,
+          "same_day_guarantee": true,
+          "dedicated_contact_number": true
+        }
+      }
+    ],
+    "commercial_note": "Commercial JPS-MP plans are custom \u2014 call (760) 789-3980 for quote.",
+    "guarantee_note": "Cancel anytime with 30 days notice."
+  },
+  "service_area": {
+    "primary": "Ramona",
+    "secondary": [
+      "Julian",
+      "San Diego Country Estates",
+      "Poway",
+      "Escondido"
+    ],
+    "full": "Julian to Oceanside, all of greater San Diego County"
+  },
+  "emergency": {
+    "available_24_7": true,
+    "phone": "(760) 789-3980",
+    "triage": [
+      "Gas leak / smell \u2192 evacuate + call 911 + (760) 789-3980",
+      "Burst pipe \u2192 shut main valve + call (760) 789-3980",
+      "Sewer backup \u2192 stop water use + call (760) 789-3980",
+      "No hot water (tank) \u2192 check pilot, then call (760) 789-3980"
+    ]
+  },
+  "meta": {
+    "currency": "USD",
+    "tax_rate": 0.0825,
+    "overhead_pct": 0.15,
+    "profit_pct": 0.1,
+    "contingency_pct": 0.1,
+    "last_updated": "2026-06-01T14:43:27",
+    "updated_by": "",
+    "schema_version": 1
+  }
+}

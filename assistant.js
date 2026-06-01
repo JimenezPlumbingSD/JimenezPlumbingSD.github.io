@@ -229,6 +229,78 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Local fallback responses (when API is down) ──
+  //
+  // Pricing data is loaded from /jps_config.json which the JPS Telegram
+  // /setup wizard writes to. This keeps the web UI, the owner bot, and
+  // the customer bot in lockstep. If the JSON is missing (or fetch fails),
+  // we fall back to the hardcoded 2026 numbers below as a last resort.
+  let PRICING = {
+    rates: {
+      master_plumber: 150, journeyman: 125, helper_apprentice: 75,
+      service_call_first_hour: 225, emergency_after_hours: 200, weekend: 175,
+      markup_multiplier: 1.43,
+    },
+    membership: {
+      tiers: [
+        { name: 'Essential', annual: 179, popular: false,
+          service_call_discount_pct: 15, remodel_repipe_discount_pct: 10,
+          free_emergency_calls_per_year: 0, warranty_extension_days: 30 },
+        { name: 'Plus', annual: 329, popular: true,
+          service_call_discount_pct: 20, remodel_repipe_discount_pct: 15,
+          free_emergency_calls_per_year: 2, warranty_extension_days: 90 },
+        { name: 'Premium', annual: 549, popular: false,
+          service_call_discount_pct: 25, remodel_repipe_discount_pct: 20,
+          free_emergency_calls_per_year: -1, warranty_extension_days: 365 },
+      ],
+    },
+    company: {
+      web_ui_url: 'https://jps33sd.com/assistant.html',
+      membership_url: 'https://jps33sd.com/membership.html',
+      customer_bot: '@jimenezplumbingbot',
+    },
+  };
+  // Best-effort fetch — never blocks, never throws.
+  fetch('./jps_config.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(j => { if (j) PRICING = j; })
+    .catch(() => { /* keep defaults */ });
+
+  function fmtRateSheet() {
+    const r = PRICING.rates;
+    return (
+      `JPS 2026 Rate Sheet:<br><br>` +
+      `• Master Plumber: $${r.master_plumber}/hr<br>` +
+      `• Journeyman: $${r.journeyman}/hr<br>` +
+      `• Helper/Apprentice: $${r.helper_apprentice}/hr<br>` +
+      `• Service call: $${r.service_call_first_hour} (first hour included)<br>` +
+      `• Emergency/after-hours: $${r.emergency_after_hours}/hr<br>` +
+      `• Weekend: $${r.weekend}/hr<br><br>` +
+      `All bids: (Labor + Materials) × ${r.markup_multiplier}<br>` +
+      `JPS-MP members save on service calls + remodels.<br><br>` +
+      `What service are you looking at?`
+    );
+  }
+
+  function fmtMembership() {
+    const t = PRICING.membership.tiers;
+    let s = '<strong>JPS-MP Membership Program</strong><br><br>Three tiers:<br><br>';
+    t.forEach(tier => {
+      const popular = tier.popular ? ' (Most Popular)' : '';
+      const emg = tier.free_emergency_calls_per_year === -1
+        ? 'unlimited free emergency calls/yr'
+        : tier.free_emergency_calls_per_year > 0
+          ? `${tier.free_emergency_calls_per_year} free emergency calls/yr`
+          : 'no free emergency calls';
+      s += `<strong>${tier.name} — $${tier.annual}/yr</strong>${popular}<br>` +
+           `  • ${tier.service_call_discount_pct}% off service calls, ` +
+           `${tier.remodel_repipe_discount_pct}% off remodels, ${emg}, ` +
+           `${tier.warranty_extension_days}-day warranty<br><br>`;
+    });
+    s += `<a href="${PRICING.company.membership_url}">See full comparison →</a> ` +
+         `or call (760) 789-3980.`;
+    return s;
+  }
+
   function getLocalResponse(text) {
     const lc = text.toLowerCase();
 
@@ -245,18 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return `JPS handles commercial restaurant build-outs. Chuck just completed the plumbing for Ono Hawaiian BBQ in the Mt. Carmel area — grease trap, backflow preventer, commercial water heater, the full system.<br><br>Commercial work typically requires health department compliance and backflow certification. Want to discuss a specific project?`;
     }
     if (lc.includes('price') || lc.includes('cost') || lc.includes('how much') || lc.includes('rate')) {
-      return `JPS 2026 Rate Sheet:<br><br>• Master Plumber: $150/hr<br>• Journeyman: $125/hr<br>• Service call: $225 (first hour included)<br>• Emergency/after-hours: $200/hr<br>• Weekend: $175/hr<br><br>All bids: (Labor + Materials) × 1.43<br>JPS-MP members save 15-20% on repairs.<br><br>What service are you looking at?`;
+      return fmtRateSheet();
     }
     if (lc.includes('member') || lc.includes('jps-mp') || lc.includes('plan')) {
-      return `<strong>JPS-MP Membership Program</strong><br><br>
-Three tiers:<br><br>
-<strong>Essential — $179/yr</strong><br>
-Annual inspection, priority scheduling, 15% off service calls, 10% off remodels &amp; repipes, written inspection report, 30-day warranty extension<br><br>
-<strong>Plus — $329/yr (Most Popular)</strong><br>
-Everything in Essential plus 2 free emergency calls/yr, 20% off service calls, 15% off remodels, water heater flush, gas leak check, 90-day warranty<br><br>
-<strong>Premium — $549/yr</strong><br>
-Everything in Plus plus unlimited free emergency calls, 25% off service calls, 20% off remodels, same-day guarantee, 1-year warranty, AI blueprint estimates, dedicated contact number<br><br>
-<a href="/membership.html">See full comparison →</a> or call (760) 789-3980.`;
+      return fmtMembership();
     }
     if (lc.includes('botwave') || lc.includes('who built') || lc.includes('kyle') || lc.includes('this ai')) {
       return `This AI assistant was built by Chuck's son Kyle through his company <strong>Botwave Digital Solutions</strong>. Botwave provides AI automation for small businesses — custom chat assistants, membership systems, business automation, and content tools.<br><br>If you're curious about what Botwave can do for your business, check out <a href="https://botwave.io" target="_blank">botwave.io</a> or just ask me about it. Kyle also runs BOTWAVEBOMBA, a corruption and money-in-politics tracker that follows the data — not the headlines.`;
