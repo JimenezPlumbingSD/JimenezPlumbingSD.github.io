@@ -4,10 +4,156 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JPS AI Plumbing Assistant | Jimenez Plumbing Solutions</title>
-<meta name="description" content="Ask a master plumber 24/7. Upload blueprints, get estimates, learn about JPS-MP membership, book service — all powered by AI.">
+<meta name="description" content="Ask the JPS AI plumbing assistant. Upload blueprints for material takeoffs, get instant estimates, learn about JPS-MP membership, book service — state-of-the-art interactive help from Jimenez Plumbing Solutions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assistant.css">
+
+<style>
+/* ── Emergency Triage Card (state-of-the-art interactive) ── */
+.triage-card, .triage-result {
+  background: linear-gradient(180deg, #0d1b2e 0%, #142640 100%);
+  border: 1px solid #2e6bd0;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 4px 0;
+  color: #e8eef7;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.triage-header { display: block; margin-bottom: 14px; }
+.triage-header strong { color: #fff; font-size: 1.05rem; display: block; margin-bottom: 4px; }
+.triage-sub { color: #9ab; font-size: 0.85rem; }
+
+.triage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 14px; }
+@media (max-width: 480px) { .triage-grid { grid-template-columns: 1fr; } }
+
+.triage-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: #1a3050;
+  border: 1px solid #2e6bd0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #e8eef7;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+.triage-btn:hover {
+  background: #2e6bd0;
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+.triage-btn.triage-life-safety { border-color: #ef4444; }
+.triage-btn.triage-life-safety:hover { background: #ef4444; }
+.triage-btn.triage-urgent { border-color: #f59e0b; }
+.triage-btn.triage-urgent:hover { background: #f59e0b; color: #1a1a1a; }
+.triage-icon { font-size: 1.3rem; flex-shrink: 0; }
+.triage-label { font-weight: 600; font-size: 0.88rem; }
+
+.triage-disclaimer {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  color: #fca5a5;
+}
+.triage-disclaimer strong { color: #fff; }
+.triage-disclaimer a { color: #fff; text-decoration: underline; }
+
+/* ── Triage result panel ── */
+.triage-result { border-color: #2e6bd0; }
+.triage-result.severity-life-safety { border-color: #ef4444; background: linear-gradient(180deg, #2a0d0d 0%, #3a1010 100%); }
+.triage-result.severity-urgent { border-color: #f59e0b; background: linear-gradient(180deg, #2a1d0d 0%, #3a2810 100%); }
+.triage-result.severity-standard { border-color: #2e6bd0; }
+.triage-result.severity-routine { border-color: #10b981; }
+
+.triage-result-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.triage-result-icon { font-size: 1.8rem; }
+.triage-result-title { display: block; color: #fff; font-size: 1.1rem; font-weight: 700; }
+.triage-result-severity {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  color: #9ab;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 2px;
+}
+.triage-steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 14px; }
+.triage-steps li { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+.step-num {
+  flex-shrink: 0;
+  background: #2e6bd0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.severity-life-safety .step-num { background: #ef4444; }
+.severity-urgent .step-num { background: #f59e0b; color: #1a1a1a; }
+.severity-routine .step-num { background: #10b981; }
+.step-text { flex: 1; color: #d4dcec; }
+.step-text strong { color: #fff; }
+.step-text a { color: #6fa8dc; }
+
+.triage-promise {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid #2e6bd0;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: #c9d4e6;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.triage-promise strong { color: #fff; }
+.severity-life-safety .triage-promise { border-left-color: #ef4444; }
+.severity-urgent .triage-promise { border-left-color: #f59e0b; }
+.severity-routine .triage-promise { border-left-color: #10b981; }
+
+.triage-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.triage-action {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+.triage-action.primary {
+  background: #10b981;
+  color: #fff;
+  flex: 1;
+  justify-content: center;
+}
+.triage-action.primary:hover { background: #059669; }
+.triage-action.secondary {
+  background: #2e6bd0;
+  color: #fff;
+  flex: 1;
+  justify-content: center;
+}
+.triage-action.secondary:hover { background: #1e5bb8; }
+.triage-action.tertiary {
+  background: transparent;
+  color: #9ab;
+  border: 1px solid #2e6bd0;
+}
+.triage-action.tertiary:hover { color: #fff; border-color: #fff; }
+@media (max-width: 480px) { .triage-action { flex: 1 1 100%; } }
+</style>
 </head>
 <body>
 
@@ -66,7 +212,7 @@
       </button>
       <button class="qa-btn" data-action="emergency">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
-        Emergency?
+        Emergency Triage
       </button>
       <button class="qa-btn" data-action="estimate">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7h6m0 4H9m7 4H9m3 7l-4-4H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4l-4 4z"/></svg>
@@ -99,9 +245,10 @@
             <span class="msg-time">now</span>
           </div>
           <div class="msg-body">
-            <p>Welcome to Jimenez Plumbing Solutions. I'm your AI plumbing assistant — available 24/7 to help with any of these:</p>
+            <p>Welcome to Jimenez Plumbing Solutions. I'm your AI plumbing assistant — walk me through what's going on and I'll help you figure out the right next step, give you a ballpark, or book a service call with Chuck during business hours.</p>
             <ul class="feature-list">
-              <li><strong>Ask a Plumber</strong> — Describe your issue, get instant guidance on whether it's an emergency, DIY-able, or needs a pro</li>
+              <li><strong>Emergency Triage</strong> — Pick your situation (gas, burst pipe, sewer, no hot water, leak). Get a step-by-step action plan tailored to it, with a direct callback to Chuck.</li>
+              <li><strong>Ask a Plumber</strong> — Describe any other issue, get instant guidance on whether it's urgent, DIY-able, or needs a pro</li>
               <li><strong>Service Lookup</strong> — Browse all JPS services with ballpark pricing from our 2026 master rate sheet</li>
               <li><strong>Get Estimate</strong> — Describe your project, get a ballpark range in seconds</li>
               <li><strong>Blueprint Analysis</strong> — Upload a photo or PDF, get a material takeoff + cost estimate</li>
@@ -163,7 +310,7 @@
         <h4>Contact</h4>
         <a href="tel:7607893980">(760) 789-3980</a>
         <a href="mailto:JPSJimenez33@gmail.com">JPSJimenez33@gmail.com</a>
-        <span>Emergency 24/7</span>
+        <span><a href="/index.html">Home</a></span>
       </div>
       <div class="footer-links footer-botwave">
         <h4>Botwave Digital</h4>

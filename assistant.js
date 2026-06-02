@@ -46,9 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
   quickActions.forEach(btn => {
     btn.addEventListener('click', () => {
       const action = btn.dataset.action;
+      if (action === 'emergency') {
+        launchEmergencyTriage();
+        return;
+      }
       const messages = {
         services: "What services does JPS offer and what are the rates?",
-        emergency: "I have a plumbing emergency — how fast can you get here?",
         estimate: "I'd like to get an estimate for a project. How does this work?",
         blueprint: "I have a blueprint or photo I'd like analyzed for a material takeoff.",
         member: "Tell me about the JPS-MP membership program. What are the tiers and benefits?",
@@ -64,6 +67,168 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ── Emergency Triage (state-of-the-art interactive decision tree) ──
+  //
+  // The web UI is the front door for emergencies. Instead of a one-line
+  // "call this number" reply, the user gets a clickable scenario picker
+  // and a structured action plan for the situation they choose.
+  const TRIAGE_SCENARIOS = {
+    gas: {
+      label: 'I smell gas',
+      icon: '⚠️',
+      severity: 'life-safety',
+      steps: [
+        '<strong>Do NOT flip any switches, lighters, or matches.</strong>',
+        'Open windows and doors if you can do it safely.',
+        'Evacuate everyone from the building. Bring pets.',
+        'From a safe distance: call <a href="tel:911">911</a> (gas leaks are a fire department response).',
+        'Then call JPS master plumber Chuck at <a href="tel:7607893980">(760) 789-3980</a> once you\'re clear of the building.',
+        'Do not re-enter until the gas company or fire department says it\'s safe.'
+      ],
+      promise: 'Chuck is on call for gas emergencies during business hours. After-hours, use the 911 path first — we\'ll dispatch as soon as the scene is made safe.'
+    },
+    burst: {
+      label: 'Burst pipe / flooding',
+      icon: '💧',
+      severity: 'urgent',
+      steps: [
+        'Find your main water shut-off valve. It\'s usually where the water line enters the house — basement, crawl space, garage, or outside near the meter.',
+        'Turn the valve clockwise until it stops. If it\'s a lever-style valve, turn it perpendicular to the pipe.',
+        'Open a faucet at the lowest point of the house to drain remaining water from the lines.',
+        'Kill power to any area that\'s actively flooding near electrical outlets or panels — only if you can do so safely from a dry location.',
+        'Photograph the damage for insurance.',
+        'Call JPS: <a href="tel:7607893980">(760) 789-3980</a>. We\'ll walk you through the next steps and dispatch Chuck for a same-day visit during business hours.'
+      ],
+      promise: 'Same-day response during business hours for active flooding. We can usually be on site within 2-4 hours of your call.'
+    },
+    sewer: {
+      label: 'Sewer backup',
+      icon: '🚫',
+      severity: 'urgent',
+      steps: [
+        'Stop running any water in the house — no showers, dishwashers, laundry, or toilet flushes.',
+        'Keep people and pets away from the affected drain or fixture. Sewage carries bacteria.',
+        'If it\'s safe to do so, ventilate the area (open windows, exhaust fan).',
+        'Do not use chemical drain cleaners — they make the situation worse for the plumber and can damage pipes.',
+        'Call JPS: <a href="tel:7607893980">(760) 789-3980</a>. We do NOT do routine drain cleaning, but we diagnose and repair sewer line failures (collapses, root intrusions, bellied pipes).'
+      ],
+      promise: 'We diagnose the cause (not just snake and run). Camera inspection included on every sewer call. Honest quote on the spot.'
+    },
+    nohotwater: {
+      label: 'No hot water',
+      icon: '🔥',
+      severity: 'standard',
+      steps: [
+        'Check the water heater\'s pilot light (gas units) or breaker (electric units).',
+        'If you have a gas water heater and the pilot is out, follow the relight instructions on the unit. If it won\'t stay lit, the thermocouple is likely bad — needs a pro.',
+        'If the tank is leaking at the base, that\'s a replacement, not a repair. Stop using hot water and call us.',
+        'Tankless error code? Snap a photo of the code panel and tell us the model — we can often diagnose over the phone.',
+        'Otherwise: book a service call. JPS: <a href="tel:7607893980">(760) 789-3980</a>.'
+      ],
+      promise: 'Same-day diagnosis during business hours. Tank, tankless, or hybrid — we work on all of them.'
+    },
+    leak: {
+      label: 'Slow leak / drip',
+      icon: '💦',
+      severity: 'routine',
+      steps: [
+        'Place a bucket or towel under the drip. Note where it\'s coming from (faucet, shut-off valve, supply line, drain).',
+        'If the leak is at a supply line under a sink, you can usually shut off the angle stop (the small oval handle on the pipe coming out of the wall) to stop water to that fixture.',
+        'Photograph the leak location — it helps us bring the right parts.',
+        'Not urgent, but don\'t ignore it. A slow drip wastes water and can rot cabinets or subfloor.',
+        'Book a service call: <a href="tel:7607893980">(760) 789-3980</a>. Or describe what you\'re seeing right here and I can give you a ballpark.'
+      ],
+      promise: 'Next-business-day service call. Most slow leaks get diagnosed and fixed in a single visit.'
+    },
+    other: {
+      label: 'Something else',
+      icon: '❓',
+      severity: 'unknown',
+      steps: [
+        'Describe what you\'re seeing in the chat below — fixture type, where it is, when it started, any sounds or smells.',
+        'Photo helps a lot. You can attach one with the upload button below.',
+        'I\'ll give you a ballpark on whether it\'s urgent, DIY-able, or needs a pro.'
+      ],
+      promise: 'Live AI triage — describe the issue, I\'ll route you to the right next step.'
+    }
+  };
+
+  function launchEmergencyTriage() {
+    addUserMessage('I have a plumbing situation. Help me figure out what to do.');
+    const scenarios = Object.entries(TRIAGE_SCENARIOS);
+    const buttons = scenarios.map(([key, s]) =>
+      `<button class="triage-btn triage-${s.severity}" data-triage="${key}">
+         <span class="triage-icon">${s.icon}</span>
+         <span class="triage-label">${s.label}</span>
+       </button>`
+    ).join('');
+
+    const html = `
+      <div class="triage-card">
+        <div class="triage-header">
+          <strong>Emergency Triage</strong>
+          <span class="triage-sub">Pick the situation that matches what you're seeing.</span>
+        </div>
+        <div class="triage-grid">${buttons}</div>
+        <div class="triage-disclaimer">
+          <strong>Life-safety first.</strong> If anyone is in immediate danger — gas leak, smoke, electrical fire — call <a href="tel:911">911</a> first, then JPS.
+        </div>
+      </div>
+    `;
+    addAIMessage(html, 'JPS AI Assistant', { raw: true });
+    // Wire the scenario buttons
+    setTimeout(() => {
+      document.querySelectorAll('.triage-btn').forEach(b => {
+        b.addEventListener('click', () => showTriageResult(b.dataset.triage));
+      });
+    }, 50);
+  }
+
+  function showTriageResult(key) {
+    const s = TRIAGE_SCENARIOS[key];
+    if (!s) return;
+    addUserMessage(s.icon + ' ' + s.label);
+
+    const stepsHtml = s.steps.map((step, i) =>
+      `<li><span class="step-num">${i + 1}</span><span class="step-text">${step}</span></li>`
+    ).join('');
+
+    const severityClass = `severity-${s.severity}`;
+
+    const html = `
+      <div class="triage-result ${severityClass}">
+        <div class="triage-result-header">
+          <span class="triage-result-icon">${s.icon}</span>
+          <div>
+            <strong class="triage-result-title">${s.label}</strong>
+            <span class="triage-result-severity">${s.severity.replace('-', ' / ')}</span>
+          </div>
+        </div>
+        <ol class="triage-steps">${stepsHtml}</ol>
+        <div class="triage-promise">
+          <strong>JPS commitment:</strong> ${s.promise}
+        </div>
+        <div class="triage-actions">
+          <a href="tel:7607893980" class="triage-action primary">📞 Call (760) 789-3980</a>
+          <button class="triage-action secondary" data-action="book">📅 Book online</button>
+          <button class="triage-action tertiary" data-action="back-to-triage">← Different situation</button>
+        </div>
+      </div>
+    `;
+    addAIMessage(html, 'JPS AI Assistant', { raw: true });
+    setTimeout(() => {
+      const back = document.querySelector('[data-action="back-to-triage"]');
+      if (back) back.addEventListener('click', launchEmergencyTriage);
+      const book = document.querySelector('[data-action="book"]');
+      if (book) book.addEventListener('click', () => {
+        addUserMessage('Book a service call');
+        addAIMessage("I'll collect a few details and Chuck will call you back. What's your name?", 'JPS AI Assistant');
+        // Triggers the booking flow the existing /book quick action uses
+        sendToBackend('I need to book a service call');
+      });
+    }, 50);
+  }
 
   // File upload
   fileUpload.addEventListener('change', (e) => {
@@ -128,6 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
     addUserMessage(text);
     chatInput.value = '';
     chatInput.style.height = 'auto';
+    // Detect emergency keywords typed in chat → launch the triage UI
+    if (/\b(emergency|emergencies|urgent|help me|flooding|burst|gas leak)\b/i.test(text)) {
+      launchEmergencyTriage();
+      return;
+    }
     sendToBackend(text);
   }
 
@@ -180,14 +350,18 @@ document.addEventListener('DOMContentLoaded', () => {
     conversationHistory.push({ role: 'user', content: text });
   }
 
-  function addAIMessage(html, name = 'JPS AI Assistant') {
+  function addAIMessage(html, name = 'JPS AI Assistant', opts = {}) {
+    // If the HTML is a block (starts with <div, <ol, <ul, <table, etc.),
+    // don't wrap it in <p> — that breaks block-level layout.
+    const isBlock = /^\s*<(div|ol|ul|table|section|article|nav|header|footer|aside)/i.test(html);
+    const body = isBlock ? html : `<p>${html}</p>`;
     const msg = document.createElement('div');
     msg.className = 'chat-msg chat-msg-ai';
     msg.innerHTML = `
       <div class="msg-avatar"><div class="avatar-icon">JPS</div></div>
       <div class="msg-content">
         <div class="msg-header"><strong>${name}</strong><span class="msg-time">${timeNow()}</span></div>
-        <div class="msg-body"><p>${html}</p></div>
+        <div class="msg-body">${body}</div>
       </div>
     `;
     chatArea.appendChild(msg);
