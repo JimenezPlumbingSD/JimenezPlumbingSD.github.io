@@ -1,0 +1,376 @@
+/* JPS — Ramona Landing Page */
+
+.ramona-hero {
+  background: linear-gradient(135deg, #002944 0%, #003D68 50%, #005A9C 100%);
+  color: #fff;
+  padding: 5rem 0 4rem;
+}
+.ramona-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.ramona-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1.25rem;
+}
+.ramona-hero h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.ramona-hero h1 .accent { color: #FFC72C; }
+.ramona-hero p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+.ramona-hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.ramona-trust-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+}
+.ramona-trust-row span { white-space: nowrap; }
+.ramona-hero-img img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  object-fit: cover;
+  max-height: 420px;
+}
+
+/* ESTATES CALLOUT */
+.estates-callout {
+  background: #FFC72C;
+  padding: 2rem 0;
+}
+.estates-callout-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.estates-icon {
+  flex-shrink: 0;
+  width: 64px; height: 64px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #002944;
+}
+.estates-callout h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #002944;
+  margin-bottom: 0.5rem;
+}
+.estates-callout p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #002944;
+  max-width: 780px;
+}
+
+/* SERVICES */
+.ramona-services {
+  padding: var(--space-xl) 0;
+  background: var(--white);
+}
+.ramona-services h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.rsvc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: var(--space-lg);
+}
+.rsvc-card {
+  background: var(--off-white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.rsvc-card:hover {
+  border-color: var(--dodger-blue);
+  box-shadow: var(--shadow-md);
+}
+.rsvc-icon {
+  width: 52px; height: 52px;
+  background: var(--dodger-blue);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+.rsvc-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+.rsvc-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+}
+.rsvc-price {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--dodger-blue);
+  background: rgba(0,90,156,0.07);
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+}
+.not-offered {
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #FFF7ED;
+  border-left: 4px solid #F97316;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+  color: #7C2D12;
+  line-height: 1.6;
+}
+
+/* WHY LOCAL */
+.why-local {
+  padding: var(--space-xl) 0;
+  background: var(--off-white);
+}
+.why-local-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.why-local h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+}
+.why-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.why-list li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--gray-600);
+  padding-left: 1.5rem;
+  position: relative;
+}
+.why-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--dodger-blue);
+  font-weight: 900;
+}
+.why-list strong { color: var(--navy); }
+.why-local-photo img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  max-height: 380px;
+}
+.photo-caption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+/* MEMBERSHIP SECTION */
+.ramona-membership {
+  padding: var(--space-xl) 0;
+  background: linear-gradient(135deg, #002944 0%, #003D68 50%, #005A9C 100%);
+  color: #fff;
+}
+.member-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFC72C;
+  margin-bottom: 0.75rem;
+}
+.ramona-membership h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #fff;
+  margin-bottom: 1rem;
+  max-width: 640px;
+}
+.ramona-membership p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  max-width: 620px;
+  margin-bottom: 1.5rem;
+}
+.member-bullets {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.member-bullets li {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.9);
+  padding-left: 1.5rem;
+  position: relative;
+}
+.member-bullets li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #FFC72C;
+  font-weight: 900;
+}
+.member-tier-preview {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.mtp-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 120px;
+  position: relative;
+}
+.mtp-card.mtp-popular {
+  background: rgba(255,199,44,0.15);
+  border-color: #FFC72C;
+}
+.mtp-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFC72C;
+  color: #002944;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.mtp-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.25rem;
+}
+.mtp-price {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: #fff;
+}
+.mtp-price span { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.6); }
+.ramona-membership .btn { margin-right: 0.75rem; margin-bottom: 0.5rem; }
+
+/* FAQ */
+.ramona-faq {
+  padding: var(--space-xl) 0;
+  background: var(--white);
+}
+.ramona-faq h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* FINAL CTA */
+.ramona-cta {
+  padding: var(--space-xl) 0;
+  background: var(--off-white);
+  text-align: center;
+}
+.ramona-cta h2 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.ramona-cta p {
+  font-size: 1.05rem;
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+}
+.ramona-cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .rsvc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .ramona-hero-inner { grid-template-columns: 1fr; }
+  .ramona-hero-img { display: none; }
+  .why-local-grid { grid-template-columns: 1fr; }
+  .why-local-photo { display: none; }
+  .estates-callout-inner { flex-direction: column; gap: 1rem; }
+  .rsvc-grid { grid-template-columns: 1fr; }
+  .ramona-cta-actions { flex-direction: column; align-items: center; }
+  .ramona-cta-actions .btn { width: 100%; max-width: 320px; justify-content: center; }
+}
