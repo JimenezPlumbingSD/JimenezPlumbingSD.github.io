@@ -3,467 +3,468 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="description" content="Jimenez Plumbing Solutions — Full Service Plumbing from Concept to Completion. North County San Diego.">
 <title>JPS | Jimenez Plumbing Solutions</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    width: 100%; height: 100%;
-    background: #05070f;
-    overflow: hidden;
-    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  }
-  .splash-stage {
-    position: fixed; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    background: #05070f url('static/images/jps_all_seeing_plumber.png') no-repeat center center;
-    background-size: contain;
-    cursor: pointer;
-    z-index: 1;
-  }
-  .splash-loading {
-    position: fixed; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    background: #05070f;
-    color: #fff;
-    z-index: 5;
-    transition: opacity 0.6s ease;
-  }
-  .splash-loading.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .loading-spinner {
-    width: 40px; height: 40px;
-    border: 3px solid rgba(255,255,255,0.15);
-    border-top-color: #0072C6;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-text {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    letter-spacing: 2px;
-  }
-  #splash-canvas {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .splash-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: #fff;
-    pointer-events: none;
-  }
-  .brand {
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 0.5rem;
-  }
-  .tag {
-    font-size: clamp(1.1rem, 4vw, 1.6rem);
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-  .sub {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    letter-spacing: 1px;
-  }
-  .hint {
-    margin-top: 1.5rem;
-    font-size: 0.7rem;
-    opacity: 0.5;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%; height: 100%;
+  background: #05070f;
+  overflow: hidden;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+}
+
+/* ── STAGE ── */
+.splash-stage {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  background: #05070f;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* ── PLUMBER IMAGE ── */
+.plumber-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.plumber-img {
+  max-width: 72vmin;
+  max-height: 72vmin;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: plumberEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+@keyframes plumberEnter {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── EYE BLINK OVERLAY ── */
+.eye-overlay {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18vmin; height: 12vmin;
+  pointer-events: none;
+  z-index: 2;
+}
+.eyelid {
+  position: absolute;
+  left: 0; right: 0;
+  height: 50%;
+  background: #05070f;
+  transition: transform 0.18s ease;
+}
+.eyelid.upper { top: 0; transform-origin: top; transform: scaleY(0); }
+.eyelid.lower { bottom: 0; transform-origin: bottom; transform: scaleY(0); }
+.eye-overlay.blink .eyelid.upper { transform: scaleY(1); }
+.eye-overlay.blink .eyelid.lower { transform: scaleY(1); }
+
+/* ── EYE GLOW ── */
+.eye-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22vmin; height: 16vmin;
+  background: radial-gradient(ellipse at center, rgba(100,180,255,0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  animation: eyePulse 3s ease-in-out infinite;
+}
+@keyframes eyePulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* ── TEXT CONTENT ── */
+.splash-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1rem 3rem;
+  pointer-events: none;
+  opacity: 0;
+  animation: contentEnter 0.8s ease 1s forwards;
+}
+@keyframes contentEnter {
+  to { opacity: 1; }
+}
+.brand {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+.tag {
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.sub {
+  font-size: 0.7rem;
+  opacity: 0.55;
+  letter-spacing: 1px;
+}
+.hint {
+  margin-top: 1.2rem;
+  font-size: 0.65rem;
+  opacity: 0.45;
+  letter-spacing: 1px;
+}
+.version {
+  font-size: 0.55rem;
+  opacity: 0.35;
+  margin-top: 0.4rem;
+}
+
+/* ── WATER PARTICLES ── */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+}
+.particle.drop {
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.9), rgba(120,200,255,0.7));
+  box-shadow: 0 0 6px rgba(100,180,255,0.5);
+}
+.particle.mist {
+  background: rgba(160,210,255,0.4);
+  filter: blur(2px);
+}
+.particle.splash {
+  background: rgba(200,230,255,0.6);
+}
+
+/* ── SHOCKWAVE ── */
+.shockwave {
+  position: absolute;
+  border: 2px solid rgba(160,210,255,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 12px rgba(100,180,255,0.3);
+}
+
+/* ── SCREEN FLASH ── */
+.screen-flash {
+  position: fixed;
+  inset: 0;
+  background: rgba(160,210,255,0.2);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+}
+.screen-flash.active {
+  animation: flashAnim 0.3s ease-out;
+}
+@keyframes flashAnim {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── EXIT TRANSITION ── */
+.splash-stage.exiting {
+  animation: stageExit 0.6s ease forwards;
+}
+@keyframes stageExit {
+  to { opacity: 0; transform: scale(1.05); }
+}
+
+/* ── LOADING SCREEN ── */
+.loading-screen {
+  position: fixed; inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #05070f;
+  z-index: 100;
+  transition: opacity 0.8s ease;
+}
+.loading-screen.done {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-spinner {
+  width: 36px; height: 36px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-top-color: #0072C6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 </style>
 </head>
 <body>
 
-<div class="splash-stage" id="splashStage">
-  <canvas id="splash-canvas"></canvas>
+<!-- Loading screen -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Loading JPS</div>
+</div>
+
+<!-- Screen flash overlay -->
+<div class="screen-flash" id="screenFlash"></div>
+
+<!-- Main stage -->
+<div class="splash-stage" id="splashStage" tabindex="0" aria-label="JPS splash page. Click to enter.">
+
+  <!-- Eye glow behind image -->
+  <div class="eye-glow" id="eyeGlow"></div>
+
+  <!-- Plumber image -->
+  <div class="plumber-wrap">
+    <img
+      src="static/images/jps_all_seeing_plumber.png"
+      alt="JPS All-Seeing Plumber logo"
+      class="plumber-img"
+      id="plumberImg"
+      loading="eager"
+    >
+  </div>
+
+  <!-- Eye blink overlay -->
+  <div class="eye-overlay" id="eyeOverlay">
+    <div class="eyelid upper"></div>
+    <div class="eyelid lower"></div>
+  </div>
+
+  <!-- Particle container -->
+  <div id="particleContainer" style="position:absolute;inset:0;pointer-events:none;z-index:4;"></div>
+
+  <!-- Text content -->
   <div class="splash-content">
-    <div class="brand">JIMENEZ PLUMBING SOLUTIONS INC.</div>
+    <div class="brand">Jimenez Plumbing Solutions Inc.</div>
     <div class="tag">Full Service Plumbing<br>from Concept to Completion</div>
     <div class="sub">North County San Diego • Est. 1989 • CA C-36 #568271</div>
-    <div class="hint">CLICK THE EYE — BLINK + WATER EXPLOSION</div>
-    <div style="font-size:0.6rem; opacity:0.4; margin-top:0.5rem;">Built with pride in Ramona • Powered by Botwave AI • JPS v2</div>
+    <div class="hint">CLICK THE EYE — WATER EXPLOSION</div>
+    <div class="version">Built with pride in Ramona • Powered by Botwave AI • JPS v2</div>
   </div>
 </div>
 
 <script>
-// Premium cinematic splash — best possible with canvas + the provided PNG
-const stage = document.getElementById('splashStage');
-const canvas = document.getElementById('splash-canvas');
-const ctx = canvas.getContext('2d', { alpha: true });
+(function() {
+  'use strict';
 
-let img = new Image();
-img.src = 'static/images/jps_all_seeing_plumber.png';
+  const stage = document.getElementById('splashStage');
+  const img = document.getElementById('plumberImg');
+  const eyeOverlay = document.getElementById('eyeOverlay');
+  const particleContainer = document.getElementById('particleContainer');
+  const screenFlash = document.getElementById('screenFlash');
+  const loadingScreen = document.getElementById('loadingScreen');
 
-let particles = [];
-let shockwaves = [];
-let blinkProgress = 0; // 0 = open, 1 = closed
-let isExploding = false;
-let startTime = 0;
-let mouseX = 0;
-let mouseY = 0;
-let eyeHover = 0; // intensity 0-1 for hover glow on eye
+  let isExploding = false;
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
+  // ── Dismiss loading screen once image is ready ──
+  function dismissLoading() {
+    loadingScreen.classList.add('done');
+    setTimeout(() => loadingScreen.remove(), 800);
+  }
 
-function getEyeCenter() {
-  // Better tuned for the all-seeing plumber PNG - eye is the focal "all seeing" element, roughly center-upper
-  const w = canvas.width;
-  const h = canvas.height;
-  const imgSize = Math.min(w, h) * 0.68;
-  const imgX = (w - imgSize) / 2;
-  const imgY = (h - imgSize) / 2 - imgSize * 0.03;
-  return {
-    x: imgX + imgSize * 0.50,
-    y: imgY + imgSize * 0.37,
-    radius: imgSize * 0.09
-  };
-}
+  if (img.complete && img.naturalWidth > 0) {
+    dismissLoading();
+  } else {
+    img.addEventListener('load', dismissLoading, { once: true });
+    img.addEventListener('error', () => {
+      // If image fails, show stage anyway with text-only fallback
+      img.style.display = 'none';
+      dismissLoading();
+    }, { once: true });
+    // Hard cap: dismiss after 3s regardless
+    setTimeout(dismissLoading, 3000);
+  }
 
-class Particle {
-  constructor(x, y, isMain = true) {
-    this.x = x;
-    this.y = y;
-    this.prevX = x;
-    this.prevY = y;
+  // ── AUTO-BLINK ──
+  function blink() {
+    if (isExploding) return;
+    eyeOverlay.classList.add('blink');
+    setTimeout(() => eyeOverlay.classList.remove('blink'), 280);
+  }
+  setInterval(blink, 5200);
+
+  // ── WATER EXPLOSION ──
+  function createDrop(x, y, isMain) {
+    const el = document.createElement('div');
+    el.className = 'particle ' + (isMain ? 'drop' : 'mist');
+
     const angle = Math.random() * Math.PI * 2;
-    const speed = isMain ? (5 + Math.random() * 13) : (2 + Math.random() * 5);
-    this.vx = Math.cos(angle) * speed;
-    this.vy = Math.sin(angle) * speed - (isMain ? 2 : 0.8);
-    this.size = isMain ? (2.8 + Math.random() * 6) : (1 + Math.random() * 2.5);
-    this.life = isMain ? (60 + Math.random() * 40) : (30 + Math.random() * 25);
-    this.maxLife = this.life;
-    this.gravity = 0.09;
-    this.friction = 0.98;
-    this.hue = 190 + Math.random() * 25;
-    this.alpha = 0.92;
-    this.type = isMain ? 'drop' : 'mist';
-  }
-  update() {
-    this.prevX = this.x;
-    this.prevY = this.y;
-    this.x += this.vx;
-    this.y += this.vy;
-    this.vy += this.gravity;
-    this.vx *= this.friction;
-    this.vy *= this.friction * 0.985;
-    this.life -= 1;
-    this.alpha = Math.max(0.02, (this.life / this.maxLife) * 0.9);
-    this.size *= (this.type === 'mist' ? 0.985 : 0.99);
-  }
-  draw() {
-    if (this.alpha < 0.02 || this.size < 0.3) return;
-    ctx.save();
-    ctx.globalAlpha = this.alpha;
-    if (this.type === 'drop') {
-      // Water drop with trail for motion
-      ctx.strokeStyle = `hsla(${this.hue}, 85%, 80%, ${this.alpha * 0.6})`;
-      ctx.lineWidth = Math.max(1, this.size * 0.6);
-      ctx.beginPath();
-      ctx.moveTo(this.prevX, this.prevY);
-      ctx.lineTo(this.x, this.y);
-      ctx.stroke();
+    const speed = isMain ? (4 + Math.random() * 10) : (1.5 + Math.random() * 4);
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed - (isMain ? 3 : 1);
+    const size = isMain ? (3 + Math.random() * 5) : (1.5 + Math.random() * 2.5);
+    const life = isMain ? (700 + Math.random() * 500) : (350 + Math.random() * 300);
 
-      ctx.fillStyle = `hsla(${this.hue}, 92%, 75%, 1)`;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
+    el.style.cssText = `
+      left:${x}px; top:${y}px;
+      width:${size}px; height:${size}px;
+      transition: transform ${life}ms ease-out, opacity ${life}ms ease-out;
+    `;
+    particleContainer.appendChild(el);
 
-      // Bright specular highlight
-      ctx.fillStyle = 'rgba(255,255,255,0.8)';
-      ctx.beginPath();
-      ctx.arc(this.x - this.size * 0.4, this.y - this.size * 0.4, this.size * 0.35, 0, Math.PI * 2);
-      ctx.fill();
-    } else {
-      // Fine mist - softer
-      ctx.fillStyle = `hsla(${this.hue}, 70%, 85%, 1)`;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.restore();
-  }
-}
+    // Force reflow
+    void el.offsetWidth;
 
-function spawnExplosion(cx, cy) {
-  particles = [];
-  shockwaves = [];
-  // Main heavy drops with trails - big screen-filling explosion
-  for (let i = 0; i < 400; i++) {
-    particles.push(new Particle(cx, cy, true));
-  }
-  // Fine mist / spray
-  for (let i = 0; i < 300; i++) {
-    particles.push(new Particle(cx, cy, false));
-  }
-  // Special "geyser" upward burst from the eye for dramatic water explosion
-  for (let i = 0; i < 60; i++) {
-    const p = new Particle(cx, cy, true);
-    p.vx = (Math.random() - 0.5) * 4;
-    p.vy = - (8 + Math.random() * 10); // strong up
-    p.life = 40 + Math.random() * 20;
-    p.size = 4 + Math.random() * 3;
-    particles.push(p);
-  }
-  // Shockwave rings for impact
-  for (let i = 0; i < 4; i++) {
-    shockwaves.push({ x: cx, y: cy, radius: 6 + i*10, alpha: 0.85 - i*0.1, speed: 8 + i*1.5 });
-  }
-  // Initial bright water flash at the eye/pupil
-  window._splashFlash = { x: cx, y: cy, alpha: 0.95, radius: 18 };
-}
+    const endX = x + vx * (life / 16);
+    const endY = y + vy * (life / 16) + 0.5 * 0.15 * Math.pow(life / 16, 2); // gravity
 
-function drawEyelid(eye, progress) {
-  // progress 0=open, 1=closed - more organic eyelid shape
-  const lidH = eye.radius * 1.55 * progress;
-  ctx.save();
-  ctx.fillStyle = '#05070f';
-  // Upper eyelid - slightly curved for realism
-  ctx.beginPath();
-  ctx.ellipse(eye.x, eye.y - eye.radius * 0.2, eye.radius * 1.18, lidH * 0.95, -0.05, 0, Math.PI * 2);
-  ctx.fill();
-  // Lower eyelid
-  ctx.beginPath();
-  ctx.ellipse(eye.x, eye.y + eye.radius * 0.28, eye.radius * 1.1, lidH * 0.6, 0.05, 0, Math.PI * 2);
-  ctx.fill();
-  // Dark lash line
-  ctx.strokeStyle = '#0a0a0f';
-  ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.ellipse(eye.x, eye.y - eye.radius * 0.12, eye.radius * 1.15, lidH * 0.65, 0, 0, Math.PI);
-  ctx.stroke();
-  ctx.restore();
-}
+    el.style.transform = `translate(${endX - x}px, ${endY - y}px) scale(${isMain ? 0.3 : 0})`;
+    el.style.opacity = '0';
 
-function drawShockwaves() {
-  shockwaves.forEach((sw, i) => {
-    ctx.save();
-    const alpha = Math.max(0.05, sw.alpha);
-    ctx.strokeStyle = `rgba(180, 220, 255, ${alpha})`;
-    ctx.lineWidth = 3.5 - i * 0.7;
-    ctx.shadowColor = 'rgba(100, 180, 255, 0.4)';
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
-    ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.restore();
-  });
-}
-
-function updateAndDraw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Draw the sacred plumber image centered
-  if (img.complete) {
-    const size = Math.min(canvas.width, canvas.height) * 0.72;
-    const x = (canvas.width - size) / 2;
-    const y = (canvas.height - size) / 2 - size * 0.04;
-    ctx.drawImage(img, x, y, size, size);
+    setTimeout(() => el.remove(), life + 50);
   }
 
-  const eye = getEyeCenter();
+  function createShockwave(x, y, delay) {
+    const el = document.createElement('div');
+    el.className = 'shockwave';
+    const size = 20 + delay * 15;
+    el.style.cssText = `
+      left:${x - size/2}px; top:${y - size/2}px;
+      width:${size}px; height:${size}px;
+      opacity:0.8;
+      transition: all ${600 + delay * 150}ms ease-out;
+    `;
+    particleContainer.appendChild(el);
 
-  // Subtle idle eye glow / "alive" effect, intensified by hover
-  const t = (Date.now() - startTime) / 1000;
-  const baseGlow = 0.35 + Math.sin(t * 1.6) * 0.2;
-  const hoverGlow = baseGlow + eyeHover * 0.5;
-  ctx.save();
-  ctx.fillStyle = `rgba(130, 190, 255, ${hoverGlow * 0.18})`;
-  ctx.beginPath();
-  ctx.arc(eye.x, eye.y, eye.radius * (1.3 + eyeHover * 0.4), 0, Math.PI * 2);
-  ctx.fill();
-  // Extra bright core on hover
-  if (eyeHover > 0.1) {
-    ctx.fillStyle = `rgba(200, 230, 255, ${eyeHover * 0.25})`;
-    ctx.beginPath();
-    ctx.arc(eye.x, eye.y, eye.radius * 0.6, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.restore();
+    void el.offsetWidth;
 
-  // Draw current blink lid
-  if (blinkProgress > 0.01) {
-    drawEyelid(eye, Math.min(1, blinkProgress));
+    el.style.transform = `scale(${4 + delay})`;
+    el.style.opacity = '0';
+
+    setTimeout(() => el.remove(), 900 + delay * 150);
   }
 
-  // Explosion
-  if (isExploding) {
-    drawShockwaves();
+  function createGeyser(x, y) {
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.className = 'particle drop';
+      const vx = (Math.random() - 0.5) * 3;
+      const vy = -(6 + Math.random() * 8);
+      const size = 3 + Math.random() * 3;
+      const life = 400 + Math.random() * 300;
 
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      p.update();
-      p.draw();
-      if (p.life <= 0) particles.splice(i, 1);
-      // "Splash" on virtual floor for more water explosion feel
-      if (p.y > canvas.height * 0.72 && p.vy > 0 && Math.random() < 0.08) {
-        // Create small splash droplets
-        for (let s = 0; s < 2; s++) {
-          const sp = new Particle(p.x, p.y, false);
-          sp.vy = -Math.abs(p.vy) * 0.6 - Math.random() * 1.5;
-          sp.vx = (Math.random() - 0.5) * 3;
-          sp.life = 15 + Math.random() * 12;
-          particles.push(sp);
-        }
-        p.vy *= 0.2; // dampen
-      }
-    }
+      el.style.cssText = `left:${x}px; top:${y}px; width:${size}px; height:${size}px; transition: transform ${life}ms ease-out, opacity ${life}ms ease-out;`;
+      particleContainer.appendChild(el);
+      void el.offsetWidth;
 
-    // Update shockwaves
-    for (let i = shockwaves.length - 1; i >= 0; i--) {
-      const sw = shockwaves[i];
-      sw.radius += sw.speed;
-      sw.alpha -= 0.028;
-      if (sw.alpha <= 0.02) shockwaves.splice(i, 1);
-    }
-
-    // Bright central flash (water burst at eye)
-    if (window._splashFlash && window._splashFlash.alpha > 0.05) {
-      const f = window._splashFlash;
-      ctx.save();
-      ctx.globalAlpha = f.alpha;
-      const grad = ctx.createRadialGradient(f.x, f.y, 5, f.x, f.y, f.radius * 2.5);
-      grad.addColorStop(0, 'rgba(200, 230, 255, 0.95)');
-      grad.addColorStop(0.3, 'rgba(160, 210, 255, 0.6)');
-      grad.addColorStop(1, 'rgba(100, 180, 255, 0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, f.radius * 2.5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-      f.alpha *= 0.82;
-      f.radius += 1.8;
+      el.style.transform = `translate(${vx * 30}px, ${vy * 25}px) scale(0.2)`;
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), life + 50);
     }
   }
 
-  // Continue animation
-  requestAnimationFrame(updateAndDraw);
-}
-
-function triggerCinematicExplosion(clickX, clickY) {
-  const eye = getEyeCenter();
-  const targetX = clickX || eye.x;
-  const targetY = clickY || eye.y;
-
-  isExploding = true;
-  blinkProgress = 0;
-
-  // Dramatic blink sequence
-  const blinkDur = 260;
-  const startBlink = performance.now();
-
-  function doBlink(ts) {
-    const elapsed = ts - startBlink;
-    const p = Math.min(1, elapsed / blinkDur);
-    // Ease in-out for realistic close/open
-    blinkProgress = p < 0.5 ? (p * 2) : (2 - p * 2);
-    if (elapsed < blinkDur * 1.6) {
-      requestAnimationFrame(doBlink);
-    } else {
-      blinkProgress = 0;
+  function createSplashDroplets(x, y) {
+    for (let i = 0; i < 12; i++) {
+      const el = document.createElement('div');
+      el.className = 'particle splash';
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 20 + Math.random() * 40;
+      const size = 2 + Math.random() * 3;
+      el.style.cssText = `left:${x}px; top:${y}px; width:${size}px; height:${size}px; transition: all 400ms ease-out;`;
+      particleContainer.appendChild(el);
+      void el.offsetWidth;
+      el.style.transform = `translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist - 10}px) scale(0)`;
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 450);
     }
   }
-  requestAnimationFrame(doBlink);
 
-  // Launch the water explosion from the eye
-  setTimeout(() => {
-    spawnExplosion(targetX, targetY);
-  }, 140);
+  function explode(clickX, clickY) {
+    if (isExploding) return;
+    isExploding = true;
 
-  // Powerful exit after the burst peaks
-  setTimeout(() => {
-    stage.style.transition = 'opacity 520ms ease, transform 520ms ease';
-    stage.style.opacity = '0';
-    stage.style.transform = 'scale(1.06)';
+    // Get click position or default to center
+    const rect = stage.getBoundingClientRect();
+    const cx = clickX || rect.width / 2;
+    const cy = clickY || rect.height * 0.42; // approximate eye height
+
+    // Blink shut
+    eyeOverlay.classList.add('blink');
+
+    // Screen flash
+    screenFlash.classList.add('active');
+    setTimeout(() => screenFlash.classList.remove('active'), 300);
+
+    // Spawn drops
+    for (let i = 0; i < 80; i++) createDrop(cx, cy, true);
+    for (let i = 0; i < 60; i++) createDrop(cx, cy, false);
+
+    // Geyser burst
+    createGeyser(cx, cy);
+
+    // Shockwaves
+    for (let i = 0; i < 3; i++) createShockwave(cx, cy, i);
+
+    // Splash droplets after impact
+    setTimeout(() => createSplashDroplets(cx, cy + 60), 200);
+
+    // Open eyelid
+    setTimeout(() => eyeOverlay.classList.remove('blink'), 400);
+
+    // Exit to homepage
     setTimeout(() => {
-      window.location.href = 'home.html';
-    }, 480);
-  }, 920);
-}
-
-// Extra: on explosion, briefly flash the whole stage for "water explodes on the screen" impact
-const origTrigger = triggerCinematicExplosion;
-triggerCinematicExplosion = function(clickX, clickY) {
-  origTrigger(clickX, clickY);
-  setTimeout(() => {
-    if (stage) {
-      const flash = document.createElement('div');
-      flash.style.cssText = 'position:fixed;inset:0;background:rgba(160,210,255,0.25);z-index:20;pointer-events:none;';
-      stage.appendChild(flash);
-      setTimeout(() => flash.remove(), 180);
-    }
-  }, 150);
-};
-
-// Click / tap handling
-stage.addEventListener('click', (e) => {
-  const rect = stage.getBoundingClientRect();
-  triggerCinematicExplosion(e.clientX, e.clientY);
-});
-
-// Keyboard
-stage.setAttribute('tabindex', '0');
-stage.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    const eye = getEyeCenter();
-    triggerCinematicExplosion(eye.x, eye.y);
+      stage.classList.add('exiting');
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 600);
+    }, 900);
   }
-});
 
-// Interactive eye glow on hover / mousemove
-stage.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  const eye = getEyeCenter();
-  const dist = Math.hypot(mouseX - eye.x, mouseY - eye.y);
-  if (dist < eye.radius * 3 && !isExploding) {
-    eyeHover = Math.max(eyeHover, 1 - (dist / (eye.radius * 3)));
-  }
-});
-stage.addEventListener('mouseleave', () => {
-  eyeHover = 0;
-});
+  // ── EVENTS ──
+  stage.addEventListener('click', (e) => {
+    explode(e.clientX, e.clientY);
+  });
 
-// Boot
-img.onload = () => {
-  startTime = Date.now();
-  updateAndDraw();
-  // Gentle auto-blink every 6s to make the eye feel alive
-  setInterval(() => {
-    if (!isExploding) {
-      blinkProgress = 1;
-      setTimeout(() => { blinkProgress = 0; }, 240);
+  stage.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      explode();
     }
-  }, 6200);
-};
+  });
 
-if (img.complete) {
-  startTime = Date.now();
-  updateAndDraw();
-}
+  // Touch support
+  stage.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      const t = e.touches[0];
+      explode(t.clientX, t.clientY);
+    }
+  }, { passive: true });
 
-console.log('%c[JPS v2] Best cinematic splash loaded. Click the eye for premium blink + water explosion.', 'color:#4a6fa5');
+  // Parallax on mouse move (subtle)
+  let mouseTimeout;
+  stage.addEventListener('mousemove', (e) => {
+    if (isExploding) return;
+    const rect = stage.getBoundingClientRect();
+    const dx = (e.clientX - rect.width / 2) / rect.width;
+    const dy = (e.clientY - rect.height / 2) / rect.height;
+    img.style.transform = `scale(1) translate(${dx * -8}px, ${dy * -8}px)`;
+    clearTimeout(mouseTimeout);
+    mouseTimeout = setTimeout(() => {
+      img.style.transform = 'scale(1) translate(0,0)';
+    }, 100);
+  });
+
+})();
 </script>
 
 </body>

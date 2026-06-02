@@ -57,14 +57,14 @@
     <a href="about.html">About</a>
     <a href="home.html#services">Services</a>
     <a href="membership.html">JPS-MP Membership</a>
-    <a href="assistant.html">24/7 Assistant</a>
+    <a href="assistant.html">24/7 AI Chat</a>
     <a href="home.html#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="member-hero">
-  <div class="container">
+<section class="member-hero" data-reveal="fade-in">
+  <div class="container" data-reveal="fade-up" data-reveal-delay="200">
     <span class="member-hero-since">JPS-MAINTENANCE PLAN</span>
     <h1>Protect Your Home.<br>Save Every Year.</h1>
     <p>Like health insurance for your plumbing — JPS-MP members get priority service, annual inspections, real discounts, and extended warranties. Three tiers. One call. Zero worry.</p>
@@ -73,10 +73,10 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-it-works">
+<section class="how-it-works" data-reveal="fade-up">
   <div class="container">
     <h2>How JPS-MP Works</h2>
-    <div class="steps-grid">
+    <div class="steps-grid" data-reveal="stagger">
       <div class="step">
         <span class="step-num">1</span>
         <h3>Pick Your Plan</h3>
@@ -97,7 +97,7 @@
 </section>
 
 <!-- PRICING TIERS -->
-<section class="pricing" id="join">
+<section class="plan-section" id="join" data-reveal="fade-up">
   <div class="container">
     <h2>Choose Your Plan</h2>
     <p class="section-sub">All plans include priority scheduling, annual inspection, water heater flush, no dispatch fees, and a transferable membership.</p>
@@ -189,10 +189,10 @@
 </section>
 
 <!-- COMPARE TABLE -->
-<section class="compare">
+<section class="comparison" data-reveal="fade-up">
   <div class="container">
     <h2>Side-by-Side Comparison</h2>
-    <div class="compare-table-wrap">
+    <div class="table-wrapper" data-reveal="scale-in" data-reveal-delay="200">
       <table class="compare-table">
         <thead>
           <tr>
@@ -224,10 +224,10 @@
 </section>
 
 <!-- FAQ -->
-<section class="faq">
+<section class="faq" data-reveal="fade-up">
   <div class="container">
     <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
+    <div class="faq-list" data-reveal="stagger">
       <details class="faq-item">
         <summary>What does the annual inspection cover?</summary>
         <p>A licensed JPS master plumber inspects every accessible fixture, pipe connection, water heater, gas line, and shutoff valve in your home. You receive a written report with findings, recommendations, and photos. Think of it as a physical for your plumbing system.</p>
@@ -269,7 +269,7 @@
 </section>
 
 <!-- CTA -->
-<section class="member-cta">
+<section class="member-cta" data-reveal="fade-up">
   <div class="container">
     <h2>Protect Your Plumbing Today</h2>
     <p>SD Country Estates homeowners — your water pressure, old copper, and seismic risk mean you need this more than most. One inspection catches what a decade of ignoring won't.</p>
@@ -335,6 +335,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="page-animations.js"></script>
 
 <!-- Floating Chat with Us button -->
 <a href="/assistant.html" class="chat-with-us" aria-label="Chat with JPS AI Assistant">
