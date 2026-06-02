@@ -168,3 +168,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
+
+// Video embed — swap placeholder for real YouTube iframe when ID is set
+(function () {
+  const placeholder = document.querySelector('.video-placeholder[data-yt-id]');
+  if (!placeholder) return;
+  const ytId = placeholder.dataset.ytId;
+  if (!ytId || ytId === 'YOUTUBE_ID_HERE') return;
+  // Real ID set — replace placeholder with iframe on click
+  placeholder.addEventListener('click', function () {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
+    placeholder.parentElement.replaceChild(iframe, placeholder);
+  });
+})();
