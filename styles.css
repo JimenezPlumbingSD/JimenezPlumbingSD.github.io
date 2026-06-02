@@ -654,3 +654,45 @@ ul { list-style: none; }
   }
   .chat-pulse { top: 6px; left: 6px; }
 }
+/* ── Colorway switcher dropdown ── */
+.colorway-switch { position: relative; display: inline-block; }
+.colorway-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+.colorway-btn:hover { border-color: rgba(255,255,255,0.7); }
+.colorway-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  min-width: 200px;
+  overflow: hidden;
+  z-index: 9999;
+}
+.colorway-menu.open { display: block; }
+.colorway-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  color: #1e293b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.colorway-menu button:hover { background: #f1f5f9; }
+.colorway-menu button.active { font-weight: 700; background: #f1f5f9; }

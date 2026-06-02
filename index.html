@@ -17,7 +17,7 @@
 
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none'; connect-src 'self' https://site.api.espn.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -47,6 +47,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="" id="colorwaySheet" disabled>
 </head>
 
 <body>
@@ -93,6 +94,19 @@
             <a href="https://t.me/jimenezplumbingbot" class="call-button telegram-button" aria-label="Message us on Telegram" style="background:#0088cc;margin-left:8px;" target="_blank" rel="noopener">
                 💬 MESSAGE US
             </a>
+            <div class="colorway-switch" id="colorwaySwitch" style="margin-left:8px;">
+              <button class="colorway-btn" id="colorwayToggle" aria-label="Change color theme" title="Change color theme">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              </button>
+              <div class="colorway-menu" id="colorwayMenu">
+                <button data-colorway="" class="active">Default Blue</button>
+                <button data-colorway="colorway-padres.css">Padres Navy &amp; Orange</button>
+                <button data-colorway="colorway-chargers.css">Chargers Powder</button>
+                <button data-colorway="colorway-lakers.css">Lakers Purple &amp; Gold</button>
+                <button data-colorway="colorway-teal.css">Teal / Black</button>
+                <button data-colorway="colorway-charcoal.css">Charcoal / Gold</button>
+              </div>
+            </div>
         </div>
         
         <!-- Mobile Navigation Menu -->
@@ -124,8 +138,8 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Professional plumber performing service" 
+                    <img src="static/images/jps-work-hero.jpg" 
+                         alt="JPS — copper and PEX rough-in on a San Diego remodel" 
                          loading="lazy"
                          width="800"
                          height="600">
@@ -137,29 +151,29 @@
         <section class="trust-bar" aria-label="Company trust indicators">
             <div class="trust-container">
                 <div class="trust-item">
-                    <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="Licensed and insured badge" 
+                    <img src="static/images/badge-licensed.png" 
+                         alt="Licensed and insured" 
                          class="trust-icon" 
                          loading="lazy">
                     <span class="trust-text">Licensed & Insured</span>
                 </div>
                 <div class="trust-item">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="5-star rated badge" 
+                    <img src="static/images/badge-5star.png" 
+                         alt="5-star rated on Yelp" 
                          class="trust-icon" 
                          loading="lazy">
                     <span class="trust-text">5-Star Rated on Yelp</span>
                 </div>
                 <div class="trust-item">
-                    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="Locally owned badge" 
+                    <img src="static/images/badge-local.png" 
+                         alt="Locally owned and operated" 
                          class="trust-icon" 
                          loading="lazy">
                     <span class="trust-text">Locally Owned & Operated</span>
                 </div>
                 <div class="trust-item">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="24/7 availability badge" 
+                    <img src="static/images/badge-247.png" 
+                         alt="Available 24/7" 
                          class="trust-icon" 
                          loading="lazy">
                     <span class="trust-text">Available 24/7</span>
@@ -242,8 +256,8 @@
                             </div>
                         </div>
                         <div class="about-image">
-                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                                 alt="JPS Plumbing team at work" 
+                            <img src="static/images/jps-chuck-kevin.jpg" 
+                                 alt="Chuck Jimenez and his son Kevin — JPS founders, Chargers fans" 
                                  loading="lazy"
                                  width="600"
                                  height="400">
@@ -466,9 +480,9 @@
                     <div class="footer-legal">
                         <h3 class="footer-column-heading">Legal</h3>
                         <ul class="footer-links">
-                            <li><a href="#privacy" class="footer-link">Privacy Policy</a></li>
-                            <li><a href="#terms" class="footer-link">Terms of Service</a></li>
-                            <li><a href="#warranty" class="footer-link">Warranty Information</a></li>
+                            <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+                            <li><a href="warranty.html" class="footer-link">Warranty Information</a></li>
                             <li><a href="#accessibility" class="footer-link">Accessibility</a></li>
                         </ul>
                     </div>
@@ -491,5 +505,6 @@
     
     <!-- JavaScript -->
     <script src="script.js"></script>
+<script src="sports-widget.js"></script>
 </body>
 </html>

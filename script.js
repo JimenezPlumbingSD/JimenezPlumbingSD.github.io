@@ -108,4 +108,63 @@ document.addEventListener('DOMContentLoaded', () => {
     yearEl.innerHTML = yearEl.innerHTML.replace('1989\u20132025', `1989\u2013${new Date().getFullYear()}`);
     yearEl.innerHTML = yearEl.innerHTML.replace('1989\u20132026', `1989\u2013${new Date().getFullYear()}`);
   }
+
+  // Colorway switcher
+  const colorwayToggle = document.getElementById('colorwayToggle');
+  const colorwayMenu   = document.getElementById('colorwayMenu');
+  const colorwaySheet  = document.getElementById('colorwaySheet');
+
+  function applyColorway(cw) {
+    if (!colorwaySheet) return;
+    if (cw) {
+      colorwaySheet.setAttribute('href', cw);
+      colorwaySheet.removeAttribute('disabled');
+    } else {
+      colorwaySheet.setAttribute('href', '');
+      colorwaySheet.setAttribute('disabled', '');
+    }
+    if (colorwayMenu) {
+      colorwayMenu.querySelectorAll('button[data-colorway]').forEach(b => {
+        b.classList.toggle('active', b.dataset.colorway === cw);
+      });
+    }
+  }
+
+  if (colorwayToggle && colorwayMenu && colorwaySheet) {
+    const saved = localStorage.getItem('jps_colorway') || '';
+    applyColorway(saved);
+
+    colorwayToggle.addEventListener('click', e => {
+      e.stopPropagation();
+      colorwayMenu.classList.toggle('open');
+    });
+
+    colorwayMenu.querySelectorAll('button[data-colorway]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cw = btn.dataset.colorway;
+        applyColorway(cw);
+        localStorage.setItem('jps_colorway', cw);
+        colorwayMenu.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', () => colorwayMenu.classList.remove('open'));
+    colorwayMenu.addEventListener('click', e => e.stopPropagation());
+  }
 });
+
+// Billing toggle (membership page)
+(function () {
+  const btns = document.querySelectorAll('.billing-btn');
+  if (!btns.length) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const monthly = btn.dataset.period === 'month';
+      document.querySelectorAll('.price-annual').forEach(el => el.hidden = monthly);
+      document.querySelectorAll('.price-monthly').forEach(el => el.hidden = !monthly);
+    });
+  });
+})();
