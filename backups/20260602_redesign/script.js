@@ -139,11 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         b.classList.toggle('active', match);
       });
     }
-    // dispatch event for other components (sports widget, etc.)
-    window.dispatchEvent(new CustomEvent('jps-colorway-changed', { detail: { colorway: cw, isLight: isLight || cw === 'light' } }));
   }
-  // Expose globally so sports widget and chat can trigger it
-  window.jpsApplyColorway = applyColorway;
 
   if (colorwayToggle && colorwayMenu && colorwaySheet) {
     const saved = localStorage.getItem('jps_colorway') || '';

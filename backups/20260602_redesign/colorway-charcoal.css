@@ -1,0 +1,69 @@
+/* ================================================
+   JPS — Charcoal/Gold Colorway
+   ================================================ */
+
+:root {
+  --navy: #1C1C1C;
+  --navy-dark: #141414;
+  --dodger-blue: #C5A55A;
+  --dodger-blue-light: #D4B96A;
+  --red: #8B0000;
+  --red-dark: #5C0000;
+  --white: #FFFFFF;
+  --off-white: #F5F0E8;
+  --gray-100: #F0EBE0;
+  --gray-200: #DDD5C5;
+  --gray-300: #C4B89A;
+  --gray-600: #6E6E6E;
+  --gray-700: #404040;
+  --gradient-primary: linear-gradient(135deg, #1C1C1C 0%, #333 50%, #C5A55A 100%);
+  --gradient-accent: linear-gradient(237deg, #8B0000 0%, #C5A55A 100%);
+  --gradient-hero: linear-gradient(135deg, #141414 0%, #1C1C1C 40%, #2A2A2A 100%);
+}
+
+/* Warm light body */
+body {
+  background: #FAF6EE;
+  color: #2A2A2A;
+}
+
+.top-nav { background: #1C1C1C !important; }
+.top-nav a { color: #C5A55A !important; }
+
+.hero {
+  background: linear-gradient(135deg, #141414 0%, #1C1C1C 40%, #333 70%, #2A2A2A 100%) !important;
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%) !important;
+  color: #1C1C1C !important;
+  font-weight: 800 !important;
+}
+
+.btn-accent:hover {
+  box-shadow: 0 4px 20px rgba(197, 165, 90, 0.4) !important;
+}
+
+.offer-card {
+  background: linear-gradient(180deg, #1C1C1C, #333) !important;
+  border-color: rgba(197, 165, 90, 0.4) !important;
+}
+
+.offer-card .plan-name { color: #C5A55A !important; }
+.offer-card .plan-price { color: #D4B96A !important; }
+
+.cat-card h3 { color: #8B6914 !important; }
+
+.site-footer {
+  background: #141414 !important;
+  color: #C4B89A;
+}
+
+.footer-botwave {
+  border-left-color: #C5A55A !important;
+}
+
+.preventive { background: #F0EBE0 !important; }
+.preventive h2 { color: #8B6914 !important; }
+.maint-card { background: #FAF6EE !important; border-color: rgba(197, 165, 90, 0.3) !important; }
+.maint-card h3 { color: #8B6914 !important; }

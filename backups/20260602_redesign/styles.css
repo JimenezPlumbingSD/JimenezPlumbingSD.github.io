@@ -1002,22 +1002,3 @@ html.theme-light .site-footer {
   background: #0f172a;
   color: #cbd5e1;
 }
-
-/* Minimal about page polish (so it doesn't look broken) */
-.about-hero { padding: 3rem 0 2rem; background: linear-gradient(180deg, var(--navy-dark), var(--navy)); color: #fff; }
-.about-hero h1 { font-size: clamp(2rem,6vw,3.2rem); line-height:1.05; margin:0.4rem 0 1rem; }
-.about-hero .lead { max-width: 720px; font-size:1.05rem; opacity:0.95; }
-.about-story { padding: 2.5rem 0; }
-.about-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; }
-@media (max-width:900px){ .about-grid { grid-template-columns:1fr; } }
-.about-main h2 { font-size:1.6rem; margin-bottom:1rem; }
-.about-highlights { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.25rem 0; }
-.about-highlights .hl { background:#f8fafc; border:1px solid #e2e8f0; padding:0.75rem 1rem; border-radius:8px; }
-.about-highlights .hl strong { display:block; font-size:1.1rem; color:var(--dodger-blue); }
-.about-aside .about-card { background:#fff; border:1px solid #e2e8f0; padding:1rem 1.25rem; border-radius:10px; margin-bottom:1rem; }
-.about-aside .about-card h3 { margin:0 0 0.5rem; font-size:1rem; }
-.about-aside ul { margin:0; padding-left:1.1rem; font-size:0.9rem; line-height:1.5; }
-.about-mp-cta { display:block; margin-top:0.5rem; background:var(--dodger-blue); color:#fff; text-align:center; padding:0.65rem; border-radius:8px; font-weight:600; text-decoration:none; }
-.motto-section { background:#0f172a; color:#fff; padding:2rem 0; text-align:center; }
-.motto-section blockquote { max-width:720px; margin:0 auto; font-size:1.35rem; font-style:italic; }
-.motto-section cite { display:block; margin-top:0.5rem; font-size:0.9rem; opacity:0.7; }

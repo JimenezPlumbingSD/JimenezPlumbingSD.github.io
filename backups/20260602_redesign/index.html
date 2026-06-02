@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<!--
+  JPS Plumbing Services Landing Page
+  =================================
+  
+  STRUCTURAL OVERVIEW:
+  - Mobile-first, fully responsive design
+  - Semantic HTML5 with ARIA landmarks
+  - WCAG AA compliant color contrast (Dodgers blue/white/red)
+  - Sticky header with click-to-call functionality
+  - Two-column layout (desktop) with sticky inquiry form
+  - Trust badges and customer testimonials
+  - Comprehensive footer with local SEO
+  - Vanilla CSS3 with fluid scaling
+  - Lightweight vanilla JavaScript for interactivity
+-->
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none'; connect-src 'self' https://site.api.espn.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Professional plumbing services in San Diego. Emergency repairs, drain cleaning, water heater installation, and leak detection available 24/7.">
+    <meta name="keywords" content="plumbing, San Diego, emergency plumbing, drain cleaning, water heater repair, leak detection, pipe repair, JPS Plumbing">
+    <meta name="author" content="JPS Plumbing Services">
+    <meta property="og:title" content="Professional Plumbing Services in San Diego | JPS Plumbing | Available 24/7">
+    <meta property="og:description" content="Emergency plumbing repairs, drain cleaning, water heater services, and leak detection in San Diego. Licensed, insured, and available 24/7.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jps33sd.com/">
+    <meta property="og:image" content="https://jps33sd.com/static/images/jps_all_seeing_plumber.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>JPS | Jimenez Plumbing Solutions | North County San Diego | jps33sd.com</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="" id="colorwaySheet" disabled>
+</head>
+
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    
+    <!-- Header with Sticky Navigation -->
+    <header class="header" id="main-header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html" aria-label="JPS Plumbing Services Home">
+                    <svg viewBox="0 0 200 60" class="logo-svg" aria-hidden="true">
+                        <text x="10" y="35" font-family="Montserrat, sans-serif" font-size="24" font-weight="700" fill="#ffffff">JPS</text>
+                        <text x="10" y="52" font-family="Open Sans, sans-serif" font-size="14" font-weight="400" fill="#EF3E42">PLUMBING SERVICES</text>
+                        <circle cx="170" cy="30" r="15" fill="none" stroke="#ffffff" stroke-width="2"/>
+                        <path d="M 165 25 L 170 30 L 175 25" stroke="#EF3E42" stroke-width="2" fill="none"/>
+                        <path d="M 165 35 L 170 30 L 175 35" stroke="#EF3E42" stroke-width="2" fill="none"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation - clean tabs inspired by Anderson / Bill Howe / Roto-Rooter enterprise plumbing sites -->
+            <nav class="nav-desktop" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="membership.html" class="nav-link jps-mp-link">JPS-MP</a></li>
+                    <li class="nav-item"><a href="assistant.html" class="nav-link chat-link">24/7 AI Chat</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="mobile-menu-icon"></span>
+                <span class="mobile-menu-icon"></span>
+                <span class="mobile-menu-icon"></span>
+            </button>
+            
+            <!-- Click-to-Call + Hot 24/7 Chat button (on every page per vision) -->
+            <a href="tel:7607893980" class="call-button" aria-label="Call now: 760-789-3980">
+                CALL (760) 789-3980
+            </a>
+            <a href="assistant.html" class="call-button chat-hot-btn" aria-label="Open 24/7 AI Chat" style="background:#EF3E42; color:#fff; margin-left:8px; font-weight:700;" target="_blank" rel="noopener">
+                24/7 AI CHAT
+            </a>
+            <div class="colorway-switch" id="colorwaySwitch" style="margin-left:8px;">
+              <button class="colorway-btn" id="colorwayToggle" aria-label="Change color theme" title="Change color theme">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              </button>
+              <div class="colorway-menu" id="colorwayMenu">
+                <button data-colorway="" class="active">Dark (Default)</button>
+                <button data-colorway="light" data-mode="light">Light Mode</button>
+                <button data-colorway="colorway-chargers.css">Old School Chargers (Powder/Yellow)</button>
+                <button data-colorway="colorway-padres.css">Retro 90s Padres (Orange/Brown)</button>
+                <button data-colorway="colorway-lakers.css">LA Dodgers (Blue/Red/White)</button>
+              </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <nav aria-label="Mobile navigation">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+                    <li class="mobile-nav-item"><a href="#services" class="mobile-nav-link">Services</a></li>
+                    <li class="mobile-nav-item"><a href="membership.html" class="mobile-nav-link">JPS-MP Membership</a></li>
+                    <li class="mobile-nav-item"><a href="assistant.html" class="mobile-nav-link chat-link">24/7 AI Chat</a></li>
+                    <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+                    <li class="mobile-nav-item"><a href="tel:7607893980" class="mobile-call-button">Call Now: (760) 789-3980</a></li>
+                    <li class="mobile-nav-item"><a href="assistant.html" class="mobile-call-button" style="background:#0088cc;" target="_blank" rel="noopener">💬 24/7 AI Chat</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- DRAMATIC SPLASH LANDING (per vision: first thing you see is the cosmic art; click triggers eye blink + water explode, then loads onboarding homepage content) -->
+        <section id="splash" class="jps-splash" aria-label="JPS Cosmic Entry - Click to enter Jimenez Plumbing Solutions">
+            <div class="splash-inner">
+                <img id="splashImg"
+                     src="static/images/jps_all_seeing_plumber.png"
+                     alt="JPS All-Seeing Plumber — Cosmic art. Click the eye to begin. Full service plumbing from Concept to Completion."
+                     width="1024" height="1024">
+                <canvas id="splashFx" class="splash-canvas" aria-hidden="true"></canvas>
+                <div class="splash-content">
+                    <div class="splash-eyebrow">JIMENEZ PLUMBING SOLUTIONS INC.</div>
+                    <h1 class="splash-title">Full Service Plumbing<br>from Concept to Completion</h1>
+                    <p class="splash-sub">North County San Diego • Oceanside to Julian • Est. 1989 • CA C-36 #568271</p>
+                    <div class="splash-instruction">
+                        <span class="splash-cta">CLICK THE EYE TO ENTER →</span>
+                        <span class="splash-hint">Eye blinks • Water explodes • Site unlocks</span>
+                    </div>
+                </div>
+            </div>
+            <div class="splash-footer-note">Built with pride in Ramona • Powered by Botwave AI</div>
+        </section>
+        
+        <!-- Trust Bar -->
+        <section class="trust-bar" aria-label="Company trust indicators">
+            <div class="trust-container">
+                <div class="trust-item">
+                    <img src="static/images/badge-licensed.png" 
+                         alt="Licensed and insured" 
+                         class="trust-icon" 
+                         loading="lazy">
+                    <span class="trust-text">Licensed & Insured</span>
+                </div>
+                <div class="trust-item">
+                    <img src="static/images/badge-5star.png" 
+                         alt="5-star rated on Yelp" 
+                         class="trust-icon" 
+                         loading="lazy">
+                    <span class="trust-text">5-Star Rated on Yelp</span>
+                </div>
+                <div class="trust-item">
+                    <img src="static/images/badge-local.png" 
+                         alt="Locally owned and operated" 
+                         class="trust-icon" 
+                         loading="lazy">
+                    <span class="trust-text">Locally Owned & Operated</span>
+                </div>
+                <div class="trust-item">
+                    <img src="static/images/badge-247.png" 
+                         alt="Available 24/7" 
+                         class="trust-icon" 
+                         loading="lazy">
+                    <span class="trust-text">Available 24/7</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Content Area -->
+        <div class="main-content-area">
+            <!-- Left Column: Services -->
+            <div class="left-column">
+                <!-- Services Section -->
+                <section id="services" class="services-section" aria-labelledby="services-heading">
+                    <h2 id="services-heading" class="section-heading">Our Plumbing Services</h2>
+                    <p class="section-subheading">Comprehensive solutions for residential and commercial properties</p>
+                    
+                    <div class="services-grid">
+                        <!-- Emergency Plumbing -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#005A9C"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Emergency Plumbing Repairs</h3>
+                            <p class="service-description">Fast response to plumbing emergencies including burst pipes, severe leaks, flooding, and LP gas odors. Available 24/7 — and we're already in Ramona.</p>
+                            <a href="ramona.html#services" class="service-link">Learn More →</a>
+                        </div>
+                        
+                        <!-- Repipe -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 3h18v4H3zm0 7h18v4H3zm0 7h18v4H3z" fill="#005A9C"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Whole-House Repipe</h3>
+                            <p class="service-description">Copper or PEX repiping for homes with aging or failing pipes. Most Ramona homes built before 2000 are at or past the expected lifespan of their original plumbing.</p>
+                            <a href="ramona.html#services" class="service-link">Learn More →</a>
+                        </div>
+                        
+                        <!-- Water Heater -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#005A9C"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Tankless Water Heater Install &amp; Service</h3>
+                            <p class="service-description">Rinnai, Navien, and Noritz tankless units on natural gas and LP/propane. Endless hot water, lower bills, 20-year lifespan. From $2,200 installed.</p>
+                            <a href="ramona.html#services" class="service-link">Learn More →</a>
+                        </div>
+                        
+                        <!-- Leak Detection -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#005A9C"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Slab Leak Detection &amp; Repair</h3>
+                            <p class="service-description">Electronic detection finds the leak without tearing up your floor. Repair options include spot fix, reroute, or full repipe depending on pipe age.</p>
+                            <a href="ramona.html#services" class="service-link">Learn More →</a>
+                        </div>
+                    </div>
+                </section>
+                
+
+                <!-- Video Section -->
+                <section id="video" class="video-section">
+                  <div class="video-container">
+                    <div class="video-text">
+                      <span class="video-eyebrow">Meet Chuck</span>
+                      <h2>Your Ramona Plumber.<br>In His Own Words.</h2>
+                      <p>35 years in Ramona. Licensed master plumber. The guy who shows up himself, not a dispatcher. Watch the 60-second version of why JPS is different.</p>
+                      <a href="tel:7607893980" class="cta-button primary-button">Call (760) 789-3980</a>
+                    </div>
+                    <div class="video-embed" id="videoEmbed">
+                      <!-- Swap data-yt-id to your YouTube video ID when uploaded -->
+                      <div class="video-placeholder" data-yt-id="YOUTUBE_ID_HERE">
+                        <div class="video-placeholder-inner">
+                          <div class="video-play-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                          </div>
+                          <p>Video coming today — check back soon</p>
+                          <a href="tel:7607893980" class="video-call-btn">Or call Chuck directly: (760) 789-3980</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="about-section" aria-labelledby="about-heading">
+                    <h2 id="about-heading" class="section-heading">About JPS Plumbing Services</h2>
+                    <p class="section-subheading">Serving Ramona &amp; San Diego since 1989</p>
+                    
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>Chuck Jimenez has been a licensed master plumber since 1989 — over 35 years working on homes in Ramona and San Diego Country Estates. JPS is family-owned, based on Pine Street in Ramona, and specializes in whole-house repipes, tankless water heaters, LP gas systems, and slab leaks.</p>
+                            <p>No dispatch fees. No call centers. When you call JPS, Chuck answers. CA Lic #568271.</p>
+                            <div class="about-cta">
+                                <a href="ramona.html" class="cta-button primary-button">Our Story &amp; Services</a>
+                                <a href="#inquiry-form" class="cta-button secondary-button">Request Service</a>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                            <img src="static/images/jps-chuck-kevin.jpg" 
+                                 alt="Chuck Jimenez and his son Kevin — JPS founders, Chargers fans" 
+                                 loading="lazy"
+                                 width="600"
+                                 height="400">
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Customer Reviews Section -->
+                <section id="reviews" class="reviews-section" aria-labelledby="reviews-heading">
+                    <h2 id="reviews-heading" class="section-heading">What Our Customers Say</h2>
+                    <p class="section-subheading">Trusted by homeowners and businesses across San Diego</p>
+                    
+                    <div class="reviews-grid">
+                        <!-- Review 1 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-stars" aria-label="5 stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                                <h3 class="review-title">Exceptional Service!</h3>
+                            </div>
+                            <p class="review-text">"JPS Plumbing responded quickly to our emergency and fixed our burst pipe within hours. The plumber was professional, courteous, and explained everything clearly. Highly recommend!"</p>
+                            <p class="review-author">- Sarah M., San Diego</p>
+                        </div>
+                        
+                        <!-- Review 2 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-stars" aria-label="5 stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                                <h3 class="review-title">Reliable and Trustworthy</h3>
+                            </div>
+                            <p class="review-text">"We've used JPS Plumbing for multiple projects and they always deliver excellent results. Their pricing is fair and they stand behind their work. A truly professional company."</p>
+                            <p class="review-author">- Michael T., Chula Vista</p>
+                        </div>
+                        
+                        <!-- Review 3 -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-stars" aria-label="5 stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                                <h3 class="review-title">Saved Our Business</h3>
+                            </div>
+                            <p class="review-text">"When our restaurant had a major plumbing issue, JPS Plumbing came to the rescue. They worked after hours to get us back up and running before opening the next day. Lifesavers!"</p>
+                            <p class="review-author">- Carlos R., La Jolla</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-cta">
+                        <a href="https://g.page/r/CbHwlJFDBbq1EBM/review" target="_blank" rel="noopener" class="cta-button primary-button">Leave a Google Review</a>
+                        <a href="#inquiry-form" class="cta-button secondary-button">Write a Review</a>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Right Column: Sticky Inquiry Form -->
+            <div class="right-column">
+                <aside class="inquiry-form-container" aria-labelledby="inquiry-form-heading">
+                    <div class="inquiry-form-card">
+                        <h2 id="inquiry-form-heading" class="form-heading">Schedule Your Service</h2>
+                        <p class="form-subheading">Fill out the form below and we'll contact you promptly</p>
+                        
+                        <form id="inquiry-form" class="inquiry-form" novalidate>
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-input" required aria-required="true">
+                                <span class="form-error" id="name-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required aria-required="true">
+                                <span class="form-error" id="phone-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required aria-required="true">
+                                <span class="form-error" id="email-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service Needed</label>
+                                <select id="service" name="service" class="form-select" required aria-required="true">
+                                    <option value="" selected disabled>Select a service</option>
+                                    <option value="emergency-repair">Emergency Plumbing Repair</option>
+                                    <option value="drain-cleaning">Drain Cleaning & Hydro-Jetting</option>
+                                    <option value="water-heater">Water Heater Repair & Installation</option>
+                                    <option value="leak-detection">Leak Detection & Pipe Repair</option>
+                                    <option value="other">Other Plumbing Service</option>
+                                </select>
+                                <span class="form-error" id="service-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Describe your plumbing issue or service needs..."></textarea>
+                                <span class="form-error" id="message-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="captcha-placeholder">
+                                    <p>CAPTCHA verification (will be implemented in production)</p>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="form-button primary-button">Submit Request</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" aria-label="Footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 200 60" class="footer-logo-svg" aria-hidden="true">
+                            <text x="10" y="35" font-family="Montserrat, sans-serif" font-size="20" font-weight="700" fill="#ffffff">JPS</text>
+                            <text x="10" y="52" font-family="Open Sans, sans-serif" font-size="12" font-weight="400" fill="#EF3E42">PLUMBING SERVICES</text>
+                        </svg>
+                    </div>
+                    <p class="footer-description">JPS Plumbing Services provides professional plumbing solutions to San Diego homeowners and businesses. Licensed, insured, and available 24/7 for emergencies.</p>
+                    
+                    <div class="footer-hours">
+                        <h3 class="footer-column-heading">Business Hours</h3>
+                        <p><strong>Monday - Friday:</strong> 7:00 AM - 7:00 PM</p>
+                        <p><strong>Saturday:</strong> 8:00 AM - 5:00 PM</p>
+                        <p><strong>Sunday:</strong> Closed</p>
+                        <p><strong>Emergency Service:</strong> 24/7</p>
+                    </div>
+                    
+                    <div class="footer-service-area">
+                        <h3 class="footer-column-heading">Service Area</h3>
+                        <p>San Diego, CA and surrounding communities</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h3 class="footer-column-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services" class="footer-link">Our Services</a></li>
+                        <li><a href="#emergency" class="footer-link">Emergency Plumbing</a></li>
+                        <li><a href="#drain-cleaning" class="footer-link">Drain Cleaning</a></li>
+                        <li><a href="#water-heaters" class="footer-link">Water Heaters</a></li>
+                        <li><a href="#leak-detection" class="footer-link">Leak Detection</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#careers" class="footer-link">Careers</a></li>
+                        <li><a href="#blog" class="footer-link">Plumbing Tips Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3 class="footer-column-heading">Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:7607893980" class="footer-contact-link">(760) 789-3980</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">✉️</span>
+                            <a href="mailto:JPSJimenez33@gmail.com" class="footer-contact-link">JPSJimenez33@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">💬</span>
+                            <a href="https://t.me/jimenezplumbingbot" class="footer-contact-link" target="_blank" rel="noopener">Message Us on Telegram</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span>326 Pine Street, Ramona, CA 92065</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📋</span>
+                            <span>License #: C-36 #568271</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Social & Legal -->
+                <div class="footer-column">
+                    <h3 class="footer-column-heading">Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="https://www.yelp.com/biz/jimenez-plumbing-solutions-ramona" target="_blank" rel="noopener" class="social-link" aria-label="Yelp">
+                            <span class="social-icon">📸</span> Yelp
+                        </a>
+                        <a href="https://www.angi.com" target="_blank" rel="noopener" class="social-link" aria-label="Angi">
+                            <span class="social-icon">🏠</span> Angi
+                        </a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+                            <span class="social-icon">📘</span> Facebook
+                        </a>
+                        <a href="https://nextdoor.com" target="_blank" rel="noopener" class="social-link" aria-label="Nextdoor">
+                            <span class="social-icon">🏡</span> Nextdoor
+                        </a>
+                        <a href="https://www.bbb.org" target="_blank" rel="noopener" class="social-link" aria-label="Better Business Bureau">
+                            <span class="social-icon">🏆</span> BBB
+                        </a>
+                    </div>
+                    
+                    <div class="footer-legal">
+                        <h3 class="footer-column-heading">Legal</h3>
+                        <ul class="footer-links">
+                            <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+                            <li><a href="warranty.html" class="footer-link">Warranty Information</a></li>
+                            <li><a href="#accessibility" class="footer-link">Accessibility</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p class="copyright">&copy; 2025 JPS Plumbing Services. All rights reserved.</p>
+                <p class="credit">Website design and development by <a href="https://botwave.io" target="_blank" rel="noopener" class="credit-link">Botwave Digital Solutions</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        ↑
+    </button>
+    
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+<script src="sports-widget.js"></script>
+</body>
+</html>

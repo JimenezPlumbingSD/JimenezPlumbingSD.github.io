@@ -21,10 +21,72 @@ document.addEventListener('DOMContentLoaded', () => {
   let conversationHistory = [];
   let requestCount = 0;
   let requestsRemaining = 5; // free tier default
+
+  // Hardened client-side rate limiting + abuse guard (localStorage, per feature #6 + #9)
+  const RATE_KEY = 'jps_chat_requests';
+  const ABUSE_KEY = 'jps_chat_abuse';
+  const WINDOW_MS = 30 * 60 * 1000; // 30 min
+
+  function loadRateState() {
+    try {
+      const raw = localStorage.getItem(RATE_KEY);
+      if (!raw) return { count: 0, ts: Date.now() };
+      const state = JSON.parse(raw);
+      if (Date.now() - state.ts > WINDOW_MS) return { count: 0, ts: Date.now() };
+      return state;
+    } catch { return { count: 0, ts: Date.now() }; }
+  }
+
+  function saveRateState(state) {
+    try { localStorage.setItem(RATE_KEY, JSON.stringify(state)); } catch {}
+  }
+
+  function isAbused() {
+    try {
+      const abuse = parseInt(localStorage.getItem(ABUSE_KEY) || '0', 10);
+      return abuse >= 3; // after 3 strikes, locked
+    } catch { return false; }
+  }
+
+  function recordAbuse() {
+    try {
+      let abuse = parseInt(localStorage.getItem(ABUSE_KEY) || '0', 10);
+      localStorage.setItem(ABUSE_KEY, String(abuse + 1));
+    } catch {}
+  }
+
+  let rateState = loadRateState();
+  requestsRemaining = Math.max(0, 5 - rateState.count);
   let apiOnline = false;
 
   // Check API health on load
   checkAPIHealth();
+
+  // Opening prompt per vision: promote Botwave + JPS + Telegram redirect
+  setTimeout(() => {
+    if (chatArea && chatArea.children.length < 3) {
+      addAIMessage(
+        `Hi — I'm the <strong>JPS AI Assistant</strong>, built by <strong>Botwave Digital Solutions</strong>.<br><br>` +
+        `Botwave builds practical AI tools for local businesses: 24/7 customer assistants, membership programs (like JPS-MP), automated estimates, and scheduling hand-off to the owner.<br><br>` +
+        `Everything the <a href="https://t.me/jimenezplumbingbot" target="_blank">@jimenezplumbingbot</a> Telegram bot can do, this web UI can do too — ask about services, get pricing, book callbacks, learn the maintenance program, or just chat plumbing.<br><br>` +
+        `This is a proof-of-concept for JPS (Jimenez Plumbing Solutions) in San Diego Country Estates and North County. <strong>Chuck Jimenez</strong> still answers the real phone at (760) 789-3980.<br><br>` +
+        `What can I help you with today? (Emergency? Call Chuck now.)`,
+        'JPS + Botwave'
+      );
+    }
+  }, 420);
+
+  // Rate-limit fallback message
+  const FALLBACK_MESSAGE = `
+You've reached the free message limit for this session. 
+
+If you need more help, you can:
+• Call Chuck directly: (760) 789-3980
+• Message the Telegram bot: @jimenezplumbingbot
+• Learn more about Botwave: https://botwave.io
+
+Botwave builds AI tools for trades — 24/7 chat, membership programs, automated estimates, and scheduling hand-off. Built by Kyle Jimenez (Chuck's son) right here in North County San Diego.
+`;
 
   // Auto-resize textarea
   chatInput.addEventListener('input', () => {
@@ -286,11 +348,25 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleSend() {
     const text = chatInput.value.trim();
     if (!text) return;
+    if (isAbused()) {
+      addAIMessage(FALLBACK_MESSAGE.replace(/\n/g, '<br>'), "JPS AI Assistant");
+      return;
+    }
     if (requestsRemaining <= 0) {
+      rateState.count++;
+      saveRateState(rateState);
+      if (rateState.count > 8) { // abuse threshold
+        recordAbuse();
+        addAIMessage(FALLBACK_MESSAGE.replace(/\n/g, '<br>'), "JPS AI Assistant");
+        return;
+      }
       addAIMessage(`You've reached the free message limit (5 per 30 minutes). <strong>Upgrade to JPS-MP</strong> for 20 messages per 30 min plus blueprint analysis and priority booking. <a href='/membership.html'>Learn more →</a>`, "JPS AI Assistant");
       return;
     }
     addUserMessage(text);
+    rateState.count++;
+    saveRateState(rateState);
+    requestsRemaining = Math.max(0, 5 - rateState.count);
     chatInput.value = '';
     chatInput.style.height = 'auto';
     // Detect emergency keywords typed in chat → launch the triage UI
@@ -324,6 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await resp.json();
       requestsRemaining = data.requests_remaining;
+      rateState.count = Math.max(rateState.count, (5 - requestsRemaining));
+      saveRateState(rateState);
       addAIMessage(data.reply, "JPS AI Assistant");
       apiOnline = true;
     } catch (err) {
