@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPS — Brand Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, #001a2e 0%, #003D68 100%);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid #FFC72C;
+  }
+  .page-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+  }
+  .page-header p { color: rgba(255,255,255,0.6); margin-top: 0.5rem; font-size: 0.95rem; }
+
+  /* ── SECTION TITLES ── */
+  .section {
+    padding: 4rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #FFC72C;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,199,44,0.3);
+  }
+  .section-note {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2.5rem;
+    margin-top: 0.4rem;
+  }
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .mockup-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .mockup-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+  }
+  .mockup-sublabel {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  /* ══════════════════════════════════════════
+     HATS
+  ══════════════════════════════════════════ */
+  .hat-wrap {
+    position: relative;
+    width: 260px;
+    height: 160px;
+  }
+  /* Hat shape — snapback */
+  .hat-body {
+    position: absolute;
+    bottom: 0; left: 20px;
+    width: 220px; height: 110px;
+    border-radius: 110px 110px 0 0;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 14px;
+  }
+  .hat-brim {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 28px;
+    border-radius: 0 0 16px 16px;
+  }
+  .hat-snap {
+    position: absolute;
+    bottom: 4px; right: 32px;
+    width: 38px; height: 14px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .hat-logo {
+    width: 90px; height: 90px;
+    object-fit: contain;
+    position: relative; z-index: 2;
+  }
+  /* Colorways */
+  .hat-navy .hat-body  { background: linear-gradient(160deg, #002244 0%, #003D68 100%); }
+  .hat-navy .hat-brim  { background: #001533; }
+  .hat-black .hat-body { background: linear-gradient(160deg, #1a1a1a 0%, #333 100%); }
+  .hat-black .hat-brim { background: #0a0a0a; }
+  .hat-white .hat-body { background: linear-gradient(160deg, #f0f0f0 0%, #e0e0e0 100%); }
+  .hat-white .hat-brim { background: #ccc; }
+  .hat-charcoal .hat-body { background: linear-gradient(160deg, #2a2a2a 0%, #444 100%); }
+  .hat-charcoal .hat-brim { background: #1a1a1a; }
+  .hat-padres .hat-body  { background: linear-gradient(160deg, #0B162A 0%, #1a2a45 100%); }
+  .hat-padres .hat-brim  { background: #050B18; }
+  .hat-padres .hat-body::after {
+    content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 3px; background: #FF7F00; border-radius: 2px;
+  }
+
+  /* ══════════════════════════════════════════
+     T-SHIRTS
+  ══════════════════════════════════════════ */
+  .tshirt-wrap {
+    position: relative;
+    width: 240px;
+    height: 280px;
+  }
+  .tshirt-svg {
+    width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0;
+  }
+  .tshirt-logo {
+    position: absolute;
+    object-fit: contain;
+  }
+  .tshirt-logo.chest-left {
+    width: 70px; height: 70px;
+    top: 68px; left: 72px;
+  }
+  .tshirt-logo.full-front {
+    width: 160px; height: 160px;
+    top: 60px; left: 40px;
+  }
+  .tshirt-logo.full-back {
+    width: 180px; height: 200px;
+    top: 40px; left: 30px;
+  }
+  .back-label {
+    position: absolute;
+    bottom: 14px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════
+     BUSINESS CARDS
+  ══════════════════════════════════════════ */
+  .card-pair {
+    display: flex; flex-direction: column; gap: 1rem; align-items: center;
+  }
+  .biz-card {
+    width: 320px; height: 180px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+  /* FRONT */
+  .card-front {
+    background: linear-gradient(135deg, #001a2e 0%, #003D68 60%, #005A9C 100%);
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    gap: 1.25rem;
+  }
+  .card-front-logo {
+    width: 90px; height: 90px;
+    object-fit: contain; flex-shrink: 0;
+  }
+  .card-front-text { flex: 1; }
+  .card-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .card-title {
+    font-size: 0.7rem;
+    color: #FFC72C;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0.3rem 0 0.6rem;
+  }
+  .card-detail {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+  }
+  .card-lic {
+    position: absolute;
+    bottom: 10px; right: 12px;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+  }
+  .card-accent-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, #FFC72C, #FF7F00);
+  }
+  /* BACK — sacred/esoteric */
+  .card-back {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .card-back-logo {
+    width: 110px; height: 110px;
+    object-fit: contain;
+    opacity: 0.92;
+  }
+  .card-back-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+  /* Sacred card variant */
+  .card-sacred .card-front {
+    background: linear-gradient(135deg, #0a0015 0%, #1a0a35 60%, #2a1050 100%);
+  }
+  .card-sacred .card-title { color: #a78bfa; }
+  .card-sacred .card-accent-bar { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+  .card-sacred .card-back { background: #030008; }
+
+  /* ══════════════════════════════════════════
+     INVOICE HEADER
+  ══════════════════════════════════════════ */
+  .invoice-mockup {
+    width: 100%;
+    max-width: 760px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+    color: #1e293b;
+  }
+  .invoice-header {
+    background: linear-gradient(135deg, #002244 0%, #003D68 60%, #005A9C 100%);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .invoice-logo-area {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .invoice-logo {
+    width: 80px; height: 80px;
+    object-fit: contain;
+  }
+  .invoice-company { color: #fff; }
+  .invoice-company h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+  .invoice-company p { font-size: 0.72rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .invoice-title-block { text-align: right; color: #fff; }
+  .invoice-title-block .inv-word {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #FFC72C;
+    letter-spacing: 0.06em;
+  }
+  .invoice-title-block p { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+  .invoice-body {
+    padding: 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    background: #fff;
+  }
+  .invoice-block h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #005A9C;
+    margin-bottom: 0.3rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.25rem;
+  }
+  .invoice-block p { font-size: 0.8rem; color: #475569; line-height: 1.6; }
+  .invoice-table {
+    width: calc(100% - 4rem);
+    margin: 0 2rem 1.5rem;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  .invoice-table th {
+    background: #003D68;
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .invoice-table td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+  }
+  .invoice-table tr:nth-child(even) td { background: #f8fafc; }
+  .invoice-total-row td {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    background: #FFF7ED !important;
+    color: #003D68;
+    border-top: 2px solid #003D68;
+  }
+  .invoice-footer {
+    background: #001a2e;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .invoice-footer p { font-size: 0.7rem; color: rgba(255,255,255,0.4); }
+  .invoice-footer .inv-thank { color: #FFC72C; font-weight: 700; font-size: 0.75rem; }
+  /* Sacred invoice variant */
+  .invoice-sacred .invoice-header {
+    background: linear-gradient(135deg, #0a0015 0%, #1a0a35 100%);
+    border-bottom: 3px solid #7c3aed;
+  }
+  .invoice-sacred .invoice-title-block .inv-word { color: #a78bfa; }
+  .invoice-sacred .invoice-footer { background: #070010; }
+  .invoice-sacred .invoice-footer .inv-thank { color: #a78bfa; }
+  .invoice-sacred .invoice-table th { background: #1a0a35; }
+  .invoice-sacred .invoice-block h4 { color: #7c3aed; }
+
+  /* ══════════════════════════════════════════
+     STICKERS
+  ══════════════════════════════════════════ */
+  .sticker-grid {
+    display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: center;
+  }
+  .sticker {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sticker-die {
+    border-radius: 50%;
+    background: #fff;
+    padding: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 3px rgba(255,255,255,0.15);
+  }
+  .sticker-die img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 50%; }
+  .sticker-rect {
+    border-radius: 8px;
+    background: #fff;
+    padding: 8px 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sticker-rect img { height: 50px; width: auto; object-fit: contain; }
+  .sticker-rect-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; color: #002244; line-height: 1.3; }
+
+  /* ══════════════════════════════════════════
+     DIVIDER
+  ══════════════════════════════════════════ */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,199,44,0.3), transparent);
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════════
+     LOGO GUIDE
+  ══════════════════════════════════════════ */
+  .logo-guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .lg-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    text-align: center;
+  }
+  .lg-item img { width: 120px; height: 120px; object-fit: contain; }
+  .lg-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.75rem; color: #fff; }
+  .lg-use { font-size: 0.68rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+  .lg-tag {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 100px;
+    text-transform: uppercase;
+  }
+  .tag-pro  { background: rgba(0,90,156,0.3); color: #60a5fa; border: 1px solid rgba(0,90,156,0.5); }
+  .tag-collector { background: rgba(124,58,237,0.3); color: #a78bfa; border: 1px solid rgba(124,58,237,0.5); }
+  .tag-premium { background: rgba(255,199,44,0.2); color: #FFC72C; border: 1px solid rgba(255,199,44,0.4); }
+
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>JPS — BRAND MOCKUPS</h1>
+  <p>Jimenez Plumbing Solutions · Merch · Print · Digital · Ramona CA</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     LOGO GUIDE
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Logo Usage Guide</div>
+  <div class="section-note">Which logo goes where at a glance</div>
+  <div class="logo-guide">
+
+    <div class="lg-item">
+      <img src="static/images/wave_mono_4_circular.png" alt="">
+      <span class="lg-name">Wave Circular Seal</span>
+      <span class="lg-tag tag-pro">Professional</span>
+      <span class="lg-use">Hat patch · Business card · Truck decal · Work shirt · Invoice</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/wave_1_monogram.png" alt="">
+      <span class="lg-name">Wave Monogram</span>
+      <span class="lg-tag tag-pro">Professional</span>
+      <span class="lg-use">Invoice header · Work shirt chest · Van door · Letterhead</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/anatomy_04_metatron_bg.png" alt="">
+      <span class="lg-name">Metatron Arm Seal</span>
+      <span class="lg-tag tag-premium">Premium</span>
+      <span class="lg-use">Premium hat patch · Hoodie · Business card (dark) · Sticker</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/anatomy_05_double_helix.png" alt="">
+      <span class="lg-name">DNA Helix Seal</span>
+      <span class="lg-tag tag-premium">Premium</span>
+      <span class="lg-use">Premium business card · Chest logo tee · Sticker · Patches</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/sacred_8_cosmic_plumber.png" alt="">
+      <span class="lg-name">Cosmic Plumber</span>
+      <span class="lg-tag tag-collector">Collector</span>
+      <span class="lg-use">Full back tee · Poster · Framed print · Collector hoodie</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/sacred_3_sri_yantra.png" alt="">
+      <span class="lg-name">Sri Yantra JPS</span>
+      <span class="lg-tag tag-collector">Collector</span>
+      <span class="lg-use">Collector tee front · Poster · Limited run hat · Sticker</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/sacred_5_all_seeing.png" alt="">
+      <span class="lg-name">All Seeing Eye</span>
+      <span class="lg-tag tag-collector">Collector</span>
+      <span class="lg-use">Collector tee · Hoodie back · Framed art · Sticker sheet</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/sacred_1_flower_of_life.png" alt="">
+      <span class="lg-name">Flower of Life</span>
+      <span class="lg-tag tag-collector">Collector</span>
+      <span class="lg-use">Business card back · Collector hat · Bandana · Sticker</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/sacred_10_dodger_mandala.png" alt="">
+      <span class="lg-name">Dodger Mandala</span>
+      <span class="lg-tag tag-pro">Sports Collab</span>
+      <span class="lg-use">Dodgers colorway tee · Hat · Stadium sticker · Collab merch</span>
+    </div>
+
+    <div class="lg-item">
+      <img src="static/images/wave_mono_1_crash.png" alt="">
+      <span class="lg-name">Wave Crash</span>
+      <span class="lg-tag tag-pro">Professional</span>
+      <span class="lg-use">Standard tee · Mailer print · Website hero · Social media</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     HATS
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Hats</div>
+  <div class="section-note">Snapback / structured 5-panel · Embroidered patch front · Screen print brim optional</div>
+  <div class="mockup-grid">
+
+    <!-- Navy Circular Seal -->
+    <div class="mockup-item">
+      <div class="hat-wrap hat-navy">
+        <div class="hat-body"><img class="hat-logo" src="static/images/wave_mono_4_circular.png" alt=""></div>
+        <div class="hat-brim"></div>
+        <div class="hat-snap"></div>
+      </div>
+      <div class="mockup-label">Wave Seal — Navy</div>
+      <div class="mockup-sublabel">Everyday / Work hat · Most versatile</div>
+    </div>
+
+    <!-- Black Metatron Arm -->
+    <div class="mockup-item">
+      <div class="hat-wrap hat-black">
+        <div class="hat-body"><img class="hat-logo" src="static/images/anatomy_04_metatron_bg.png" alt=""></div>
+        <div class="hat-brim"></div>
+        <div class="hat-snap"></div>
+      </div>
+      <div class="mockup-label">Metatron Arm — Black</div>
+      <div class="mockup-sublabel">Premium collector hat · Limited run</div>
+    </div>
+
+    <!-- White Wave Monogram -->
+    <div class="mockup-item">
+      <div class="hat-wrap hat-white">
+        <div class="hat-body"><img class="hat-logo" src="static/images/wave_1_monogram.png" alt=""></div>
+        <div class="hat-brim"></div>
+        <div class="hat-snap"></div>
+      </div>
+      <div class="mockup-label">Wave Monogram — White</div>
+      <div class="mockup-sublabel">Summer / clean look · Give-away hat</div>
+    </div>
+
+    <!-- Padres Navy sacred_1 -->
+    <div class="mockup-item">
+      <div class="hat-wrap hat-padres">
+        <div class="hat-body"><img class="hat-logo" src="static/images/sacred_1_flower_of_life.png" alt=""></div>
+        <div class="hat-brim"></div>
+        <div class="hat-snap"></div>
+      </div>
+      <div class="mockup-label">Flower of Life — Padres Navy</div>
+      <div class="mockup-sublabel">Padres colorway collab · Collector</div>
+    </div>
+
+    <!-- Charcoal DNA helix -->
+    <div class="mockup-item">
+      <div class="hat-wrap hat-charcoal">
+        <div class="hat-body"><img class="hat-logo" src="static/images/anatomy_05_double_helix.png" alt=""></div>
+        <div class="hat-brim"></div>
+        <div class="hat-snap"></div>
+      </div>
+      <div class="mockup-label">DNA Helix — Charcoal</div>
+      <div class="mockup-sublabel">Premium hat · Crew gift</div>
+    </div>
+
+    <!-- Black Sri Yantra -->
+    <div class="mockup-item">
+      <div class="hat-wrap hat-black">
+        <div class="hat-body"><img class="hat-logo" src="static/images/sacred_3_sri_yantra.png" alt=""></div>
+        <div class="hat-brim"></div>
+        <div class="hat-snap"></div>
+      </div>
+      <div class="mockup-label">Sri Yantra — Black</div>
+      <div class="mockup-sublabel">Collector / limited drop</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     T-SHIRTS
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">T-Shirts & Hoodies</div>
+  <div class="section-note">Front & back combos · Screen print or DTG · 100% cotton or 50/50 blend</div>
+  <div class="mockup-grid">
+
+    <!-- WORK SHIRT — Wave front chest -->
+    <div class="mockup-item">
+      <div class="tshirt-wrap">
+        <svg class="tshirt-svg" viewBox="0 0 240 280" fill="none">
+          <path d="M80 20 L20 60 L40 80 L60 65 L60 260 L180 260 L180 65 L200 80 L220 60 L160 20 L140 38 C130 50 110 50 100 38 Z" fill="#002244" stroke="#003D68" stroke-width="2"/>
+        </svg>
+        <img class="tshirt-logo chest-left" src="static/images/wave_mono_4_circular.png" alt="">
+      </div>
+      <div class="mockup-label">Work Shirt — Navy</div>
+      <div class="mockup-sublabel">Left chest · Circular seal embroidered</div>
+    </div>
+
+    <!-- COLLECTOR TEE — Cosmic Plumber full front -->
+    <div class="mockup-item">
+      <div class="tshirt-wrap">
+        <svg class="tshirt-svg" viewBox="0 0 240 280" fill="none">
+          <path d="M80 20 L20 60 L40 80 L60 65 L60 260 L180 260 L180 65 L200 80 L220 60 L160 20 L140 38 C130 50 110 50 100 38 Z" fill="#060010" stroke="#1a0a35" stroke-width="2"/>
+        </svg>
+        <img class="tshirt-logo full-front" src="static/images/sacred_8_cosmic_plumber.png" alt="">
+      </div>
+      <div class="mockup-label">Cosmic Plumber Tee — Black</div>
+      <div class="mockup-sublabel">Full front print · DTG · Collector drop</div>
+    </div>
+
+    <!-- ALL SEEING EYE full front -->
+    <div class="mockup-item">
+      <div class="tshirt-wrap">
+        <svg class="tshirt-svg" viewBox="0 0 240 280" fill="none">
+          <path d="M80 20 L20 60 L40 80 L60 65 L60 260 L180 260 L180 65 L200 80 L220 60 L160 20 L140 38 C130 50 110 50 100 38 Z" fill="#06000e" stroke="#1a003a" stroke-width="2"/>
+        </svg>
+        <img class="tshirt-logo full-front" src="static/images/sacred_5_all_seeing.png" alt="">
+      </div>
+      <div class="mockup-label">All Seeing Eye Tee — Black</div>
+      <div class="mockup-sublabel">Full front · Collector / limited run</div>
+    </div>
+
+    <!-- SRI YANTRA full front white tee -->
+    <div class="mockup-item">
+      <div class="tshirt-wrap">
+        <svg class="tshirt-svg" viewBox="0 0 240 280" fill="none">
+          <path d="M80 20 L20 60 L40 80 L60 65 L60 260 L180 260 L180 65 L200 80 L220 60 L160 20 L140 38 C130 50 110 50 100 38 Z" fill="#04000c" stroke="#0f0025" stroke-width="2"/>
+        </svg>
+        <img class="tshirt-logo full-front" src="static/images/sacred_3_sri_yantra.png" alt="">
+      </div>
+      <div class="mockup-label">Sri Yantra Tee — Deep Black</div>
+      <div class="mockup-sublabel">Neon print · Collector series</div>
+    </div>
+
+    <!-- DNA helix chest left on white -->
+    <div class="mockup-item">
+      <div class="tshirt-wrap">
+        <svg class="tshirt-svg" viewBox="0 0 240 280" fill="none">
+          <path d="M80 20 L20 60 L40 80 L60 65 L60 260 L180 260 L180 65 L200 80 L220 60 L160 20 L140 38 C130 50 110 50 100 38 Z" fill="#e8f0f8" stroke="#c8d8e8" stroke-width="2"/>
+        </svg>
+        <img class="tshirt-logo chest-left" src="static/images/anatomy_05_double_helix.png" alt="">
+      </div>
+      <div class="mockup-label">DNA Seal — White</div>
+      <div class="mockup-sublabel">Left chest · Clean everyday wear</div>
+    </div>
+
+    <!-- Dodger Mandala Padres colorway -->
+    <div class="mockup-item">
+      <div class="tshirt-wrap">
+        <svg class="tshirt-svg" viewBox="0 0 240 280" fill="none">
+          <path d="M80 20 L20 60 L40 80 L60 65 L60 260 L180 260 L180 65 L200 80 L220 60 L160 20 L140 38 C130 50 110 50 100 38 Z" fill="#0B162A" stroke="#1a2a45" stroke-width="2"/>
+        </svg>
+        <img class="tshirt-logo full-front" src="static/images/sacred_10_dodger_mandala.png" alt="">
+      </div>
+      <div class="mockup-label">Dodger Mandala — Padres Navy</div>
+      <div class="mockup-sublabel">Sports collab · Fan drop</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     BUSINESS CARDS
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Business Cards</div>
+  <div class="section-note">3.5" × 2" · 16pt matte or soft-touch laminate · Front + back · Print at Moo.com or VistaPrint</div>
+  <div class="mockup-grid">
+
+    <!-- CARD 1: Wave Circular — Professional -->
+    <div class="mockup-item">
+      <div class="card-pair">
+        <div class="biz-card card-front">
+          <img class="card-front-logo" src="static/images/wave_mono_4_circular.png" alt="">
+          <div class="card-front-text">
+            <div class="card-name">Chuck Jimenez</div>
+            <div class="card-title">Master Plumber · Owner</div>
+            <div class="card-detail">
+              (760) 789-3980<br>
+              JPSJimenez33@gmail.com<br>
+              326 Pine St, Ramona CA 92065<br>
+              jps33sd.com
+            </div>
+          </div>
+          <div class="card-lic">CA Lic #568271 · C-36</div>
+          <div class="card-accent-bar"></div>
+        </div>
+        <div class="biz-card card-back">
+          <img class="card-back-logo" src="static/images/sacred_6_water_mandala.png" alt="">
+          <div class="card-back-tagline">Your Ramona Plumber Since 1989</div>
+        </div>
+      </div>
+      <div class="mockup-label">Standard Pro Card</div>
+      <div class="mockup-sublabel">Wave seal front · Sacred mandala back</div>
+    </div>
+
+    <!-- CARD 2: DNA/Metatron — Premium dark -->
+    <div class="mockup-item">
+      <div class="card-pair">
+        <div class="biz-card card-front card-sacred">
+          <img class="card-front-logo" src="static/images/anatomy_04_metatron_bg.png" alt="">
+          <div class="card-front-text">
+            <div class="card-name">Chuck Jimenez</div>
+            <div class="card-title">Master Plumber · Owner</div>
+            <div class="card-detail">
+              (760) 789-3980<br>
+              JPSJimenez33@gmail.com<br>
+              326 Pine St, Ramona CA<br>
+              jps33sd.com
+            </div>
+          </div>
+          <div class="card-lic">CA Lic #568271 · C-36</div>
+          <div class="card-accent-bar"></div>
+        </div>
+        <div class="biz-card card-back card-sacred">
+          <img class="card-back-logo" src="static/images/sacred_2_metatron.png" alt="">
+          <div class="card-back-tagline">Jimenez Plumbing Solutions</div>
+        </div>
+      </div>
+      <div class="mockup-label">Premium Dark Card</div>
+      <div class="mockup-sublabel">Metatron arm front · Metatron cube back</div>
+    </div>
+
+    <!-- CARD 3: DNA Helix front, Flower of Life back -->
+    <div class="mockup-item">
+      <div class="card-pair">
+        <div class="biz-card card-front" style="background: linear-gradient(135deg, #001520 0%, #003050 60%, #004080 100%);">
+          <img class="card-front-logo" src="static/images/anatomy_05_double_helix.png" alt="">
+          <div class="card-front-text">
+            <div class="card-name">Chuck Jimenez</div>
+            <div class="card-title">Master Plumber · Owner</div>
+            <div class="card-detail">
+              (760) 789-3980<br>
+              JPSJimenez33@gmail.com<br>
+              Ramona · SD Country Estates<br>
+              jps33sd.com/ramona
+            </div>
+          </div>
+          <div class="card-lic">CA Lic #568271</div>
+          <div class="card-accent-bar" style="background: linear-gradient(90deg, #00bcd4, #0088cc);"></div>
+        </div>
+        <div class="biz-card card-back" style="background: #020c18;">
+          <img class="card-back-logo" src="static/images/sacred_1_flower_of_life.png" alt="">
+          <div class="card-back-tagline">Repipe · Tankless · LP Gas · Slab Leak</div>
+        </div>
+      </div>
+      <div class="mockup-label">Specialist Card</div>
+      <div class="mockup-sublabel">DNA seal front · Flower of Life back</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     INVOICE HEADER
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Invoice / Estimate Header</div>
+  <div class="section-note">PDF invoices generated by JPSbot · Also usable for printed estimate sheets</div>
+  <div style="display: flex; flex-direction: column; gap: 2.5rem; align-items: center;">
+
+    <!-- Standard invoice -->
+    <div class="mockup-item" style="width:100%; max-width:760px;">
+      <div class="invoice-mockup">
+        <div class="invoice-header">
+          <div class="invoice-logo-area">
+            <img class="invoice-logo" src="static/images/wave_mono_4_circular.png" alt="">
+            <div class="invoice-company">
+              <h2>JIMENEZ PLUMBING SOLUTIONS</h2>
+              <p>326 Pine Street · Ramona, CA 92065<br>
+              (760) 789-3980 · JPSJimenez33@gmail.com<br>
+              CA Lic #568271 · C-36 · Since 1989</p>
+            </div>
+          </div>
+          <div class="invoice-title-block">
+            <div class="inv-word">INVOICE</div>
+            <p>#JPS-2026-0847<br>Date: June 2, 2026<br>Due: June 16, 2026</p>
+          </div>
+        </div>
+        <div class="invoice-body">
+          <div class="invoice-block">
+            <h4>Bill To</h4>
+            <p>Garcia Residence<br>1842 Country Club Dr<br>Ramona, CA 92065<br>(760) 555-0198</p>
+          </div>
+          <div class="invoice-block">
+            <h4>Job Details</h4>
+            <p>Whole-house repipe · PEX-A<br>2,400 sq ft · 3 bed / 2 bath<br>Permit #SD-2026-4471<br>Ramona, CA</p>
+          </div>
+        </div>
+        <table class="invoice-table">
+          <thead>
+            <tr><th>Description</th><th>Hours</th><th>Rate</th><th>Amount</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Whole-house repipe — PEX-A installation</td><td>14</td><td>$135</td><td>$1,890.00</td></tr>
+            <tr><td>PEX-A pipe, fittings, manifolds, hardware</td><td>—</td><td>Materials</td><td>$2,340.00</td></tr>
+            <tr><td>SD County permit fee (pass-through)</td><td>—</td><td>Permit</td><td>$340.00</td></tr>
+            <tr><td>JPS-MP Plus member discount (20%)</td><td>—</td><td>—</td><td>−$378.00</td></tr>
+            <tr class="invoice-total-row"><td colspan="3"><strong>TOTAL DUE</strong></td><td><strong>$4,192.00</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="invoice-footer">
+          <p>Payment due in 14 days · Check, Zelle, or cash accepted</p>
+          <span class="inv-thank">Thank you for choosing JPS!</span>
+        </div>
+      </div>
+      <div class="mockup-label">Standard Invoice — Wave Seal Header</div>
+    </div>
+
+    <!-- Sacred/premium invoice -->
+    <div class="mockup-item" style="width:100%; max-width:760px;">
+      <div class="invoice-mockup invoice-sacred">
+        <div class="invoice-header">
+          <div class="invoice-logo-area">
+            <img class="invoice-logo" src="static/images/anatomy_04_metatron_bg.png" alt="">
+            <div class="invoice-company">
+              <h2>JIMENEZ PLUMBING SOLUTIONS</h2>
+              <p>326 Pine Street · Ramona, CA 92065<br>
+              (760) 789-3980 · jps33sd.com<br>
+              CA Lic #568271 · C-36</p>
+            </div>
+          </div>
+          <div class="invoice-title-block">
+            <div class="inv-word">ESTIMATE</div>
+            <p>#EST-2026-0212<br>Date: June 2, 2026<br>Valid 30 days</p>
+          </div>
+        </div>
+        <div class="invoice-body">
+          <div class="invoice-block">
+            <h4>Estimate For</h4>
+            <p>Martinez Residence<br>SD Country Estates<br>Ramona, CA 92065</p>
+          </div>
+          <div class="invoice-block">
+            <h4>Scope</h4>
+            <p>Tankless water heater install<br>Navien NPE-240A2 · LP propane<br>Includes new gas line, venting, permit</p>
+          </div>
+        </div>
+        <table class="invoice-table">
+          <thead>
+            <tr><th>Item</th><th>Qty</th><th>Unit</th><th>Total</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Navien NPE-240A2 Tankless WH (propane)</td><td>1</td><td>$1,480</td><td>$1,480.00</td></tr>
+            <tr><td>LP gas line upgrade (3/4" to 1")</td><td>1</td><td>$420</td><td>$420.00</td></tr>
+            <tr><td>Installation labor (6 hrs)</td><td>6</td><td>$135</td><td>$810.00</td></tr>
+            <tr><td>SD County permit</td><td>1</td><td>$240</td><td>$240.00</td></tr>
+            <tr class="invoice-total-row"><td colspan="3"><strong>ESTIMATE TOTAL</strong></td><td><strong>$2,950.00</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="invoice-footer">
+          <p>Estimate valid 30 days · 50% deposit required to schedule</p>
+          <span class="inv-thank">Built by JPS — Ramona's Plumber Since 1989</span>
+        </div>
+      </div>
+      <div class="mockup-label">Dark Premium Estimate — Metatron Header</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     STICKERS
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Stickers & Decals</div>
+  <div class="section-note">Die-cut vinyl · Leave-behind at jobs · Truck windows · Tool boxes · StickerMule or Sticker Giant</div>
+  <div class="sticker-grid">
+
+    <div class="sticker">
+      <div class="sticker-die" style="width:120px; height:120px;">
+        <img src="static/images/wave_mono_4_circular.png" alt="">
+      </div>
+    </div>
+
+    <div class="sticker">
+      <div class="sticker-die" style="width:140px; height:140px; background:#000; padding:8px;">
+        <img src="static/images/anatomy_04_metatron_bg.png" alt="" style="border-radius:50%;">
+      </div>
+    </div>
+
+    <div class="sticker">
+      <div class="sticker-die" style="width:130px; height:130px; background:#000; padding:6px;">
+        <img src="static/images/sacred_3_sri_yantra.png" alt="" style="border-radius:50%;">
+      </div>
+    </div>
+
+    <div class="sticker">
+      <div class="sticker-die" style="width:120px; height:120px; background:#000; padding:6px;">
+        <img src="static/images/sacred_1_flower_of_life.png" alt="" style="border-radius:50%;">
+      </div>
+    </div>
+
+    <div class="sticker">
+      <div class="sticker-rect">
+        <img src="static/images/wave_mono_1_crash.png" alt="">
+        <div class="sticker-rect-text">JIMENEZ<br>PLUMBING<br>SOLUTIONS</div>
+      </div>
+    </div>
+
+    <div class="sticker">
+      <div class="sticker-die" style="width:120px; height:120px; background:#000; padding:6px;">
+        <img src="static/images/sacred_10_dodger_mandala.png" alt="" style="border-radius:50%;">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<div style="text-align:center; padding: 2rem; color: rgba(255,255,255,0.2); font-size:0.75rem;">
+  JPS Brand Mockups · Jimenez Plumbing Solutions · Ramona CA · jps33sd.com<br>
+  Built by Botwave Digital Solutions
+</div>
+
+</body>
+</html>
