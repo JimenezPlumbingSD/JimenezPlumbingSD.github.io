@@ -148,7 +148,12 @@ ul { list-style: none; }
 
 /* HERO */
 .hero {
-  background: var(--gradient-hero);
+  background:
+    linear-gradient(135deg,
+      rgba(4,10,24,0.78) 0%,
+      rgba(8,18,42,0.68) 45%,
+      rgba(0,40,90,0.60) 100%),
+    url('/static/images/hero_anatomical.jpg') center 15% / cover no-repeat;
   color: var(--white);
   padding: var(--space-2xl) 0;
   position: relative;
@@ -156,10 +161,11 @@ ul { list-style: none; }
 }
 .hero::after {
   content: '';
-  position: absolute; top: -50%; right: -20%;
-  width: 80%; height: 200%;
-  background: radial-gradient(ellipse at center, rgba(0,90,156,0.3) 0%, transparent 70%);
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--white));
   pointer-events: none;
+  z-index: 0;
 }
 .hero-inner { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; gap: 2rem; }
 .hero-since {
@@ -325,7 +331,22 @@ ul { list-style: none; }
 .services {
   padding: var(--space-xl) 0;
   background: var(--white);
+  position: relative;
+  overflow: hidden;
 }
+.services::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(700px, 90vw);
+  height: min(700px, 90vw);
+  background: url('/static/images/watermark_mandala.jpg') center / contain no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+.services > * { position: relative; z-index: 1; }
 .services h2 {
   font-family: var(--font-heading); font-weight: 900; font-size: 2rem;
   color: var(--navy); text-align: center; margin-bottom: var(--space-lg);
