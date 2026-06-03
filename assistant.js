@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hardened client-side rate limiting + abuse guard (localStorage, per feature #6 + #9)
   const RATE_KEY = 'jps_chat_requests';
   const ABUSE_KEY = 'jps_chat_abuse';
-  const WINDOW_MS = 30 * 60 * 1000; // 30 min
+  const WINDOW_MS = 6 * 60 * 60 * 1000; // 6 hours
 
   function loadRateState() {
     try {
