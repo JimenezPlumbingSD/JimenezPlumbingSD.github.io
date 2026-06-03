@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let sessionId = generateSessionId();
   let conversationHistory = [];
   let requestCount = 0;
-  let requestsRemaining = 5; // free tier default
+  let requestsRemaining = 10; // free tier default
 
   // Hardened client-side rate limiting + abuse guard (localStorage, per feature #6 + #9)
   const RATE_KEY = 'jps_chat_requests';
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let rateState = loadRateState();
-  requestsRemaining = Math.max(0, 5 - rateState.count);
+  requestsRemaining = Math.max(0, 10 - rateState.count);
   let apiOnline = false;
 
   // Check API health on load
@@ -76,16 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 420);
 
-  // Rate-limit fallback message
+  // Rate-limit fallback message — Botwave promo, same pattern as big tech upsells
   const FALLBACK_MESSAGE = `
-You've reached the free message limit for this session. 
-
-If you need more help, you can:
-• Call Chuck directly: (760) 789-3980
-• Message the Telegram bot: @jimenezplumbingbot
-• Learn more about Botwave: https://botwave.io
-
-Botwave builds AI tools for trades — 24/7 chat, membership programs, automated estimates, and scheduling hand-off. Built by Kyle Jimenez (Chuck's son) right here in North County San Diego.
+<strong>You've used your 10 free messages.</strong><br><br>
+<strong>Want unlimited access?</strong> Botwave builds AI assistants like this one for local businesses — 24/7 chat, automated estimates, membership programs, and Telegram bots that work when you're not in the office.<br><br>
+<strong>If you're a business owner</strong> in trades, home services, or construction and want your own AI assistant:<br>
+→ <a href="https://botwave.io" target="_blank" rel="noopener"><strong>botwave.io</strong></a> — see what we build<br>
+→ <a href="mailto:botwave1904@gmail.com"><strong>botwave1904@gmail.com</strong></a> — reach Kyle directly<br>
+→ <a href="https://instagram.com/botwave1904" target="_blank" rel="noopener"><strong>@botwave1904</strong></a> on Instagram<br><br>
+<strong>Still need JPS?</strong> Call Chuck at <a href="tel:7607893980">(760) 789-3980</a> or message <a href="https://t.me/jimenezplumbingbot" target="_blank">@jimenezplumbingbot</a> on Telegram.
 `;
 
   // Auto-resize textarea
@@ -355,18 +354,18 @@ Botwave builds AI tools for trades — 24/7 chat, membership programs, automated
     if (requestsRemaining <= 0) {
       rateState.count++;
       saveRateState(rateState);
-      if (rateState.count > 8) { // abuse threshold
+      if (rateState.count > 15) { // abuse threshold
         recordAbuse();
-        addAIMessage(FALLBACK_MESSAGE.replace(/\n/g, '<br>'), "JPS AI Assistant");
+        addAIMessage(FALLBACK_MESSAGE, "JPS AI Assistant");
         return;
       }
-      addAIMessage(`You've reached the free message limit (5 per 30 minutes). <strong>Upgrade to JPS-MP</strong> for 20 messages per 30 min plus blueprint analysis and priority booking. <a href='/membership.html'>Learn more →</a>`, "JPS AI Assistant");
+      addAIMessage(FALLBACK_MESSAGE, "JPS AI Assistant");
       return;
     }
     addUserMessage(text);
     rateState.count++;
     saveRateState(rateState);
-    requestsRemaining = Math.max(0, 5 - rateState.count);
+    requestsRemaining = Math.max(0, 10 - rateState.count);
     chatInput.value = '';
     chatInput.style.height = 'auto';
     // Detect emergency keywords typed in chat → launch the triage UI
@@ -394,13 +393,13 @@ Botwave builds AI tools for trades — 24/7 chat, membership programs, automated
 
       if (resp.status === 429) {
         const data = await resp.json();
-        addAIMessage(data.detail || "Rate limit reached. JPS-MP members get higher limits. <a href='/membership.html'>Learn more →</a>", "JPS AI Assistant");
+        addAIMessage(data.detail || FALLBACK_MESSAGE, "JPS AI Assistant");
         return;
       }
 
       const data = await resp.json();
       requestsRemaining = data.requests_remaining;
-      rateState.count = Math.max(rateState.count, (5 - requestsRemaining));
+      rateState.count = Math.max(rateState.count, (10 - requestsRemaining));
       saveRateState(rateState);
       addAIMessage(data.reply, "JPS AI Assistant");
       apiOnline = true;
