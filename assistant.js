@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Emergency Triage (state-of-the-art interactive decision tree) ──
+  //  Emergency Triage (state-of-the-art interactive decision tree) 
   //
   // The web UI is the front door for emergencies. Instead of a one-line
   // "call this number" reply, the user gets a clickable scenario picker
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const TRIAGE_SCENARIOS = {
     gas: {
       label: 'I smell gas',
-      icon: '⚠️',
+      icon: '',
       severity: 'life-safety',
       steps: [
         '<strong>Do NOT flip any switches, lighters, or matches.</strong>',
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     burst: {
       label: 'Burst pipe / flooding',
-      icon: '💧',
+      icon: '',
       severity: 'urgent',
       steps: [
         'Find your main water shut-off valve. It\'s usually where the water line enters the house — basement, crawl space, garage, or outside near the meter.',
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     sewer: {
       label: 'Sewer backup',
-      icon: '🚫',
+      icon: '',
       severity: 'urgent',
       steps: [
         'Stop running any water in the house — no showers, dishwashers, laundry, or toilet flushes.',
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     nohotwater: {
       label: 'No hot water',
-      icon: '🔥',
+      icon: '',
       severity: 'standard',
       steps: [
         'Check the water heater\'s pilot light (gas units) or breaker (electric units).',
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     leak: {
       label: 'Slow leak / drip',
-      icon: '💦',
+      icon: '',
       severity: 'routine',
       steps: [
         'Place a bucket or towel under the drip. Note where it\'s coming from (faucet, shut-off valve, supply line, drain).',
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     other: {
       label: 'Something else',
-      icon: '❓',
+      icon: '',
       severity: 'unknown',
       steps: [
         'Describe what you\'re seeing in the chat below — fixture type, where it is, when it started, any sounds or smells.',
@@ -271,8 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <strong>JPS commitment:</strong> ${s.promise}
         </div>
         <div class="triage-actions">
-          <a href="tel:7607893980" class="triage-action primary">📞 Call (760) 789-3980</a>
-          <button class="triage-action secondary" data-action="book">📅 Book online</button>
+          <a href="tel:7607893980" class="triage-action primary"> Call (760) 789-3980</a>
+          <button class="triage-action secondary" data-action="book"> Book online</button>
           <button class="triage-action tertiary" data-action="back-to-triage">← Different situation</button>
         </div>
       </div>
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         memberId = id;
         requestsRemaining = 20; // member limit
         document.getElementById('memberBar').innerHTML = `
-          <span class="member-bar-label" style="color:#22C55E;">✓ Member ${id} verified</span>
+          <span class="member-bar-label" style="color:#22C55E;"> Member ${id} verified</span>
           <span style="font-size:0.8rem;color:#94A3B8;">Blueprint analysis + priority booking unlocked — 20 msgs/30min</span>
         `;
         addAIMessage(`Welcome back, JPS-MP member ${id}! You have full access to blueprint analysis, instant quotes, priority booking, and the Botwave suite. What can I help with?`, "JPS AI Assistant");
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
       memberId = id;
       requestsRemaining = 20;
       document.getElementById('memberBar').innerHTML = `
-        <span class="member-bar-label" style="color:#22C55E;">✓ Member ${id} (local)</span>
+        <span class="member-bar-label" style="color:#22C55E;"> Member ${id} (local)</span>
         <span style="font-size:0.8rem;color:#94A3B8;">Features unlocked — 20 msgs/30min</span>
       `;
       addAIMessage(`Welcome, member ${id}! Full access unlocked. What can I help you with?`, "JPS AI Assistant");
@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── Local fallback responses (when API is down) ──
+  //  Local fallback responses (when API is down) 
   //
   // Pricing data is loaded from /jps_config.json which the JPS Telegram
   // /setup wizard writes to. This keeps the web UI, the owner bot, and
