@@ -1,427 +1,132 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="Jimenez Plumbing Solutions — Full Service Plumbing from Concept to Completion. North County San Diego.">
-<title>JPS | Jimenez Plumbing Solutions</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    width: 100%; height: 100%;
-    background: #05070f;
-    overflow: hidden;
-    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  }
-  .splash-stage {
-    position: fixed; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    background: #05070f;
-    cursor: pointer;
-    z-index: 1;
-  }
-  #splash-canvas {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .splash-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: #fff;
-    pointer-events: none;
-  }
-  .brand {
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 0.5rem;
-  }
-  .tag {
-    font-size: clamp(1.1rem, 4vw, 1.6rem);
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-  .sub {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    letter-spacing: 1px;
-  }
-  .hint {
-    margin-top: 1.5rem;
-    font-size: 0.7rem;
-    opacity: 0.5;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPS | Jimenez Plumbing Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="" id="colorwaySheet">
+    <script src="assistant.js" defer></script>
+    <script src="sports-widget.js" defer></script>
+    <script src="sports-news-widget.js"></script>
 </head>
 <body>
+    <header>
+        <img src="static/images/jps_dna_helix_nb4.jpg" alt="JPS Logo" class="logo">
+        <h1>Jimenez Plumbing Solutions Inc.</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="splash-stage" id="splashStage">
-  <canvas id="splash-canvas"></canvas>
-  <div class="splash-content">
-    <div class="brand">JIMENEZ PLUMBING SOLUTIONS INC.</div>
-    <div class="tag">Full Service Plumbing<br>from Concept to Completion</div>
-    <div class="sub">North County San Diego • Est. 1989 • CA C-36 #568271</div>
-    <div class="hint">CLICK THE EYE — BLINK + WATER EXPLOSION</div>
-  </div>
-</div>
+    <section id="hero">
+        <img src="static/images/hero_anatomical.jpg" alt="Hero Image">
+        <div class="hero-text">
+            <h2>Full Service Plumbing from Concept to Completion</h2>
+            <p>Serving North County San Diego Since 1989</p>
+            <a href="tel:760-789-3980" class="cta-button">Call Us: (760) 789-3980</a>
+            <a href="#contact" class="cta-button">Schedule Online</a>
+        </div>
+    </section>
 
-<script>
-// Premium cinematic splash — best possible with canvas + the provided PNG
-const stage = document.getElementById('splashStage');
-const canvas = document.getElementById('splash-canvas');
-const ctx = canvas.getContext('2d', { alpha: true });
+    <section id="trust-badges">
+        <img src="static/images/badge_sd_county.png" alt="San Diego County Badge">
+    </section>
 
-let img = new Image();
-img.src = 'static/images/jps_all_seeing_plumber.png';
+    <div class="container">
+        <main>
+            <section id="services">
+                <h2>Our Services</h2>
+                <ul>
+                    <li>Residential Plumbing</li>
+                    <li>Commercial Plumbing</li>
+                    <li>Drain Cleaning</li>
+                    <li>Water Heaters</li>
+                    <li>Sewer Line Repair</li>
+                    <li>Fixture Installation</li>
+                </ul>
+            </section>
 
-let particles = [];
-let shockwaves = [];
-let blinkProgress = 0; // 0 = open, 1 = closed
-let isExploding = false;
-let startTime = 0;
-let mouseX = 0;
-let mouseY = 0;
-let eyeHover = 0; // intensity 0-1 for hover glow on eye
+            <section id="about">
+                <h2>About JPS Inc.</h2>
+                <p>Jimenez Plumbing Solutions is a family-owned and operated business that has been proudly serving the San Diego community since 1989. We are committed to providing our customers with the highest quality workmanship and exceptional customer service.</p>
+            </section>
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
+            <section id="membership">
+                <h2>JPS Priority Club</h2>
+                <p>Join our Priority Club and enjoy exclusive benefits, including discounts on services, priority scheduling, and annual maintenance checks. Contact us to learn more about our membership tiers and pricing.</p>
+            </section>
 
-function getEyeCenter() {
-  // Better tuned for the all-seeing plumber PNG - eye is the focal "all seeing" element, roughly center-upper
-  const w = canvas.width;
-  const h = canvas.height;
-  const imgSize = Math.min(w, h) * 0.68;
-  const imgX = (w - imgSize) / 2;
-  const imgY = (h - imgSize) / 2 - imgSize * 0.03;
-  return {
-    x: imgX + imgSize * 0.50,
-    y: imgY + imgSize * 0.38,
-    radius: imgSize * 0.085
-  };
-}
+            <section id="reviews">
+                <h2>What Our Customers Are Saying</h2>
+                <div class="review">
+                    <p>"JPS Inc. is the best! They were fast, friendly, and affordable. I would highly recommend them to anyone."</p>
+                    <p>- John D.</p>
+                </div>
+                <div class="review">
+                    <p>"I had a plumbing emergency and JPS was there within the hour. They fixed the problem quickly and professionally. I'm so grateful for their help!"</p>
+                    <p>- Jane S.</p>
+                </div>
+                <div class="review">
+                    <p>"I've been using JPS for years. They are always reliable and do great work. I wouldn't trust anyone else with my plumbing needs."</p>
+                    <p>- Robert M.</p>
+                </div>
+            </section>
 
-class Particle {
-  constructor(x, y, isMain = true) {
-    this.x = x;
-    this.y = y;
-    this.prevX = x;
-    this.prevY = y;
-    const angle = Math.random() * Math.PI * 2;
-    const speed = isMain ? (5 + Math.random() * 13) : (2 + Math.random() * 5);
-    this.vx = Math.cos(angle) * speed;
-    this.vy = Math.sin(angle) * speed - (isMain ? 2 : 0.8);
-    this.size = isMain ? (2.8 + Math.random() * 6) : (1 + Math.random() * 2.5);
-    this.life = isMain ? (60 + Math.random() * 40) : (30 + Math.random() * 25);
-    this.maxLife = this.life;
-    this.gravity = 0.09;
-    this.friction = 0.98;
-    this.hue = 190 + Math.random() * 25;
-    this.alpha = 0.92;
-    this.type = isMain ? 'drop' : 'mist';
-  }
-  update() {
-    this.prevX = this.x;
-    this.prevY = this.y;
-    this.x += this.vx;
-    this.y += this.vy;
-    this.vy += this.gravity;
-    this.vx *= this.friction;
-    this.vy *= this.friction * 0.985;
-    this.life -= 1;
-    this.alpha = Math.max(0.02, (this.life / this.maxLife) * 0.9);
-    this.size *= (this.type === 'mist' ? 0.985 : 0.99);
-  }
-  draw() {
-    if (this.alpha < 0.02 || this.size < 0.3) return;
-    ctx.save();
-    ctx.globalAlpha = this.alpha;
-    if (this.type === 'drop') {
-      // Water drop with trail for motion
-      ctx.strokeStyle = `hsla(${this.hue}, 85%, 80%, ${this.alpha * 0.6})`;
-      ctx.lineWidth = Math.max(1, this.size * 0.6);
-      ctx.beginPath();
-      ctx.moveTo(this.prevX, this.prevY);
-      ctx.lineTo(this.x, this.y);
-      ctx.stroke();
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>Phone: (760) 789-3980</p>
+                <p>Email: jpsjimenez33@gmail.com</p>
+                <form id="quote-form">
+                    <h3>Request a Quote</h3>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" name="phone" placeholder="Your Phone">
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="cta-button">Send</button>
+                </form>
+            </section>
+        </main>
+    </div>
 
-      ctx.fillStyle = `hsla(${this.hue}, 92%, 75%, 1)`;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
+    <div id="jps-chat-widget">
+        <div id="chatArea"></div>
+        <div id="memberBar">
+            <input type="text" id="memberIdInput" placeholder="Enter JPS-MP Member ID">
+            <button id="unlockBtn">Unlock</button>
+        </div>
+        <div id="chatInputArea">
+            <textarea id="chatInput" placeholder="Ask JPS AI..."></textarea>
+            <button id="sendBtn">Send</button>
+            <input type="file" id="fileUpload" style="display: none;">
+            <button id="uploadBtn">Upload</button>
+        </div>
+    </div>
 
-      // Bright specular highlight
-      ctx.fillStyle = 'rgba(255,255,255,0.8)';
-      ctx.beginPath();
-      ctx.arc(this.x - this.size * 0.4, this.y - this.size * 0.4, this.size * 0.35, 0, Math.PI * 2);
-      ctx.fill();
-    } else {
-      // Fine mist - softer
-      ctx.fillStyle = `hsla(${this.hue}, 70%, 85%, 1)`;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.restore();
-  }
-}
+    <div id="jps-sports-widget"></div>
 
-function spawnExplosion(cx, cy) {
-  particles = [];
-  shockwaves = [];
-  // Main heavy drops with trails - big screen-filling explosion
-  for (let i = 0; i < 400; i++) {
-    particles.push(new Particle(cx, cy, true));
-  }
-  // Fine mist / spray
-  for (let i = 0; i < 300; i++) {
-    particles.push(new Particle(cx, cy, false));
-  }
-  // Special "geyser" upward burst from the eye for dramatic water explosion
-  for (let i = 0; i < 60; i++) {
-    const p = new Particle(cx, cy, true);
-    p.vx = (Math.random() - 0.5) * 4;
-    p.vy = - (8 + Math.random() * 10); // strong up
-    p.life = 40 + Math.random() * 20;
-    p.size = 4 + Math.random() * 3;
-    particles.push(p);
-  }
-  // Shockwave rings for impact
-  for (let i = 0; i < 4; i++) {
-    shockwaves.push({ x: cx, y: cy, radius: 6 + i*10, alpha: 0.85 - i*0.1, speed: 8 + i*1.5 });
-  }
-  // Initial bright water flash at the eye/pupil
-  window._splashFlash = { x: cx, y: cy, alpha: 0.95, radius: 18 };
-}
+    <div id="jps-sports-news-widget">
+        <div class="tabs"></div>
+        <div class="news-ticker-container">
+            <div class="news-ticker"></div>
+        </div>
+        <div class="news-content"></div>
+    </div>
 
-function drawEyelid(eye, progress) {
-  // progress 0=open, 1=closed - more organic eyelid shape
-  const lidH = eye.radius * 1.55 * progress;
-  ctx.save();
-  ctx.fillStyle = '#05070f';
-  // Upper eyelid - slightly curved for realism
-  ctx.beginPath();
-  ctx.ellipse(eye.x, eye.y - eye.radius * 0.2, eye.radius * 1.18, lidH * 0.95, -0.05, 0, Math.PI * 2);
-  ctx.fill();
-  // Lower eyelid
-  ctx.beginPath();
-  ctx.ellipse(eye.x, eye.y + eye.radius * 0.28, eye.radius * 1.1, lidH * 0.6, 0.05, 0, Math.PI * 2);
-  ctx.fill();
-  // Dark lash line
-  ctx.strokeStyle = '#0a0a0f';
-  ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.ellipse(eye.x, eye.y - eye.radius * 0.12, eye.radius * 1.15, lidH * 0.65, 0, 0, Math.PI);
-  ctx.stroke();
-  ctx.restore();
-}
-
-function drawShockwaves() {
-  shockwaves.forEach((sw, i) => {
-    ctx.save();
-    const alpha = Math.max(0.05, sw.alpha);
-    ctx.strokeStyle = `rgba(180, 220, 255, ${alpha})`;
-    ctx.lineWidth = 3.5 - i * 0.7;
-    ctx.shadowColor = 'rgba(100, 180, 255, 0.4)';
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
-    ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.restore();
-  });
-}
-
-function updateAndDraw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Draw the sacred plumber image centered
-  if (img.complete) {
-    const size = Math.min(canvas.width, canvas.height) * 0.72;
-    const x = (canvas.width - size) / 2;
-    const y = (canvas.height - size) / 2 - size * 0.04;
-    ctx.drawImage(img, x, y, size, size);
-  }
-
-  const eye = getEyeCenter();
-
-  // Subtle idle eye glow / "alive" effect, intensified by hover
-  const t = (Date.now() - startTime) / 1000;
-  const baseGlow = 0.35 + Math.sin(t * 1.6) * 0.2;
-  const hoverGlow = baseGlow + eyeHover * 0.5;
-  ctx.save();
-  ctx.fillStyle = `rgba(130, 190, 255, ${hoverGlow * 0.18})`;
-  ctx.beginPath();
-  ctx.arc(eye.x, eye.y, eye.radius * (1.3 + eyeHover * 0.4), 0, Math.PI * 2);
-  ctx.fill();
-  // Extra bright core on hover
-  if (eyeHover > 0.1) {
-    ctx.fillStyle = `rgba(200, 230, 255, ${eyeHover * 0.25})`;
-    ctx.beginPath();
-    ctx.arc(eye.x, eye.y, eye.radius * 0.6, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.restore();
-
-  // Draw current blink lid
-  if (blinkProgress > 0.01) {
-    drawEyelid(eye, Math.min(1, blinkProgress));
-  }
-
-  // Explosion
-  if (isExploding) {
-    drawShockwaves();
-
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      p.update();
-      p.draw();
-      if (p.life <= 0) particles.splice(i, 1);
-      // "Splash" on virtual floor for more water explosion feel
-      if (p.y > canvas.height * 0.72 && p.vy > 0 && Math.random() < 0.08) {
-        // Create small splash droplets
-        for (let s = 0; s < 2; s++) {
-          const sp = new Particle(p.x, p.y, false);
-          sp.vy = -Math.abs(p.vy) * 0.6 - Math.random() * 1.5;
-          sp.vx = (Math.random() - 0.5) * 3;
-          sp.life = 15 + Math.random() * 12;
-          particles.push(sp);
-        }
-        p.vy *= 0.2; // dampen
-      }
-    }
-
-    // Update shockwaves
-    for (let i = shockwaves.length - 1; i >= 0; i--) {
-      const sw = shockwaves[i];
-      sw.radius += sw.speed;
-      sw.alpha -= 0.028;
-      if (sw.alpha <= 0.02) shockwaves.splice(i, 1);
-    }
-
-    // Bright central flash (water burst at eye)
-    if (window._splashFlash && window._splashFlash.alpha > 0.05) {
-      const f = window._splashFlash;
-      ctx.save();
-      ctx.globalAlpha = f.alpha;
-      const grad = ctx.createRadialGradient(f.x, f.y, 5, f.x, f.y, f.radius * 2.5);
-      grad.addColorStop(0, 'rgba(200, 230, 255, 0.95)');
-      grad.addColorStop(0.3, 'rgba(160, 210, 255, 0.6)');
-      grad.addColorStop(1, 'rgba(100, 180, 255, 0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, f.radius * 2.5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-      f.alpha *= 0.82;
-      f.radius += 1.8;
-    }
-  }
-
-  // Continue animation
-  requestAnimationFrame(updateAndDraw);
-}
-
-function triggerCinematicExplosion(clickX, clickY) {
-  const eye = getEyeCenter();
-  const targetX = clickX || eye.x;
-  const targetY = clickY || eye.y;
-
-  isExploding = true;
-  blinkProgress = 0;
-
-  // Dramatic blink sequence
-  const blinkDur = 260;
-  const startBlink = performance.now();
-
-  function doBlink(ts) {
-    const elapsed = ts - startBlink;
-    const p = Math.min(1, elapsed / blinkDur);
-    // Ease in-out for realistic close/open
-    blinkProgress = p < 0.5 ? (p * 2) : (2 - p * 2);
-    if (elapsed < blinkDur * 1.6) {
-      requestAnimationFrame(doBlink);
-    } else {
-      blinkProgress = 0;
-    }
-  }
-  requestAnimationFrame(doBlink);
-
-  // Launch the water explosion from the eye
-  setTimeout(() => {
-    spawnExplosion(targetX, targetY);
-  }, 140);
-
-  // Powerful exit after the burst peaks
-  setTimeout(() => {
-    stage.style.transition = 'opacity 520ms ease, transform 520ms ease';
-    stage.style.opacity = '0';
-    stage.style.transform = 'scale(1.06)';
-    setTimeout(() => {
-      window.location.href = 'home.html';
-    }, 480);
-  }, 920);
-}
-
-// Click / tap handling
-stage.addEventListener('click', (e) => {
-  const rect = stage.getBoundingClientRect();
-  triggerCinematicExplosion(e.clientX, e.clientY);
-});
-
-// Keyboard
-stage.setAttribute('tabindex', '0');
-stage.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    const eye = getEyeCenter();
-    triggerCinematicExplosion(eye.x, eye.y);
-  }
-});
-
-// Interactive eye glow on hover / mousemove
-stage.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  const eye = getEyeCenter();
-  const dist = Math.hypot(mouseX - eye.x, mouseY - eye.y);
-  if (dist < eye.radius * 3 && !isExploding) {
-    eyeHover = Math.max(eyeHover, 1 - (dist / (eye.radius * 3)));
-  }
-});
-stage.addEventListener('mouseleave', () => {
-  eyeHover = 0;
-});
-
-// Boot
-img.onload = () => {
-  startTime = Date.now();
-  updateAndDraw();
-  // Gentle auto-blink every 6s to make the eye feel alive
-  setInterval(() => {
-    if (!isExploding) {
-      blinkProgress = 1;
-      setTimeout(() => { blinkProgress = 0; }, 240);
-    }
-  }, 6200);
-};
-
-if (img.complete) {
-  startTime = Date.now();
-  updateAndDraw();
-}
-
-console.log('%c[JPS v2] Best cinematic splash loaded. Click the eye for premium blink + water explosion.', 'color:#4a6fa5');
-</script>
-
+    <footer>
+        <p>&copy; 2026 Jimenez Plumbing Solutions Inc. All Rights Reserved.</p>
+        <p>CA C-36 #568271</p>
+    </footer>
 </body>
 </html>

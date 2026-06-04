@@ -35,8 +35,7 @@
   "description": "Full service plumbing from concept to completion. Licensed master plumber Chuck Jimenez serving North County San Diego since 1989.",
   "url": "https://jps33sd.com",
   "telephone": "+1-760-789-3980",
-  "email": "JPSJimenez33@gmail.com",
-  "address": {
+  "email": "JPSJimenez33@gmail.com",  "address": {
     "@type": "PostalAddress",
     "streetAddress": "326 Pine Street",
     "addressLocality": "Ramona",
@@ -110,9 +109,14 @@
   }
 }
 </script>
-
 </head>
 <body>
+<div class="emergency-banner">
+  <div class="container emergency-banner-inner">
+    <span class="emergency-text">NEED HELP NOW? JPS offers after-hours emergency guidance via AI and same-day callbacks.</span>
+    <a href="tel:7607893980" class="btn btn-emergency">Call Chuck Directly</a>
+  </div>
+</div>
 
 <!-- SKIP LINK -->
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -123,7 +127,7 @@
     <span class="top-tag">Full Service Plumbing from Concept to Completion</span>
     <nav class="top-nav">
       <a href="tel:7607893980">(760) 789-3980</a>
-      <a href="membership.html">JPS-MP Membership</a>
+      <a href="membership">JPS-MP Membership</a>
     </nav>
   </div>
 </div>
@@ -142,7 +146,7 @@
 <!-- HEADER -->
 <header class="site-header" id="main-header">
   <div class="container header-inner">
-    <a href="home.html" class="logo" aria-label="JPS Plumbing Home">
+    <a href="home" class="logo" aria-label="JPS Plumbing Home">
       <span class="logo-jps">JPS</span>
       <span class="logo-sub">Jimenez Plumbing Solutions</span>
     </a>
@@ -160,7 +164,8 @@
         </div>
       </div>
       <a href="tel:7607893980" class="btn btn-phone btn-sm">Call Now</a>
-      <a href="assistant.html" class="btn btn-ai btn-sm">AI Assistant</a>
+      <a href="assistant" class="btn btn-ai btn-sm">AI Assistant</a>
+      <a href="#contact" class="btn btn-schedule btn-sm">Schedule Service</a>
     </div>
   </div>
 </header>
@@ -168,11 +173,11 @@
 <!-- MAIN NAV -->
 <nav class="main-nav" aria-label="Primary services navigation">
   <div class="container">
-    <a href="home.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="home">Home</a>
+    <a href="about">About</a>
     <a href="#services">Services</a>
-    <a href="membership.html">JPS-MP Membership</a>
-    <a href="assistant.html">Service Portal</a>
+    <a href="membership">JPS-MP Membership</a>
+    <a href="assistant">Service Portal</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -378,8 +383,7 @@
 
 
 <!-- ABOUT PREVIEW -->
-    <section class="about-preview" data-reveal="fade-up">
-      <div class="about-preview-inner">
+    <section class="about-preview" data-reveal="fade-up">      <div class="about-preview-inner">
         <div class="about-preview-img" data-reveal="slide-right" data-reveal-delay="100">
           <img src="static/images/chuck-and-kevin.jpg" alt="Chuck Jimenez and his son Kevin at a Chargers game" loading="lazy">
         </div>
@@ -388,7 +392,7 @@
           <h2>Chuck Jimenez</h2>
           <p>President and founder of Jimenez Plumbing Solutions Inc. Licensed CA C-36 contractor since 1989. 30+ years working word-of-mouth across North County San Diego — from Oceanside to Julian.</p>
           <p>He runs a small outfit because he takes care and pride in his work. When Chuck's on your project, he's there at every inspection, helping you pick out trim, and walking you through every step.</p>
-          <a href="about.html" class="btn btn-primary">Read Our Story</a>
+          <a href="about" class="btn btn-primary">Read Our Story</a>
         </div>
       </div>
     </section>
@@ -477,9 +481,8 @@
 
 
 <!-- SPORTS / TEAMS WIDGET PROMO -->
-    <section class="teams-section" data-reveal="fade-up">
-      <div class="container">
-        <h2 class="section-heading" data-reveal="fade-up">We Root for Local</h2>
+    <section class="teams-section" data-reveal="fade-up">      <div class="container">
+        <h2 class="section-heading" data-reveal="fade_up">We Root for Local</h2>
         <p class="section-subheading">Click any team card below to instantly switch the site colorway. Live scores powered by ESPN. When our teams win, you win with special promos.</p>
         <div id="teams-promo" style="margin: 1.5rem 0; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
           <!-- Sports widget auto-appends #jps-sports-widget as fixed bottom-left. This is a static teaser. -->
@@ -494,6 +497,87 @@
           </div>
         </div>
         <p style="text-align:center; font-size:0.8rem; opacity:0.6;">The floating scores widget (bottom left) shows live MLB/NFL/NBA and switches themes on click too.</p>
+      </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="trust-badges-section" data-reveal="fade-up">
+      <div class="container">
+        <div class="trust-badges-inner">
+          <div class="trust-badge">
+            <img src="/static/images/badge_licensed.png" alt="Licensed Contractor">
+            <span>Licensed C-36 #568271</span>
+          </div>
+          <div class="trust-badge">
+            <img src="/static/images/badge_experience.png" alt="35+ Years Experience">
+            <span>35+ Years Experience</span>
+          </div>
+          <div class="trust-badge">
+            <img src="/static/images/badge_upfront_pricing.png" alt="Upfront Pricing">
+            <span>Upfront Pricing</span>
+          </div>
+          <div class="trust-badge">
+            <img src="/static/images/badge_satisfaction.png" alt="Satisfaction Guaranteed">
+            <span>Satisfaction Guaranteed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINANCING -->
+    <section class="financing-section" data-reveal="fade-up">
+      <div class="container">
+        <div class="financing-inner">
+          <div class="financing-text">
+            <span class="financing-eyebrow">FLEXIBLE PAYMENT OPTIONS</span>
+            <h2 class="section-heading">Financing Available</h2>
+            <p>We offer flexible financing options to help you get the service you need, when you need it. We've partnered with GreenSky and ServiceFinance to offer a variety of plans to fit your budget, including <strong>0% APR for 12 months</strong> on approved credit.</p>
+            <ul class="benefit-list">
+              <li><svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Easy application process</span></li>
+              <li><svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Instant credit decisions</span></li>
+              <li><svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Low monthly payments</span></li>
+            </ul>
+            <div class="financing-ctas">
+              <a href="tel:7607893980" class="btn btn-primary">Apply Now — Call (760) 789-3980</a>
+              <a href="#contact" class="btn btn-secondary">Learn More</a>
+            </div>
+          </div>
+          <div class="financing-logos">
+            <img src="/static/images/logo_greensky.png" alt="GreenSky financing">
+            <img src="/static/images/logo_servicefinance.png" alt="ServiceFinance financing">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE AREA -->
+    <section class="service-area-section" data-reveal="fade-up">
+      <div class="container">
+        <h2 class="section-heading">Our Service Area</h2>
+        <p class="section-subheading">Proudly serving Ramona, Julian, and all of North County San Diego.</p>
+        <div class="service-area-inner">
+          <div class="service-area-map" id="map-placeholder">
+            <!-- Placeholder for map -->
+            <img src="/static/images/map_placeholder.png" alt="Map of San Diego County">
+          </div>
+          <div class="service-area-list">
+            <h3>Primary Service Areas</h3>
+            <ul>
+              <li>Ramona</li>
+              <li>Julian</li>
+              <li>San Diego Country Estates</li>
+            </ul>
+            <h3>Also Serving</h3>
+            <ul>
+              <li>Oceanside</li>
+              <li>Escondido</li>
+              <li>Vista</li>
+              <li>San Marcos</li>
+              <li>Fallbrook</li>
+              <li>All of North County</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 

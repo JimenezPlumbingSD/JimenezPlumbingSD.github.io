@@ -2,9 +2,7 @@
 // Backend: /api/chat at jps_assistant_api.py (FastAPI on port 31338)
 // Fallback: local canned responses if backend is down
 
-const API_BASE = window.location.hostname === 'jps33sd.com' || window.location.hostname === 'www.jps33sd.com' || window.location.hostname === 'jimenezplumbingsd.github.io'
-  ? 'https://api.jps33sd.com'  // Cloud Run
-  : 'http://localhost:31338';      // local dev
+const API_BASE = 'http://localhost:5000';
 
 document.addEventListener('DOMContentLoaded', () => {
   const chatArea = document.getElementById('chatArea');
@@ -369,48 +367,39 @@ document.addEventListener('DOMContentLoaded', () => {
     chatInput.value = '';
     chatInput.style.height = 'auto';
     // Detect emergency keywords typed in chat → launch the triage UI
-    if (/\b(emergency|emergencies|urgent|help me|flooding|burst|gas leak)\b/i.test(text)) {
-      launchEmergencyTriage();
-      return;
-    }
-    sendToBackend(text);
-  }
+    const API_BASE = 'http://localhost:5000';
 
-  async function sendToBackend(text) {
-    showTyping();
-    try {
-      const resp = await fetch(`${API_BASE}/api/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          session_id: sessionId,
-          member_id: memberId,
-          history: conversationHistory.slice(-10)
-        })
-      });
-      removeTyping();
 
-      if (resp.status === 429) {
-        const data = await resp.json();
-        addAIMessage(data.detail || FALLBACK_MESSAGE, "JPS AI Assistant");
-        return;
+    // ...
+
+
+    async function sendToBackend(text) {
+        showTyping();
+        try {
+          const resp = await fetch(`${API_BASE}/api/v1/chat`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-API-Key': 'JPS_UNDENIABLE_AI_CORE'
+            },
+            body: JSON.stringify({ message: text })
+          });
+          removeTyping();
+
+          const data = await resp.json();
+          if (resp.ok) {
+            addAIMessage(data.message, "JPS AI Assistant");
+          } else {
+            addAIMessage(data.error || "An error occurred.", "JPS AI Assistant (error)");
+          }
+          apiOnline = true;
+        } catch (err) {
+          removeTyping();
+          const fallback = getLocalResponse(text);
+          addAIMessage(fallback, "JPS AI Assistant (offline)");
+          apiOnline = false;
+        }
       }
-
-      const data = await resp.json();
-      requestsRemaining = data.requests_remaining;
-      rateState.count = Math.max(rateState.count, (10 - requestsRemaining));
-      saveRateState(rateState);
-      addAIMessage(data.reply, "JPS AI Assistant");
-      apiOnline = true;
-    } catch (err) {
-      removeTyping();
-      // Fallback to local responses if API is down
-      const fallback = getLocalResponse(text);
-      addAIMessage(fallback, "JPS AI Assistant (offline)");
-      apiOnline = false;
-    }
-  }
 
   function addUserMessage(text) {
     const msg = document.createElement('div');

@@ -1,16 +1,15 @@
 /* ================================================
-   JPS — LA Dodgers Colorway (exact official)
-   Dodger Blue #005A9C (PMS 294 C / Pantone), Red #EF3E42 (PMS 185 C), White
-   Silver accent support. Matches current JPS default spirit.
+   JPS — LA Lakers Colorway (exact official)
+   Purple #552583, Gold #FDB927, White
    ================================================ */
 
 :root {
-  --navy: #003D68;
-  --navy-dark: #001a33;
-  --dodger-blue: #005A9C;
-  --dodger-blue-light: #0072C6;
-  --red: #EF3E42;
-  --red-dark: #C8102E;
+  --navy: #000000;
+  --navy-dark: #000000;
+  --dodger-blue: #552583;
+  --dodger-blue-light: #7a4bb3;
+  --red: #FDB927;
+  --red-dark: #c49a00;
   --white: #FFFFFF;
   --off-white: #F8F8F8;
   --gray-100: #F1F5F9;
@@ -18,141 +17,38 @@
   --gray-300: #CBD5E1;
   --gray-600: #475569;
   --gray-700: #1E293B;
-  --gradient-primary: linear-gradient(135deg, #001a33 0%, #005A9C 100%);
-  --gradient-accent: linear-gradient(237deg, #EF3E42 0%, #001a33 100%);
-  --gradient-hero: linear-gradient(135deg, #001a33 0%, #003D68 40%, #005A9C 100%);
+  --gradient-primary: linear-gradient(135deg, #000000 0%, #552583 100%);
+  --gradient-accent: linear-gradient(237deg, #FDB927 0%, #000000 100%);
+  --gradient-hero: linear-gradient(135deg, #000000 0%, #2a1242 35%, #552583 100%);
 }
 
-/* Hero — dodger blue + red pop */
-.hero, .jps-splash {
-  background:
-    linear-gradient(135deg, #001a33 0%, #003D68 35%, #005A9C 100%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M30 10 L37 25 L54 27 L41 38 L45 55 L30 46 L15 55 L19 38 L6 27 L23 25 Z" fill="rgba(239,62,66,0.06)"/></svg>') !important;
-}
-
-.hero h1, .splash-title { color: #FFFFFF !important; }
-.hero h1 span, .hero .accent, .hero .highlight, .splash-cta { color: #EF3E42 !important; }
-.hero p, .hero-since, .splash-sub { color: #CBD5E1 !important; }
-
-/* Primary CTA — dodger red */
-.btn-schedule, .btn-primary, .btn-accent, .cta-button.primary-button {
-  background: linear-gradient(135deg, #EF3E42 0%, #C8102E 100%) !important;
-  color: #FFFFFF !important;
-  border: 0 !important;
-  font-weight: 800;
-}
-.btn-schedule:hover, .btn-primary:hover, .btn-accent:hover, .cta-button.primary-button:hover {
-  background: linear-gradient(135deg, #ff6b6f 0%, #EF3E42 100%) !important;
-  color: #fff !important;
-  box-shadow: 0 4px 20px rgba(239, 62, 66, 0.45) !important;
-}
-  font-weight: 800;
-}
-.btn-schedule:hover, .btn-primary:hover, .btn-accent:hover {
-  background: linear-gradient(135deg, #FFCC4D 0%, #FFD980 100%) !important;
-  color: #1A0A2E !important;
-  box-shadow: 0 4px 20px rgba(253, 185, 39, 0.4) !important;
-}
-
-/* Phone button — purple with gold border */
-.btn-phone {
-  background: transparent !important;
-  color: #FFFFFF !important;
-  border: 2px solid #FDB927 !important;
-}
-.btn-phone:hover { background: #FDB927 !important; color: #1A0A2E !important; }
-
-/* AI button — purple with gold text */
-.btn-ai {
-  background: #1A0A2E !important;
-  color: #FDB927 !important;
-  border: 1px solid #FDB927 !important;
-}
-.btn-ai:hover { background: #FDB927 !important; color: #1A0A2E !important; }
-
-/* Nav — purple with gold accent */
-.main-nav {
-  background: #1A0A2E !important;
-  border-bottom: 3px solid #FDB927 !important;
-}
-.main-nav a { color: #FFFFFF !important; }
-.main-nav a:hover { color: #FDB927 !important; }
-
-/* Top bar */
-.top-bar { background: #0E0518 !important; }
-.top-bar a { color: #FDB927 !important; }
-
-/* Header logo */
-.logo-jps { color: #FFFFFF !important; }
-.logo-sub { color: #FDB927 !important; }
-
-/* Service cards */
-.cat-card {
-  background: #FFFFFF !important;
-  border: 1px solid #D4C8A8 !important;
-}
-.cat-card h3 { color: #1A0A2E !important; }
-.cat-card p, .cat-card span { color: #4A4055 !important; }
-.cat-card:hover {
-  border-color: #552583 !important;
-  box-shadow: 0 8px 24px rgba(85, 37, 131, 0.15) !important;
-}
-.cat-card .cat-icon {
-  background: #552583 !important;
-  color: #FDB927 !important;
-}
-
-/* Offer card — purple with gold accent */
-.offer-card {
-  background: linear-gradient(180deg, #1A0A2E, #2A1245) !important;
+/* Gold accent CTAs for Lakers */
+.btn-accent, .cta-button.primary-button {
+  background: linear-gradient(135deg, #FDB927 0%, #c49a00 100%) !important;
+  color: #000000 !important;
   border-color: #FDB927 !important;
 }
-.offer-card .offer-tag { background: #FDB927 !important; color: #1A0A2E !important; }
-.offer-card .offer-name { color: #FFFFFF !important; }
-.offer-card .offer-detail { color: #EFE8DC !important; }
-.offer-card .offer-detail strong { color: #FDB927 !important; }
-.offer-card .offer-price { color: #FDB927 !important; }
-.offer-card .offer-fine { color: #D4C8A8 !important; }
+.btn-accent:hover, .cta-button.primary-button:hover {
+  box-shadow: 0 4px 20px rgba(253, 185, 39, 0.45) !important;
+  filter: brightness(1.05);
+}
 
-/* Membership section */
-.membership { background: #1A0A2E !important; color: #FFFFFF !important; }
-.membership h2 { color: #FFFFFF !important; }
-.membership .section-sub { color: #EFE8DC !important; }
-.plan { background: #2A1245 !important; border-color: #FDB927 !important; }
-.plan h3 { color: #FDB927 !important; }
-.plan-price { color: #FFFFFF !important; }
-.plan-period { color: #FDB927 !important; }
-.plan-tag { color: #D4C8A8 !important; }
-.plan-features li { color: #EFE8DC !important; }
-.plan-features li.disabled { color: #998A6B !important; }
-.plan-features .check { color: #FDB927 !important; }
-.plan-popular { background: #FDB927 !important; color: #1A0A2E !important; }
-.compare-table th, .compare-table td { color: #EFE8DC !important; border-color: #2A2235 !important; }
-.compare-table th.highlight, .compare-table td.highlight { background: rgba(253, 185, 39, 0.12) !important; color: #FFFFFF !important; }
-.compare-table .price-row { color: #FDB927 !important; }
-.faq-item { background: #2A1245 !important; border-color: #2A2235 !important; color: #EFE8DC !important; }
-.faq-item summary { color: #FFFFFF !important; }
-.pricing-note { color: #D4C8A8 !important; }
+/* Purple cards */
+.offer-card, .service-card {
+  background: linear-gradient(180deg, #552583, #2a1242) !important;
+  border-color: rgba(253, 185, 39, 0.35) !important;
+  color: #fff;
+}
 
-/* Preventive maintenance */
-.preventive { background: #FAF6EC !important; }
-.preventive h2 { color: #1A0A2E !important; }
-.preventive .section-sub { color: #4A4055 !important; }
-.preventive li { color: #4A4055 !important; }
-.preventive li strong { color: #1A0A2E !important; }
-.maint-card { background: #FFFFFF !important; border-color: #D4C8A8 !important; }
-.maint-card h3 { color: #552583 !important; }
-.maint-cta { background: #1A0A2E !important; color: #EFE8DC !important; }
-.maint-cta strong { color: #FDB927 !important; }
+/* Hero purple + gold */
+.hero, .jps-splash {
+  background: linear-gradient(135deg, #000000 0%, #2a1242 30%, #552583 85%) !important;
+}
 
-/* Contact */
-.contact-section { background: linear-gradient(135deg, #1A0A2E, #2A1245) !important; color: #FFFFFF !important; }
-.contact-section h2 { color: #FFFFFF !important; }
+.site-footer {
+  background: #000000 !important;
+}
 
-/* Footer */
-.site-footer { background: #0E0518 !important; color: #D4C8A8 !important; }
-.site-footer h4 { color: #FDB927 !important; }
-.site-footer a { color: #EFE8DC !important; }
-.site-footer a:hover { color: #FDB927 !important; }
-.footer-botwave { border-left-color: #FDB927 !important; }
-.footer-bottom { background: #000 !important; color: #998A6B !important; border-top-color: #2A2235 !important; }
+.footer-botwave {
+  border-left-color: #FDB927 !important;
+}
